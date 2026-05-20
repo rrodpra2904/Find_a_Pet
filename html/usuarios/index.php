@@ -297,7 +297,7 @@ $hayAnimalesEnBaseDatos = false;
 
 <script>
 function cambiarPestana(evt, nombrePestana) {
-    var contenidos = document.getElementsByClassName("contenido-pestana");
+    var contenidos = document.çgetElementsByClassName("contenido-pestana");
     for (var i = 0; i < contenidos.length; i++) { contenidos[i].classList.remove("activo"); }
 
     var botones = document.querySelectorAll(".menu-enlaces button");
