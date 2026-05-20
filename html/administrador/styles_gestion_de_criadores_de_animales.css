@@ -1,0 +1,137 @@
+/* --- Importanción de la fuente Poppins --- */
+
+/* Traigo la letra Poppins desde Google Fonts para que la página web se vea moderna y profesional. */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+/* Aplico el tipo de letra Poppins a todos los elementos. He puesto 'sans-serif' como segunda opción 
+   por si falla la carga de Google Fonts, así me aseguro de que siempre se vea una letra limpia. */
+* {
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box; /* Añado esto para que el padding no ensanche las cajas más de la cuenta. */
+}
+
+/* --- Estilos generales --- */
+body { 
+    background-color: #f4f7f8; /* Un gris azulado muy clarito para que el fondo sea agradable y descanse la vista. */
+    margin: 30px; /* Dejo espacio a los lados para que la tabla no se pegue a los bordes del navegador. */
+    color: #333;
+}
+
+/* El contenedor principal con el efecto de sombra morada. */
+.caja-principal { 
+    background: white; 
+    padding: 25px; 
+    border: 1px solid #9b59b6; /* Borde morado para seguir con la identidad corporativa de Find a Pet. */
+    max-width: 1200px;
+    margin: auto; /* Centra la caja automáticamente en mitad de la pantalla. */
+    border-radius: 8px;
+    /* He puesto una sombra doble con un toque morado para que la caja resalte y tenga profundidad. */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15), 0 8px 25px rgba(124,75,183,0.2);
+}
+
+/* Título de la sección en negro para que destaque y transmita seriedad. */
+h2 { 
+    color: #222; 
+    text-align: center; 
+    margin-bottom: 25px; 
+    font-weight: 700; /* Lo pongo en negrita máxima para marcar jerarquía. */
+}
+
+/* --- Botón añadir nuevos criadores de animales --- */
+
+/* Estilo para el botón de añadir nuevos criadores a la base de datos. */
+.btn-nuevo { 
+    display: inline-block; 
+    background-color: #9b59b6; 
+    color: white; 
+    padding: 12px 25px; 
+    text-decoration: none; 
+    font-weight: bold; 
+    border-radius: 4px; 
+    margin-bottom: 20px; 
+}
+
+.btn-nuevo:hover { 
+    background-color: #8e44ad; /* Se oscurece al pasar el ratón para dar "feedback" al usuario de que es clicable. */
+}
+
+/* --- Estilos de la tabla --- */
+table { 
+    width: 100%; 
+    border-collapse: collapse; /* Elimina el espacio entre bordes para que la tabla sea minimalista. */
+}
+
+/* Cabecera de la tabla con el color principal morado. */
+th { 
+    background-color: #9b59b6; 
+    color: white; 
+    padding: 15px; 
+    border: 1px solid #ddd; 
+}
+
+/* Celdas de datos. */
+td { 
+    padding: 15px; 
+    border: 1px solid #ddd; 
+    text-align: center; 
+    background-color: #fff; 
+    vertical-align: middle; /* Centra el contenido verticalmente por si el texto es más largo que la foto. */
+}
+
+/* Estilo para el logo del criador. */
+.foto-logo { 
+    width: 70px; 
+    height: 70px; 
+    object-fit: cover; /* Esto lo he puesto para que foto llene el cuadrado sin estirarse ni aplastarse. */
+    border-radius: 4px; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* He puesto una sombra suave para que el logo resalte. */
+}
+
+/* --- Botones de acción (modificar y eliminar) --- */
+
+.btn-accion {
+    display: inline-block;
+    padding: 8px 15px;
+    text-decoration: none;
+    color: white;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: bold;
+    margin: 4px;
+    transition: 0.3s; /* Para que el cambio de color al pasar el ratón sea suave. */
+}
+
+/* Azul para modificar: color estándar que sugiere edición. */
+.btn-modificar { background-color: #3498db; }
+
+/* Rojo para eliminar: avisa visualmente al usuario de que es una acción destructiva o peligrosa. */
+.btn-eliminar { background-color: #e74c3c; }
+
+.btn-modificar:hover { background-color: #2980b9; }
+.btn-eliminar:hover { background-color: #c0392b; }
+
+/* --- Detalles específicos --- */
+
+/* La raza la pongo en negro suave para que sea legible pero no pese más que el nombre. */
+.etiqueta-raza { 
+    color: #222; 
+    font-weight: 400; 
+}
+
+/* Localidad: Estilo limpio y sencillo para el nombre de la ciudad. */
+.ciudad { 
+    color: #222; 
+    font-size: 14px; 
+    background: none; 
+    padding: 0; 
+    border: none;
+}
+
+/* Información extra: Alineado a la izquierda para facilitar la lectura de textos largos. */
+.col-info { 
+    text-align: left; 
+    font-size: 14px; 
+    color: #555; 
+    max-width: 300px; 
+    line-height: 1.5; /* Interlineado para que los párrafos no se vean apelotonados. */
+}

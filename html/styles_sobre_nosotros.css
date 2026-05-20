@@ -1,0 +1,117 @@
+/* ==========================================================================
+                        ESTILO SOBRE NOSOTROS
+   ========================================================================== */
+
+/* 1. ESPACIADO DE SECCIÓN:
+   Doy mucho espacio (100px) para que la página web este bonita y no este saturada. */
+.py-seccion { 
+    padding: 100px 20px; 
+}
+.mb-60 { 
+    margin-bottom: 60px; 
+}
+
+/* 2. TAGS DECORATIVOS:
+   Pequeñas etiquetas en mayúsculas que sirven para introducir temas. 
+   El 'letter-spacing: 2px' les da un toque de diseño editorial muy elegante. */
+.etiqueta {
+    color: #9b59b6;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+}
+
+/* 3. SEPARADOR VISUAL:
+   Una línea lila minimalista que ayuda a centrar la atención del usuario 
+   después de un título. */
+.separador-lila {
+    width: 60px;
+    height: 4px;
+    background: #9b59b6;
+    margin: 20px auto;
+    border-radius: 2px;
+}
+
+/* 4. BLOQUES DE INFORMACIÓN (LAYOUT ALTERNADO):
+   Uso Flexbox para poner texto e imagen lado a lado. 
+   La clase '.reverse' permite que en la siguiente sección la imagen 
+   vaya a la izquierda y el texto a la derecha de forma sencilla. */
+.bloque-info {
+    display: flex;
+    align-items: center;
+    gap: 80px; /* Mucho espacio entre imagen y texto para máxima claridad. */
+    margin-bottom: 120px;
+}
+
+.bloque-info.reverse { flex-direction: row-reverse; }
+
+.col-txt { 
+    flex: 1; 
+}
+.col-img { 
+    flex: 1; 
+    text-align: center; 
+}
+
+/* 5. ESTILO DE IMÁGENES:
+   Esquinas muy redondeadas (40px) y una sombra suave para mantener la 
+   coherencia con el resto del sitio. */
+.img-curva-sombra {
+    width: 100%;
+    max-width: 520px;
+    border-radius: 40px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    margin-top: 120px;
+}
+
+/* 6. LA GRAN CAJA DE CONFIANZA (Efecto Glassmorphism):
+   Esta es una pieza de diseño avanzado. Usamos un fondo blanco con transparencia 
+   para crear un "efecto cristal" sobre el fondo de la web. */
+.caja-premium {
+    background: rgba(255, 255, 255, 0.7); 
+    padding: 80px 50px;
+    border-radius: 50px;
+    /* Doble sombra: una morada muy difuminada y otra negra muy sutil. */
+    box-shadow: 0 25px 60px rgba(155, 89, 182, 0.15), 
+                0 10px 20px rgba(0, 0, 0, 0.05);
+    margin: 100px 0;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+/* 7. GRID DE CONFIANZA:
+   Distribuyo los valores (items con emojis) de forma equilibrada. */
+.grid-confianza {
+    display: flex;
+    justify-content: space-around;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-top: 50px;
+}
+
+.item-confianza {
+    text-align: center;
+    flex: 1;
+    min-width: 200px;
+}
+
+/* Estilo para los emojis, dándoles una pequeña sombra para que parezcan 3D. */
+.emoji-destacado {
+    font-size: 3.5rem;
+    display: block;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 10px 8px rgba(0,0,0,0.1));
+}
+
+/* 8. RESPONSIVE:
+   En móviles, los bloques dejan de estar uno al lado del otro y se apilan. 
+   Ajusto los paddings para que la caja premium no ocupe demasiado espacio. */
+@media (max-width: 768px) {
+    .bloque-info, .bloque-info.reverse { 
+        flex-direction: column; 
+        text-align: center;
+        gap: 40px;
+    }
+    .py-seccion { padding: 60px 20px; }
+    .caja-premium { padding: 40px 20px; border-radius: 30px; }
+}

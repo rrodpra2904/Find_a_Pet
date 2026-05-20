@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+
+  # --- MI SERVIDOR WEB (Apache + PHP) ---
+  # Aquí es donde se procesa mi página web "Find a Pet".
+  # He simplificado la configuración para usar solo el puerto 80 (HTTP).
+  # De esta forma, el entorno de desarrollo es idéntico al hosting final 
+  # y evito problemas de certificados SSL que no voy a usar en producción.
+  web:
+    build: .
+    container_name: servidor_findapet
+    ports:
+      - "80:80"    # Escucha peticiones HTTP estándar.
+    volumes:
+      - ./html:/var/www/html
+    depends_on:
+      - db
+    restart: always
+
+  # --- MI BASE DE DATOS (MySQL) ---
+  # Uso MySQL 8.0 para guardar toda la información de "Find a Pet".
+  # Aquí se almacenan los usuarios, registros de adopción y formularios.
+  db:
+    image: mysql:8.0
+    container_name: bd_findapet
+    restart: always
+    environment:
+      # Configuración de la base de datos para el proyecto de DAW.
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: findapet_db
+    volumes:
+      # Volumen para que los datos no se borren al apagar el contenedor.
+      - ./data:/var/lib/mysql
+
+  # --- MI PANEL DE GESTIÓN (phpMyAdmin) ---
+  # Herramienta visual para administrar las tablas.
+  # Me permite revisar rápidamente si los registros se insertan bien.
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: gestion_findapet
+    ports:
+      - "8080:80" # Acceso local para gestionar la base de datos (localhost:8080).
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: password

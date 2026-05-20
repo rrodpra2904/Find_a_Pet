@@ -1,0 +1,159 @@
+/* ==========================================================================
+                        Estilo del formulario de edición
+   ========================================================================== */
+
+/* 1. Importar la fuente Poppins */
+
+/* Traigo la fuente desde Google Fonts para mantener la identidad visual moderna y profesional en todo el sitio web. */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+/* 2. Cnfiguración básica */
+
+/* Aplico la fuente a toda la página  web y uso un fondo claro (#fafafa) para que la interfaz sea limpia y agradable a la vista. */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #fafafa;
+    margin: 0;
+    padding: 20px;
+}
+
+/* 3. Caja principal */
+
+/* Diseño el contenedor del formulario. He ampliado el ancho máximo a 700px para que los campos 
+   tengan más espacio y la edición sea más cómoda para el usuario. */
+.caja {
+    background: #ffffff;
+    max-width: 700px; 
+    margin: 30px auto;
+    padding: 30px;
+    border-radius: 12px; /* Esquinas redondeadas para un look más amigable. */
+    border: 1px solid #9b59b6;
+    /* Añado una sombra con profundidad (box-shadow) para darle un efecto elegante de elevación. */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15), 0 8px 25px rgba(124,75,183,0.2);
+    box-sizing: border-box; /* Evita que el padding afecte al ancho total definido. */
+}
+
+/* Título principal de la sección de edición. */
+h2 {
+    color: #2c2c2c;
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* 4. Etiquetas y campos */
+
+/* Estilo para los nombres de los campos para que el usuario identifique rápido qué editar. */
+label {
+    display: block;
+    font-weight: bold;
+    color: #333333;
+    margin-bottom: 8px;
+    margin-top: 15px;
+}
+
+/* Configuración de todos los inputs, selectores y áreas de texto. */
+input[type="text"], 
+input[type="number"], 
+textarea, 
+input[type="file"],
+select {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #777676;
+    border-radius: 6px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    box-sizing: border-box;
+    background-color: #fff;
+    outline: none; /* Elimino el borde azul predeterminado del navegador. */
+}
+
+/* Efecto Focus: Resalto el campo en el que el usuario está escribiendo con un borde morado más grueso. */
+input:focus, textarea:focus { 
+    border: 2px solid #9b59b6; 
+}
+
+/* 5. Contenedor radio (Especial para el estado de adopción de animales) */
+
+/* He creado un bloque diferenciado para los botones radio. Uso un fondo lila suave (#f9f0ff) 
+   y un borde discontinuo para que resalte visualmente sobre el resto del formulario. */
+.contenedor-radio {
+   margin-top: 20px; 
+   background: #f9f0ff; 
+   padding: 15px; 
+   border-radius: 8px;
+   border: 1px dashed #9b59b6; 
+}
+
+/* 6. Botón principal (guardar cambios) */
+
+/* Diseño el botón de actualización. Uso un radio de 30px para que parezca moderno 
+   y un sombreado que incite al hacer clic. */
+.btn-update { 
+   background: #9b59b6; 
+   color: white; 
+   border: none; 
+   padding: 12px; 
+   width: 100%; 
+   margin-top: 25px; 
+   cursor: pointer; 
+   font-weight: bold;
+   border-radius: 30px; 
+   font-size: medium;
+   font-family: 'Poppins', sans-serif;
+   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* Efecto hover: El botón se oscurece ligeramente al pasar el ratón para dar respuesta al usuario. */
+.btn-update:hover {
+    background-color: #8e44ad;
+}
+
+/* 7. Botón volver (opción de cancelación) */
+
+/* Estilo para el botón secundario. Uso un diseño "outline" (fondo blanco, borde morado) 
+   para indicar que es una acción menos prioritaria que guardar. */
+.volver { 
+    display: block; 
+    text-align: center; 
+    margin-top: 25px; 
+    padding: 12px;
+    color: #4e4e4e; 
+    text-decoration: none; 
+    font-weight: bold; 
+    font-family: 'Poppins', sans-serif;
+    background-color: #ffffff; 
+    border: 2px solid #9b59b6; 
+    border-radius: 30px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.volver:hover {
+    background-color: #f9f4fc; 
+    color: #000000; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 8. Responsive */
+
+/* Ajusto el diseño para dispositivos móviles, asegurando que los campos ocupen el 100% 
+   del ancho y que los botones sean lo suficientemente grandes para tocarlos con el dedo. */
+@media (max-width: 600px) {
+    body { padding: 10px; }
+
+    .caja { 
+        width: 100%; 
+        padding: 20px 15px; 
+        margin: 10px auto;
+    }
+
+    h2 { font-size: 22px; }
+
+    input, textarea, .btn-update, .volver {
+        font-size: 16px; /* Tamaño ideal para evitar zoom automático en algunos móviles. */
+        padding: 14px;
+    }
+}

@@ -1,0 +1,118 @@
+/* --- Estilos generales --- */
+body {
+  font-family: 'Poppins', sans-serif; /* Uso la fuente corporativa para todo el panel */
+  background-color: #fafafa; /* Fondo gris casi blanco para que las tarjetas resalten */
+  margin: 0;
+  padding: 0;
+}
+
+/* --- Menú de navegación --- */
+.navbar {
+    background-color: #9b59b6; /* El morado de la marca para que se identifique rápido */
+    padding: 25px 0;
+    display: flex;
+    justify-content: center; /* Centra los enlaces principales */
+    align-items: center;
+    position: relative; /* Clave para poder colocar el botón de salir de forma independiente */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.nav-links {
+    display: flex;
+    gap: 55px; /* Espaciado generoso entre los botones del menú */
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold; 
+    font-size: 20px; 
+    text-transform: uppercase; /* Texto en mayúsculas para que se vea más profesional */
+    letter-spacing: 0.5px;
+    padding-bottom: 8px;
+    border-bottom: 4px solid transparent; /* Preparo el borde para el efecto hover */
+}
+
+/* Efecto visual cuando pasas el ratón por el menú: aparece una línea blanca debajo */
+.nav-links a:hover {
+    border-bottom: 4px solid white;
+}
+
+/* Botón salir: 
+   Lo coloco a la derecha del menú y le doy un estilo un estilo redondeado a los botones. */
+.btn-salir {
+    position: absolute;
+    right: 40px; /* Lo separo un poco del borde derecho */
+    background-color: white;
+    color: #9b59b6 !important; /* Le pongo el texto morado para que resalte sobre el fondo blanco */
+    padding: 10px 30px; 
+    border-radius: 35px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 17px;
+    text-transform: uppercase;
+}
+
+.btn-salir:hover {
+    background-color: #f2f2f2; /* Al pasar el ratón se vuelve un gris muy suave */
+}
+
+/* --- Cuerpo de página wbe (Informes) --- */
+.container {
+    max-width: 1000px;
+    margin: 80px auto; /* Lo separo del menú y lo centro en la pantalla */
+    text-align: center;
+}
+
+.titulo-principal {
+    color: #333;
+    margin-bottom: 60px;
+    font-size: 34px;
+    font-weight: bold;
+}
+
+/* Contenedor de las tarjetas de estadísticas */
+.grid-informes {
+    display: flex;
+    justify-content: center;
+    gap: 40px; /* Espacio entre la tarjeta de animales y la de criadores */
+}
+
+/* Estilo de las tarjetas de datos */
+.tarjeta {
+    background: white;
+    border: 2px solid #9b59b6; /* Borde morado para ir a juego con la marca */
+    padding: 60px 40px;
+    border-radius: 20px;
+    flex: 1; /* Esto hace que ambas tarjetas tengan exactamente el mismo tamaño */
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2); /* Sombra más fuerte para dar sensación de elevación */
+}
+
+/* Estilos para los iconos */
+.icono-animal { 
+    color: #8B4513; 
+    font-size: 65px; 
+    margin-bottom: 20px; 
+}
+.icono-criador { 
+    color: #2980b9; 
+    font-size: 65px; 
+    margin-bottom: 20px; 
+}
+
+/* El número grande que muestra el total de la base de datos */
+.tarjeta .numero {
+    font-size: 80px;
+    font-weight: bold;
+    color: #000;
+    margin: 10px 0;
+    line-height: 1;
+}
+
+.tarjeta h3 {
+    color: #555;
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 20px;
+}

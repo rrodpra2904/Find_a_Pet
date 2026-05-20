@@ -1,0 +1,181 @@
+/* ==========================================================================
+                        Estilo del formulario de registro
+   ========================================================================== */
+
+/* 1. Importar la fuente Poppins */
+
+/* Traigo la fuente desde Google Fonts para que el diseño de las letras sea moderno, limpio y profesional. */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+/* 2. Configuración básica del cuerpo */
+
+/* Aplico la fuente a toda la página web y pongo un color de fondo gris muy clarito (#fafafa) 
+   para que la caja blanca del formulario resalte más. */
+body, .fondo-formulario {
+    font-family: 'Poppins', sans-serif;
+    background-color: #fafafa;
+    margin: 0;
+    padding-top: 20px;
+    padding-bottom: 40px;
+}
+
+/* Aseguro que el contenedor principal ocupe todo el ancho disponible de la pantalla. */
+.contenedor { 
+    width: 100%; 
+}
+
+/* 3. Caja principal del fomrulario */
+
+/* Aquí diseño la caja central del formulario. Uso un fondo blanco puro para dar sensación de limpieza. */
+.caja-formulario {
+    background: #ffffff;
+    max-width: 700px; /* Limito el ancho para que en pantallas grandes no se estire demasiado y sea difícil de leer. */
+    margin: 30px auto; /* Centrado automático para que siempre quede en el medio de la pantalla. */
+    padding: 30px;
+    border-radius: 12px; /* Redondeo de esquinas para un aspecto más amigable y moderno. */
+    border: 1px solid #9b59b6; /* Borde morado fino para mantener la identidad visual del sitio. */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* Sombra suave para dar profundidad (efecto de "flotado"). */
+    box-sizing: border-box; /* Evito que el padding interno aumente el tamaño total de la caja. */
+}
+
+/* 4. Títulos y textos */
+
+/* Estilo para el título h2: uso un color casi negro (#2c2c2c) para que contraste bien con el fondo. */
+h2 {
+    color: #2c2c2c;
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+/* Estilo para el párrafo explicativo debajo del título. */
+.caja-formulario p.texto-secundario {
+    text-align: center;
+    color: #444444; /* Gris oscuro para que sea legible pero no tan fuerte como el título. */
+    font-size: 16px;
+    line-height: 1.6; /* Aumento el interlineado para que el texto sea más cómodo de leer. */
+    padding: 0 20px;
+    margin-top: 0;
+    margin-bottom: 40px;
+}
+
+/* 5. Bloques interiores */
+
+/* Son las secciones con borde morado que organizan los campos (datos personales, datos del animal, etc.). */
+.bloque {
+    border: 1.5px solid #9b59b6;
+    padding: 20px;
+    margin-bottom: 25px;
+    border-radius: 8px;
+}
+
+/* Títulos internos de cada bloque informativo. */
+.bloque h3 {
+    color: #2c2c2c;
+    font-size: 19px; 
+    font-weight: bold;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 15px;
+    letter-spacing: 0.5px; /* Añado un poco de espacio entre letras para darle un toque más elegante. */
+}
+
+/* 6. Estilo de las etiquetas y campos de entrada */
+
+/* Estilo para los nombres de los campos. */
+label {
+    display: block; /* Hago que ocupen toda la línea para que el input baje a la siguiente. */
+    font-weight: bold;
+    color: #333333;
+    margin-bottom: 8px;
+    margin-top: 15px;
+}
+
+/* Configuración general de todos los cuadros donde el usuario escribe. */
+input[type="text"], 
+input[type="tel"], 
+input[type="number"], 
+input[type="file"], 
+textarea {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #777676; /* Borde gris neutro para cuando el campo está inactivo. */
+    border-radius: 6px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+
+/* Efecto Focus: cuando el usuario pincha para escribir, el borde se vuelve morado vibrante. */
+input:focus, textarea:focus { 
+    border: 2px solid #9b59b6; 
+    outline: none; /* Quito el borde azul que ponen algunos navegadores por defecto. */
+}
+
+/* 7. Botones (acciones principales y secundarias) */
+
+/* Estilo para el botón de "Registrar" o "Guardar". */
+.boton {
+    width: 100%;
+    background-color: #9b59b6;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 30px;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* Oscurezco un poco el morado cuando el usuario pasa el ratón por encima. */
+.boton:hover {
+    background-color: #8e44ad;
+}
+
+/* Botón de "Volver": uso un estilo de "borde" (outline) para indicar que es una acción secundaria. */
+.volver {
+    display: block;
+    text-align: center;
+    margin-top: 25px; 
+    padding: 12px;
+    color: #4e4e4e; 
+    text-decoration: none; /* Elimino el subrayado azul de los enlaces. */
+    font-weight: bold; 
+    font-family: 'Poppins', sans-serif;
+    background-color: #ffffff; 
+    border: 2px solid #9b59b6; 
+    border-radius: 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* Cambio de color sutil para el botón de volver al pasar el ratón. */
+.volver:hover {
+    background-color: #f9f4fc; 
+    color: #000000; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+/* 8. MENSAJES DE ERROR */
+
+/* Uso un color rojo (#c0392b) que denote peligro o aviso de error. */
+.msj-error {
+    color: #c0392b;
+    font-size: 14px;
+    font-weight: bold;
+    display: block;
+    margin-top: 8px;
+}
+
+/* 9. Configuración del traductor de Google */
+
+/* Centrado del widget de traducción para que guarde la simetría con el resto del diseño. */
+#google_translate_element { 
+    text-align: center; 
+    margin-bottom: 20px; 
+}

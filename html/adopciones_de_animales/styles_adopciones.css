@@ -1,0 +1,147 @@
+/* ==========================================================================
+                        Adopciones de animales y cajas
+   ========================================================================== */
+
+/* Importo la fuente Poppins desde Google Fonts con varios grosores para jugar con las negritas */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&display=swap');
+
+/* Configuración general: aplico la fuente a toda la página web y uso box-sizing 
+   para que el padding no afecte al ancho total de los elementos */
+* { 
+    box-sizing: border-box; 
+    font-family: 'Poppins', sans-serif;
+}
+
+body { 
+    background-color: #fafafa; /* Un gris casi blanco para que resalten las cajas */
+    margin: 0;
+    padding: 20px;
+    top: 0px;
+}
+
+/* Título principal: Negro total y negrita máxima (900) para que tenga mucha fuerza visual */
+h1 { 
+    color: #000;
+    font-size: 32px;
+    font-weight: 900;
+    text-align: center;
+    margin: 40px 0; 
+}
+
+/* Contenedor flexible: organiza las tarjetas de los animales una al lado de otra 
+   y las centra automáticamente si sobran espacios */
+.contenedor {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center; 
+    gap: 30px; /* Espacio de separación entre las cajas */
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Diseño de la tarjeta (Caja) de cada animal */
+.caja {
+   background: #ffffff;
+   border: 1px solid #9b59b6; /* Borde morado para ir a juego con la marca */
+   border-radius: 12px;
+   width: 100%; 
+   max-width: 320px; 
+   overflow: hidden; /* Corta lo que sobresalga de las esquinas redondeadas */
+   /* Sombra doble para dar profundidad y un toque de color morado suave */
+   box-shadow: 0 4px 10px rgba(0,0,0,0.15), 0 8px 25px rgba(124,75,183,0.2);
+   margin-bottom: 40px; /* Esto crea el hueco necesario antes del footer */
+   box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Opcional: para que resalten */
+   margin-bottom: 40px; /* Esto crea el hueco necesario antes del footer */
+   box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Opcional: para que resalten */
+}
+
+/* Estilo de la foto del animal */
+.caja img {
+   width: 100%;
+   height: 220px; 
+   object-fit: cover; /* Ajusta la foto al hueco sin que se deforme o se estire */
+   display: block;
+   border-bottom: 1px solid #9b59b6;
+}
+
+/* Espaciado interno para los textos de la tarjeta */
+.info { 
+   padding: 20px; 
+}
+
+/* Nombre del animal dentro de la tarjeta */
+.info h3 { 
+    color: #000;
+    font-size: 20px;
+    margin: 0 0 10px 0; 
+}
+
+/* Párrafos de información (raza, edad, etc.) */
+.info p { 
+    font-size: 15px; 
+    color: #444; /* Gris oscuro para que sea fácil de leer */
+    margin: 8px 0;
+    line-height: 1.4;
+}
+
+/* Resalto las etiquetas en negrita (ej: "Raza:") */
+.info b {
+    font-weight: 700;
+    color: #000000;
+}
+
+/* Contenedor de los botones al final de la tarjeta */
+.botones {
+   display: flex;
+   padding: 0 20px 20px 20px;
+   gap: 10px;
+}
+
+/* Botón de "Adoptar" */
+.btn {
+   flex: 1; /* Hace que el botón ocupe todo el espacio disponible */
+   background-color: #9b59b6;
+   color: white;
+   text-align: center;
+   padding: 12px;
+   text-decoration: none;
+   font-weight: 900;
+   border-radius: 30px; /* Bordes muy redondeados para un aspecto moderno */
+   font-size: 14px;
+   cursor: pointer;
+   border: none;
+   box-shadow: 0 4px 12px rgba(155, 89, 182, 0.3);
+}
+
+/* Cambio de color y sombra al pasar el ratón por el botón */
+.btn:hover { 
+   background-color: #834ca0;
+   box-shadow: 0 6px 15px rgba(155, 89, 182, 0.4);
+}
+
+/* Responsive: Ajustes para móviles pequeños */
+@media (max-width: 480px) {
+    .botones { flex-direction: column; } /* Los botones se ponen uno debajo de otro */
+    .caja { max-width: 90%; } /* La caja ocupa casi todo el ancho de la pantalla móvil */
+}
+
+/* Estilo para el párrafo de bienvenida */
+.parrafo {
+   text-align: center; 
+   max-width: 800px; 
+   margin: 0 auto 30px; 
+   font-family: 'Poppins', sans-serif; 
+   color: #3f3f3f;
+}
+
+/* Centrado general de subtítulos */
+h3 {
+    text-align: center;
+    color: #3f3f3f;
+}
+
+body {
+    margin: 0 !important; /* Quita el hueco blanco de los bordes de la pantalla */
+    padding: 0;
+}
