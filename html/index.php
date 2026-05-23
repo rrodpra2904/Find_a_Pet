@@ -24,7 +24,7 @@
         </a>
         <div class="menu-links">
             <a href="index.php" class="fw-semibold">Inicio</a>
-            <a href="formulario_adopciones_de_animales.php" class="fw-semibold">Adoptar</a>
+            <a href="./adopciones_de_animales/adopciones_de_animales.php" class="fw-semibold">Adoptar</a>
             <a href="formulario_criadores_de_animales.php" class="fw-semibold">Criadores</a>
             <a href="sobre_nosotros.html" class="fw-semibold">Sobre nosotros</a>
             <a href="contacto.php" class="fw-semibold">Contacto</a>

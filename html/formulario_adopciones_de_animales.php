@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario Adopción - Find a Pet</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="fondo-formulario">
@@ -17,9 +16,6 @@
             <p class="texto-secundario">
                 Rellena este formulario para confirmar que te harás cargo del animal de forma responsable.
             </p>
-            <!-- Esto lo pongo para que cuando el usuario se equivoque al meter los datos en los campos de teléfono,
-             tipo de animal que van adoptar, correo electrónico y si deja espacios vacios en los campos del formulario
-             dandole a la tecla de espacio saldrá un mensaje de error arriba del todo de la página web del formulario.-->
             <?php 
             if (isset($_GET['e'])) {
                 $e = $_GET['e'];
@@ -39,9 +35,14 @@
             }
             ?>
 
-            <!-- Aquí pongo el formulario de compromiso para las adopciones de animales, esto es obligatorio rellenarlo.-->
+            <?php
+            $url_validacion = "validar_formulario_adopcion.php";
+            if (strpos($_SERVER['REQUEST_URI'], '/usuarios/') !== false) {
+                $url_validacion = "../validar_formulario_adopcion.php";
+            }
+            ?>
             
-            <form action="validar_formulario_adopcion.php" method="POST">
+            <form action="<?php echo $url_validacion; ?>" method="POST">
 
                 <div class="bloque">
                     <h3>Datos del interesado</h3>
@@ -60,12 +61,9 @@
 
                     <label for="direccion">Dirección completa</label>
                     <input type="text" id="direccion" name="direccion" value="<?php echo isset($_GET['dir']) ? $_GET['dir'] : ''; ?>" placeholder="Calle, número, piso..." required>
-                    <!-- Esto lo pongo para que la persona escriba que animal va adoptar si va ser un perro o un gato. -->
                     <label for="tipo_animal">¿Qué tipo de animal quieres adoptar?</label>
                     <input type="text" id="tipo_animal" name="tipo_animal" value="<?php echo isset($_GET['ani']) ? $_GET['ani'] : ''; ?>" placeholder="Ej: Perro o gato" required>
                 </div>
-                <!-- Aquí pongo los requisitos que tiene que aceptar la persona para que pueda adoptar un animal, 
-                 esto es obligatorio. -->
                 <div class="bloque">
                     <h3>Aceptación de requisitos</h3>
                     <div class="contenedor-checkbox">
@@ -85,9 +83,6 @@
                         <label for="req4">Si no puedo hacerme cargo, buscaré un hogar responsable o lo llevaré a un refugio.</label>
                     </div>
                 </div>
-                <!-- Aquí pongo para que marque que ha leido y acepta todas las condiciones
-                  y también pongo la información de donación voluntaria para que la persona sepa a que 
-                  números de telefonos tiene que llamar. -->
                 <div class="bloque">
                     <div class="contenedor-checkbox">
                         <input type="checkbox" id="acuerdo_final" name="acuerdo_final" required>
@@ -100,38 +95,10 @@
                         <span class="telefono-donacion">Mantenimiento página web: 600 189 240</span>
                         <span class="telefono-donacion">Refugios de animales: 600 378 446</span>
                     </div>
-                    <!-- Esto lo pongo para que la persona envie el formulario a la base de datos. -->
                     <button type="submit" class="boton">Aceptar y continuar</button>
                 </div>
             </form>
         </div>
     </div>
-    <!-- Este script lo pongo para que el traductor de Google pueda traducir la página web de formulario de 
-     compromiso para adopciones de animales en el idioma que se la ha indicado a la hora de marcarlo en el botón
-     de idioma. -->
-    <script>
-    function googleTranslateElementInit() {
-        new google.translate.TranslateElement({
-            pageLanguage: 'es',
-            includedLanguages: 'en,fr,it,de,pt,es',
-            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-            autoDisplay: false
-        }, 'google_translate_element');
-    }
-    </script>
-    <!-- Este script hay que ponerlo si o si para que el traductor de Google pueda traducir la página web
-     una vez puesto esto tiene que salir automáticamente la barra del traductor de Google arrba de la página web. -->
-    
-    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-     <!-- Esto lo he puesto para que cuando una persona cargue la página web no le salga otra vez los mensajes de errores
-      que le ha mostrado antes de recargar la página web de esta forma cuando se equivoque otra vez al introducir
-      un dato en los campos de teléfono y tipo de animal si se equivoca en algunos de ellos le saldra el mensaje de
-      error. -->
-       
-    <script>
-        if (window.history.replaceState) {
-            window.history.replaceState(null, null, window.location.pathname);
-        }
-    </script>
 </body>
 </html>
