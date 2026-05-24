@@ -1,6 +1,6 @@
-/*==========================================================================
+/* ==========================================================================
                              Estilos del login
-  ==========================================================================*/
+  ========================================================================== */
 
 /* 1. Fuente y fondo:
    Uso la fuente Poppins para mantener la modernidad y un fondo casi blanco (#fafafa) 
@@ -113,4 +113,251 @@ body {
         padding: 30px 20px;
         margin: 40px auto;
     }
+}
+
+/* RESETEO TOTAL: Adiós al filo gris del body y del menú superior */
+html, body { 
+    margin: 0 !important; 
+    padding: 0 !important; 
+    background-color: #f8f9fa; 
+    font-family: 'Poppins', sans-serif; 
+    color: #333;
+    top: 0;
+}
+
+/* BARRA DE NAVEGACIÓN: Fondo morado corporativo de Find a Pet */
+.navbar {
+    background-color: #9b59b6; 
+    border-bottom: 3px solid #8e44ad; 
+    padding: 10px 40px;    
+    margin: 0 !important; /* Forzado a 0 para eliminar huecos grises arriba */            
+    display: flex; 
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    width: 100%;
+}
+
+/* CONTENEDOR DEL LOGO: Alineado a la izquierda */
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    padding-right: 20px;
+    flex: 1; /* Le da espacio equivalente para equilibrar el centrado */
+}
+
+/* EL LOGO: Con fondo blanco de protección para que resalte perfecto sobre el morado */
+.navbar-brand img {
+    height: 70px;         
+    width: auto;
+    object-fit: contain;
+    display: block;
+    margin-right:80px;
+    background-color: #ffffff;
+    padding: 4px;
+    border-radius: 8px;
+}
+
+/* MENÚ DE ENLACES: Completamente centrado en la barra */
+.menu-enlaces { 
+    display: flex; 
+    gap: 12px ;             
+    align-items: center; 
+    justify-content: center;
+    flex: 2; /* Toma el espacio central prioritario */
+}
+
+/* BOTONES DEL MENÚ: Letras blancas, en negrita y súper legibles */
+.menu-enlaces button {
+    background: none; 
+    border: none; 
+    font-family: 'Poppins', sans-serif;
+    color: #ffffff;               
+    font-weight: 700;                
+    font-size: 14px;                 
+    text-transform: uppercase; 
+    letter-spacing: 0.3px; 
+    padding: 8px 14px;  
+    cursor: pointer; 
+    border-radius: 18px; 
+    white-space: nowrap;
+}
+
+/* Hover y Estado Activo del menú morado */
+.menu-enlaces button:hover { 
+    color: #ffffff; 
+    background-color: rgba(255, 255, 255, 0.15); 
+}
+        
+.menu-enlaces button.activo { 
+    color: #363636; 
+    background-color: #ffffff; 
+    font-weight: 700; box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15); }
+
+
+/* Div invisible para equilibrar el flex a la derecha y que el menú quede centrado */
+.navbar-spacer {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* Panel del usuario */
+
+.main-wrapper { 
+    max-width: 950px; 
+    margin: 35px auto; 
+    padding: 0 20px; 
+}
+.contenido-pestana { 
+    display: none;
+}
+
+.contenido-pestana.activo { 
+    display: block; 
+}
+        
+
+.section-header { 
+    margin-bottom: 30px; 
+    text-align: left; 
+}
+
+.section-header h2 { 
+    font-size: 25px; 
+    color: #313131; 
+    margin: 0 0 6px 0; 
+    font-weight: 700; 
+}
+
+.section-header p { 
+    font-size: 13.5px; 
+    color: #353636; 
+    margin: 0; 
+}
+
+.cards-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 20px; 
+    margin-top: 20px; 
+}
+
+.card-manual {
+    background: #ffffff; 
+    border: 1px solid #edf2f7; 
+    border-radius: 14px;
+    padding: 24px; 
+    text-align: left; 
+    box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+    display: flex; gap: 15px;
+}
+
+.card-manual:hover { 
+    box-shadow: 0 10px 25px rgba(155, 89, 182, 0.08); 
+    border-color: #e8d5f2; 
+}
+
+/* MODIFICADO: Emojis un poquitín más grandes (30px) y caja rosa reajustada proporcionalmente */
+.card-icon { 
+    font-size: 30px;             
+    background: #f5edfa; 
+    min-width: 54px;             
+    height: 54px; 
+    padding: 0 10px;             
+    border-radius: 12px; 
+    display: inline-flex; 
+    align-items: center; 
+    justify-content: center; 
+    color: #fffeff; 
+    flex-shrink: 0; 
+    box-sizing: border-box;
+}
+
+.card-text h3 { 
+    margin: 0 0 6px 0; 
+    font-size: 15px; 
+    color: #292929; 
+    font-weight: 600; 
+}
+        
+.card-text p { 
+    margin: 0; 
+    font-size: 13px; 
+    color: #424242; 
+    line-height: 1.6; 
+}
+
+.status-box-empty {
+    background: #ffffff; 
+    border: 2px dashed #e2e8f0; 
+    border-radius: 16px;
+    padding: 50px 30px; 
+    text-align: center; 
+    color: #373838; 
+    max-width: 650px; 
+    margin: 30px auto;
+}
+
+/* MODIFICADO: Ajustado de 48px a 40px para que quede perfecto y un poquito más pequeño */
+.status-box-empty .icon {
+    font-size: 40px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+ /* BOTONES INTERNOS DEL USUARIO: Fondo lila claro, letras negras y en negrita */
+.btn-action-primary {
+    background-color: #f3e8f9;  
+    color: #000000;             
+    font-weight: 700;           
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 10px;
+    border: 1px solid #e2cdf0;
+    box-shadow: 0 4px 10px rgba(155, 89, 182, 0.05);
+    cursor: pointer;
+}
+
+.btn-action-primary:hover {
+    background-color: #e2cdf0;  
+    color: #000000;
+}
+
+/* BOTÓN CERRAR SESIÓN: Fondo rojo granada muy suave, letras negras y en negrita */
+.btn-logout-inside {
+    background-color: #ffa1a1c4; 
+    color: #0a0a0a;             
+    font-weight: 700;           
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 10px;
+    border: 1px solid #f8d7da;             
+    box-shadow: 0 4px 10px rgba(220, 53, 69, 0.03);
+    cursor: pointer;
+}
+.btn-logout-inside:hover {
+    background-color: #f8d7da;  
+    color: #000000;
+}
+
+/* BOTÓN ELIMINAR CUENTA: Fondo rojo medio suave, letras negras y en negrita */
+.btn-delete-inside {
+    background-color: #ff7e8fd3;
+    color: #000000;            
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 10px;
+    border: 1px solid #ffcdd2;             
+    box-shadow: 0 4px 10px rgba(220, 53, 69, 0.05);
+    cursor: pointer;
+}
+
+.btn-delete-inside:hover {
+    background-color: #ffcdd2;  
+    color: #000000;
 }

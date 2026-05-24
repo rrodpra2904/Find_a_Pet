@@ -209,65 +209,6 @@ body {
     color: #9202ca;
     border: 1px solid #9202ca;
 }
-/* ==========================================================================
-                                SECCIÓN IDIOMA
-   ========================================================================== */
-
-/* 1. CONTENEDOR DE IDIOMA:
-   Es la caja que agrupa el icono del mundo y el elemento de traducción. 
-   Uso 'position: relative' para que el traductor invisible pueda flotar justo encima. */
-.contenedor-idioma-derecha { 
-    display: flex; 
-    align-items: center; 
-    margin-left: 20px; 
-    position: relative; 
-    cursor: pointer; 
-    background-color: rgba(245, 245, 245, 0.342); /* Un fondo blanco muy clarito y transparente */
-    border-radius: 10px; 
-}
-
-/* 2. ICONO DEL MUNDO:
-   Este es el elemento visual que realmente ve el usuario. Le pongo un borde 
-   semitransparente y un padding para que parezca un botón profesional. */
-.icono-mundo {
-    font-size: 25px; 
-    border: 2px solid rgba(255,255,255,0.8);
-    border-radius: 10px;
-    padding: 10px;
-}
-
-/* EFECTO HOVER:
-   Cuando el usuario pasa el ratón por el contenedor, el icono del mundo se ilumina un poco. */
-.contenedor-idioma-derecha:hover .icono-mundo {
-    background:rgba(255, 255, 255, 0.15);
-}
-
-/* 3. CAPA DE GOOGLE TRANSLATE (El truco de invisibilidad):
-   Uso 'opacity: 0' para que el selector real de Google no se vea, pero sigue estando ahí.
-   Uso 'position: absolute' para que ocupe exactamente el mismo lugar que el icono. */
-#google_translate_element { 
-    position: absolute; 
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 150%; 
-    opacity: 0; /* Lo hacemos totalmente transparente */
-    z-index: 10; /* Lo ponemos por encima de todo para que reciba los clics */
-}
-
-/* 4. AJUSTE TÉCNICO DEL GADGET:
-   Fuerzo a que el iframe y los elementos internos de Google ocupen el espacio 
-   necesario para que, toque donde toque el usuario en el icono, se despliegue el menú. */
-#google_translate_element .goog-te-gadget,
-#google_translate_element .goog-te-gadget-simple,
-#google_translate_element iframe {
-    width: 190%; 
-    height: 63%;
-    position: absolute; 
-    top: 0; 
-    left: 0;
-    display: block;
-}
 
 /* ==========================================================================
                     GRID DE ANIMALES Y TARJETAS
@@ -1089,15 +1030,6 @@ iframe {
     margin-bottom: 20px;
 }
 
-/* Esto es para el texto descriptivo que va justo debajo del título principal */
-.texto-secundario {
-    text-align: center;
-    color: #2c2c2c;
-    font-size: 16px;
-    font-weight: 500;
-    margin-bottom: 25px;
-}
-
 /* Estos bloques los uso para agrupar los campos que tengan que ver unos con otros, como los datos personales */
 .bloque {
     border: 1.5px solid #9b59b6;
@@ -1263,6 +1195,63 @@ min-height: 55px; /* Le pongo un mínimo de altura para que sea más fácil darl
 }
 
 } 
+
+/*HAY QUE EXPLICARLO BIEN*/
+.intro-requisitos {
+    color: #2c2c2c;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 28px; 
+    margin-top: 7px;
+    align-content: center;
+}
+
+/* 1. Esto alinea el contenedor para que el texto y el check no se peleen */
+.contenedor-checkbox {
+    display: flex;
+    align-items: flex-start;  /* Hace que se alineen con la primera línea */
+    gap: 10px;                /* Separación horizontal entre el cuadrito y el texto */
+    margin-bottom:15px;      /* Espacio entre un requisito y otro */
+}
+
+/* 2. ¡Aquí está el truco real! Aplicado al input dentro del CONTENEDOR */
+.contenedor-checkbox input[type="checkbox"] {
+    margin-top: 5px;          /* Baja el cuadrito los píxeles necesarios para ir al parejo */
+    cursor: pointer;
+    flex-shrink: 0;           /* Obliga al check a no aplastarse si el texto es largo */
+}
+.intro-principal {
+    color: #2c2c2c;          /* Un gris oscuro elegante */
+    font-size: 1rem;         /* Tamaño de texto estándar perfecto */
+    line-height: 1.5;        /* Espaciado de línea cómodo */
+    text-align: center;      /* Centrado para que vaya a juego con el título */
+    margin-bottom: 32px;     /* Separación perfecta con el bloque de "Datos del interesado" */
+    margin-top: 5px;         /* Un pelín de separación con el título principal */
+}
+
+/* Mantiene tus inputs alineados en la fila horizontal original de tu plantilla */
+    .celda-input {
+        display: inline-block;
+        vertical-align: top;
+        text-align: left;
+    }
+    
+    /* ¡Estilo definitivo con alineación perfecta! */
+    .error-inline {
+        color: #dc3545;       
+        font-size: 14px;       
+        font-family: 'Poppins', sans-serif; 
+        font-weight: 600;      
+        display: block;
+        
+        /* Ajuste de márgenes y alineación */
+        margin-top: 4px;       /* Separación sutil con el input de arriba */
+        margin-bottom: 16px;   /* Separa la etiqueta de abajo para que respire */
+        margin-left: 4px;      /* Alinea el punto con el borde del input */
+        
+        max-width: 220px; 
+        white-space: normal; 
+    }
 
 /* ==========================================================================
                         ESTILOS DE INTRODUCCIÓN

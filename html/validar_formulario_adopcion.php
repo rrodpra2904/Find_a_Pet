@@ -26,14 +26,22 @@ if ($nombre=="" || $apellidos=="" || $email=="" || $telefono=="" || $direccion==
     $errores .= "1"; 
 } 
 
-// Compruebo que los números de teléfonos tengan más de 9 ni menos de 6 números.
-if (strlen($telefono) > 9 || strlen($telefono) < 6) {
+// Compruebo que el teléfono tenga exactamente 9 números usando expresiones regulares (Regex)
+if (!preg_match('/^[0-9]{9}$/', $telefono)) {
     $errores .= "2"; 
 } 
 
-// Validación de tipo de animal: permito perro o gato (he puesto varias opciones por si acaso).
-if ($tipo_animal != "perro" && $tipo_animal != "gato" && $tipo_animal != "Perro" && $tipo_animal != "Gato") {
-    $errores .= "3";
+// Validación de tipo de animal con conversión a minúsculas y aceptación de sinónimos.
+$animal_limpio = mb_strtolower($tipo_animal, 'UTF-8');
+$sinonimos_perro = ['perro', 'perra', 'perrito', 'perrita'];
+$sinonimos_gato  = ['gato', 'gata', 'gatito', 'gatita'];
+
+if (in_array($animal_limpio, $sinonimos_perro)) {
+    $tipo_animal = "perro"; // Estandarizo el valor para la base de datos
+} elseif (in_array($animal_limpio, $sinonimos_gato)) {
+    $tipo_animal = "gato";  // Estandarizao el valor para la base de datos
+} else {
+    $errores .= "3";        // Si escribe otra cosa, salta el error
 }
 
 // Busco la posición del arroba y del último punto para obligar a que el correo esté completo.
@@ -66,23 +74,24 @@ if ($errores != "") {
     
     // 4. Inserción segura con PDO (Sentencias preparadas).
     
-    $sql = "INSERT INTO formulario_de_compromiso_adopciones_de_animales (nombre, apellidos, telefono, email, direccion, tipo_animal, rol) 
-            VALUES (:nombre, :apellidos, :telefono, :email, :direccion, :tipo_animal, :rol)";
+    $sql = "INSERT INTO formulario_de_compromiso_adopciones_de_animales 
+    (usuario_email, nombre, apellidos, telefono, email, direccion, tipo_animal, rol)
+    VALUES 
+    (:usuario_email, :nombre, :apellidos, :telefono, :email, :direccion, :tipo_animal, :rol)";
 
-    // Uso la variable $db que viene del include para preparar la consulta.
     $sentencia = $db->prepare($sql);
 
-    // Vinculo mis variables a los marcadores. Esto es lo que hace que el código sea seguro.
+    $email_sesion = $_SESSION['usuarioAutenticado'];
+
+    $sentencia->bindParam(':usuario_email', $email_sesion);
     $sentencia->bindParam(':nombre', $nombre);
     $sentencia->bindParam(':apellidos', $apellidos);
     $sentencia->bindParam(':telefono', $telefono);
     $sentencia->bindParam(':email', $email);
     $sentencia->bindParam(':direccion', $direccion);
     $sentencia->bindParam(':tipo_animal', $tipo_animal);
-    // --- Vinculo la variable $rol ---
     $sentencia->bindParam(':rol', $rol);
 
-    // 5. Lanzo la consulta para que se guarde todo en la base de datos.
     $sentencia->execute();
 
     // --- Control de acceso  de la página web de adopción de animales ---

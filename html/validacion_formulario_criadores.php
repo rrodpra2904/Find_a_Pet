@@ -25,22 +25,35 @@ if ($nombre=="" || $apellidos=="" || $email=="" || $telefono=="" || $direccion==
     $errores .= "1"; 
 } 
 
-// Compruebo que los números de teléfonos tengan más de 9 ni menos de 6 números.
-if (strlen($telefono) > 9 || strlen($telefono) < 6) {
+// Compruebo que el teléfono tenga exactamente 9 números usando expresiones regulares (Regex)
+// (Solo si no está vacío para no duplicar errores)
+if ($telefono != "" && !preg_match('/^[0-9]{9}$/', $telefono)) {
     $errores .= "2"; 
 } 
 
-// Validación de tipo de animal: permito perro o gato (he puesto varias opciones por si acaso).
-if ($tipo_animal != "perro" && $tipo_animal != "gato" && $tipo_animal != "Perro" && $tipo_animal != "Gato") {
-    $errores .= "3";
+// Validación de tipo de animal con conversión a minúsculas y aceptación de sinónimos.
+$animal_limpio = mb_strtolower($tipo_animal, 'UTF-8');
+$sinonimos_perro = ['perro', 'perra', 'perrito', 'perrita'];
+$sinonimos_gato  = ['gato', 'gata', 'gatito', 'gatita'];
+
+if ($tipo_animal != "") {
+    if (in_array($animal_limpio, $sinonimos_perro)) {
+        $tipo_animal = "perro"; // Estandarizamos el valor para la base de datos
+    } elseif (in_array($animal_limpio, $sinonimos_gato)) {
+        $tipo_animal = "gato";  // Estandarizamos el valor para la base de datos
+    } else {
+        $errores .= "3";        // Si escribe otra cosa, salta el error
+    }
 }
 
 // Busco la posición del arroba y del último punto para obligar a que el correo esté completo.
-$posicion_arroba = strpos($email, '@');
-$ultimo_punto    = strrpos($email, '.');
+if ($email != "") {
+    $posicion_arroba = strpos($email, '@');
+    $ultimo_punto    = strrpos($email, '.');
 
-if ($posicion_arroba === false || $ultimo_punto === false || $ultimo_punto < $posicion_arroba || $ultimo_punto > strlen($email) - 3) {
-    $errores .= "4";
+    if ($posicion_arroba === false || $ultimo_punto === false || $ultimo_punto < $posicion_arroba || $ultimo_punto > strlen($email) - 3) {
+        $errores .= "4";
+    }
 }
 
 // 3. Gestión de errores.
@@ -65,13 +78,16 @@ if ($errores != "") {
     
     // 4. Inserción segura con PDO (Sentencias preparadas).
     
-    // Preparo la sintaxis de SQL usando marcadores con dos puntos para que sea más seguro.
-    $sql = "INSERT INTO formulario_de_compromiso_de_criadores_de_animales (nombre, apellidos, telefono, email, direccion, tipo_animal) 
-            VALUES (:nombre, :apellidos, :telefono, :email, :direccion, :tipo_animal)";
+    // CAMBIO AQUÍ: Añadimos la columna usuario_email y su marcador :usuario_email
+    $sql = "INSERT INTO formulario_de_compromiso_de_criadores_de_animales (usuario_email, nombre, apellidos, telefono, email, direccion, tipo_animal) 
+            VALUES (:usuario_email, :nombre, :apellidos, :telefono, :email, :direccion, :tipo_animal)";
 
     // Uso la variable $db que viene del include para preparar la consulta.
     $sentencia = $db->prepare($sql);
 
+    // CAMBIO REALIZADO: Vinculamos el marcador con la variable de sesión 'usuarioAutenticado' que usa tu panel principal
+    $sentencia->bindParam(':usuario_email', $_SESSION['usuarioAutenticado']);
+    
     // Vinculo mis variables a los marcadores. Esto es lo que hace que el código sea seguro.
     $sentencia->bindParam(':nombre', $nombre);
     $sentencia->bindParam(':apellidos', $apellidos);
@@ -83,7 +99,7 @@ if ($errores != "") {
     // 5. Lanzo la consulta para que se guarde todo en la base de datos.
     $sentencia->execute();
 
- // --- Control de acceso de la página web de criadores de animales ---
+    // --- Control de acceso de la página web de criadores de animales ---
 
     // Guardo en la sesión que el formulario se ha rellenado correctamente.
     // Esto me sirve para que si alguien intenta entrar directamente a la 
