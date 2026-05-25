@@ -158,12 +158,12 @@ $hayAnimalesEnBaseDatos = false;
             </p>
             
             <?php if ($ya_ha_rellenado_criadores): ?>
-                <a href="../criadores_de_animales/criadores_de_animales.php" class="btn-action-primary" style="display: inline-block; padding: 10px 20px; font-size: 13px; text-decoration: none; background-color: #27ae60; color: white;">
-                    🏆 Acceder a la Web de Criadores Públicos
+                <a href="./criadores_de_animales/criadores_de_animales.php" class="btn-action-primary" style="display: inline-block; padding: 10px 20px; font-size: 13px; text-decoration: none; background-color: #27ae60; color: white;">
+                    🏆 Acceder a la página web de criadores de animales
                 </a>
             <?php else: ?>
-                <a href="../formulario_criadores_de_animales.php" class="btn-action-primary" style="display: inline-block; padding: 10px 20px; font-size: 13px; text-decoration: none;">
-                    📋 Acceder al Formulario de Criadores
+                <a href="./formulario_criadores_de_animales.php" class="btn-action-primary" style="display: inline-block; padding: 10px 20px; font-size: 13px; text-decoration: none;">
+                    📋 Acceder al formulario de criadores de animales
                 </a>
             <?php endif; ?>
         </div>
@@ -234,7 +234,7 @@ $hayAnimalesEnBaseDatos = false;
 
                 <h4 style="margin: 0 0 12px 0; color: #2c3e50; font-size: 17px; font-weight: 600;">📝 Rellena tus datos aquí:</h4><br>
                 <div class="fondo-formulario">
-                   <?php include '../formulario_adopciones_de_animales.php'; ?>
+                   <?php include './formulario_adopciones_de_animales.php'; ?>
                 </div>
             </div>
         <?php endif; ?>
@@ -263,48 +263,70 @@ $hayAnimalesEnBaseDatos = false;
             <?php if ($ya_ha_rellenado_adopciones && $fila_adopcion): ?>
                 <div class="contenedor">
                     <div class="caja-formulario">
-                        <h2 style="color: #9b59b6; margin-bottom: 15px;">Formulario de compromiso (Adopciones)</h2>
-                        <p class="intro-principal">Para garantizar una adopción segura y responsable, te pedimos que completes este breve compromiso.</p>
-
+                        <h2>Formulario de compromiso (Adopciones)</h2>
+                        <p class="intro-principal">
+                            Para garantizar una adopción segura y responsable, te pedimos que completes este breve compromiso. Tu futuro compañero te está esperando.
+                        </p>
                         <div class="bloque">
                             <h3>Datos del interesado</h3>
-                            <label>Nombre</label><input type="text" class="input-historial-solo-lectura" value="<?php echo htmlspecialchars($fila_adopcion['nombre'] ?? ''); ?>" disabled>
-                            <label>Apellidos</label><input type="text" class="input-historial-solo-lectura" value="<?php echo htmlspecialchars($fila_adopcion['apellidos'] ?? ''); ?>" disabled>
-                            <label>Teléfono</label><input type="tel" class="input-historial-solo-lectura" value="<?php echo htmlspecialchars($fila_adopcion['telefono'] ?? ''); ?>" disabled>
-                            <label>Correo electrónico</label><input type="email" class="input-historial-solo-lectura" value="<?php echo htmlspecialchars($fila_adopcion['email'] ?? ''); ?>" disabled>
-                            <label>Dirección completa</label><input type="text" class="input-historial-solo-lectura" value="<?php echo htmlspecialchars($fila_adopcion['direccion'] ?? ''); ?>" disabled>
-                            <label>¿Qué tipo de animal quieres adoptar?</label><input type="text" class="input-historial-solo-lectura" value="<?php echo htmlspecialchars($fila_adopcion['tipo_animal'] ?? ''); ?>" disabled>
+                            <div class="celda-input">
+                            <label>Nombre</label>
+                            <input type="text" value="<?php echo ($fila_adopcion['nombre'] ?? ''); ?>" disabled>
+                            <div>
+                            <div class="celda-input">
+                            <label>Apellidos</label>
+                            <input type="text" value="<?php echo ($fila_adopcion['apellidos'] ?? ''); ?>" disabled>
+                            </div>
+                            <div class="celda-input">
+                            <label>Teléfono</label>
+                            <input type="tel" value="<?php echo ($fila_adopcion['telefono'] ?? ''); ?>" disabled>
+                            </div>
+                            <div class="celda-input">
+                            <label>Correo electrónico</label>
+                            <input type="email" value="<?php echo ($fila_adopcion['email'] ?? ''); ?>" disabled>
+                            </div>
+                            <div class="celda-input">
+                            <label>Dirección completa</label>
+                            <input type="text" value="<?php echo ($fila_adopcion['direccion'] ?? ''); ?>" disabled>
+                            </div>
+                            <div class="celda-input">
+                            <label>¿Qué tipo de animal quieres adoptar?</label>
+                            <input type="text" value="<?php echo ($fila_adopcion['tipo_animal'] ?? ''); ?>" disabled>
+                            </div>
                         </div>
 
                         <div class="bloque">
-                            <h3>Requisitos aceptados</h3>
-                            <div class="contenedor-checkbox" style="margin-bottom: 10px;">
+                            <h3>Aceptación de requisitos</h3>
+                            <p class="intro-requisitos">
+                                En Find a Pet nos tomamos muy en serio el bienestar y el futuro de los animales. Por favor, confirma que estás de acuerdo con estos compromisos básicos para asegurar que tendrá una vida estupenda a tu lado:
+                            </p>
+                            <div class="contenedor-checkbox">
                                 <input type="checkbox" checked disabled class="checkbox-morado-historial">
-                                <label>Me comprometo a garantizar su bienestar, cubriendo sus necesidades de alimentación, salud y revisiones veterinarias.</label>
+                                <label> Me comprometo a garantizar su bienestar, cubriendo sus necesidades de alimentación, salud y revisiones veterinarias.</label>
                             </div>
-                            <div class="contenedor-checkbox" style="margin-bottom: 10px;">
+                            <div class="contenedor-checkbox">
                                 <input type="checkbox" checked disabled class="checkbox-morado-historial">
                                 <label>Dispondrá de un espacio adecuado y adaptado a su tamaño, así como del tiempo de atención, juego o paseos diarios que requiera su especie.</label>
                             </div>
-                            <div class="contenedor-checkbox" style="margin-bottom: 10px;">
+                            <div class="contenedor-checkbox">
                                 <input type="checkbox" checked disabled class="checkbox-morado-historial">
                                 <label>El animal convivirá con el dueño y las personas que estén viviendo con él/ella como un miembro más de la familia y bajo ningún concepto lo utilizaré para la cría o comercio.</label>
                             </div>
-                            <div class="contenedor-checkbox" style="margin-bottom: 10px;">
+                            <div class="contenedor-checkbox">
                                 <input type="checkbox" checked disabled class="checkbox-morado-historial">
                                 <label>Si por causas mayores no pudiera seguir haciéndome cargo de él, contactaré con Find a Pet o un refugio autorizado para buscarle un hogar responsable.</label>
                             </div>
-                            <div class="contenedor-checkbox" style="margin-top: 15px; padding-top: 10px; border-top: 1px dashed #ddd;">
+                            <div class="contenedor-checkbox">
                                 <input type="checkbox" checked disabled class="checkbox-morado-historial">
-                                <label style="font-weight: 600; color: #2c3e50;">Confirmo que he leído y acepto todos los requisitos del formulario de compromiso.</label>
+                                <label>Confirmo que he leído y acepto todos los requisitos del formulario de compromiso.</label>
                             </div>
                         </div>
 
-                        <div class="bloque">
+                        <div class="caja-donacion">
                             <h3>Donación voluntaria</h3>
-                            <p style="font-size: 13.5px; color: #7f8c8d; line-height: 1.5; margin-bottom: 10px;">Apartado para colaboraciones voluntarias destinadas al mantenimiento de la página web y ayuda a refugios de animales.</p>
-                            <span style="display: block; font-size: 13px; color: #2c3e50; margin-bottom: 4px;">Mantenimiento de la página web: 600 189 240</span>
-                            <span style="display: block; font-size: 13px; color: #2c3e50;">Refugios de animales: 600 378 446</span>
+                            <p>Apartado para colaboraciones voluntarias destinadas al mantenimiento de la página web y ayuda a refugios de animales.</p>
+                            <span class="telefono-donacion">Mantenimiento de la página web: 600 189 240</span>
+                            <span class="telefono-donacion">Refugios de animales: 600 378 446</span>
                         </div>
                     </div>
                 </div>
@@ -392,7 +414,7 @@ $hayAnimalesEnBaseDatos = false;
                                 <div class="caja-donacion">
                                     <h3>Donación voluntaria</h3>
                                     <p>Apartado para colaboraciones voluntarias destinadas al mantenimiento de la página web y ayuda a refugios de animales.</p><br>
-                                    <span class="telefono-donacion" style="display:block; margin-bottom:4px;">Mantenimiento de la página web: 600 189 240</span>
+                                    <span class="telefono-donacion">Mantenimiento de la página web: 600 189 240</span>
                                     <span class="telefono-donacion">Refugios de animales: 600 378 446</span>
                                 </div>
                             </div>

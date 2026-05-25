@@ -1,0 +1,116 @@
+/*==========================================================================
+                             Estilos del login
+  ==========================================================================*/
+
+/* 1. Fuente y fondo:
+   Uso la fuente Poppins para mantener la modernidad y un fondo casi blanco (#fafafa) 
+   para que la tarjeta de login resalte mucho más. */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #fafafa; 
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+/* 2. La tarjeta del login:
+   Es el contenedor central. Le he puesto un borde morado y la sombra doble 
+   para que el administrador identifique rápido dónde tiene que escribir. */
+.login-card {
+    background-color: white;
+    width: 90%;             
+    max-width: 400px; /* Evito que en pantallas de PC se vea gigante. */      
+    margin: 80px auto; /* Lo separo del menú y lo centro horizontalmente. */     
+    padding: 40px 30px;
+    border: 2px solid #9b59b6; 
+    border-radius: 12px; /* Esquinas redondeadas para un aspecto más amable. */      
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15), 0 8px 25px rgba(124,75,183,0.2);
+}
+
+/* 3. Título principal:
+   Lo pongo en mayúsculas y con mucho peso (900) para que sea muy directo. */
+.login-card h2 {
+    color: #2c2c2c;
+    font-size: 26px;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+}
+
+/* 4. Las etiquetas (label):
+   Las alineo a la izquierda para que el usuario sepa claramente qué dato va en cada caja. */
+.login-card label {
+    display: block;
+    text-align: left; 
+    font-weight: normal;
+    color: #2c2c2c;
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+/* 5. Los inputs (Cajas de texto):
+   Diseño limpio con un borde gris suave que cambia a morado al pinchar. */
+.login-card input[type="text"],
+.login-card input[type="password"] {
+    display: block;
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    margin-bottom: 25px;
+    border: 1px solid #777676;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 600;
+    box-sizing: border-box; /* Fundamental para que el padding no ensanche el input. */
+    background-color: #ffffff;
+    outline: none;
+}
+
+/* Efecto al pinchar (focus): 
+   Resalto la caja en morado para que el usuario sepa dónde está escribiendo. */
+.login-card input:focus {
+    border: 2.5px solid #9b59b6;
+}
+
+/* 6. El botón de acceso:
+   Uso el morado que es la que utilizo para Find a Pet y un diseño redondeado (30px) para que parezca un 
+   botón moderno. */
+.boton-acceder {
+    width: 100%;
+    background-color: #9b59b6;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 30px; 
+    font-size: 18px;
+    font-weight: 900;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+/* Cambio de color al pasar el ratón para indicar interactividad. */
+.boton-acceder:hover {
+    background-color: #834ca0; 
+}
+
+/* Mensajes de error:
+   Estilo en rojo llamativo para avisar si el usuario o la contraseña fallan. */
+.error-msg {
+    color: #e01600;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: -15px; /* Lo acerco al input para que se vea que es un error de ese campo. */
+    margin-bottom: 15px;
+    display: block;
+}
+
+/* Adaptación para móviles:
+   Si se abre desde un teléfono, ajusto los márgenes para que no se vea apretado. */
+@media (max-width: 600px) {
+    .login-card {
+        width: 85%;
+        padding: 30px 20px;
+        margin: 40px auto;
+    }
+}

@@ -1,0 +1,1413 @@
+/* ==========================================================================
+               RESET Y CONFIGURACIÓN BASE
+   ========================================================================== */
+
+/* 1. IMPORTACIÓN DE FUENTE: 
+   Traigo la tipografía 'Poppins' desde Google Fonts con varios grosores (400 a 900). 
+   Esto me permite tener desde textos ligeros hasta títulos con mucha fuerza visual. */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&display=swap');
+
+/* 2. SELECTOR UNIVERSAL (*):
+   Aplico estas reglas a todos los elementos de la página web. */
+* {
+    font-family: 'Poppins', sans-serif; /* Establecemos Poppins como fuente por defecto. */
+    
+    /* box-sizing: border-box es CRUCIAL. Hace que el padding y el borde no sumen 
+       ancho extra al elemento, facilitando que el diseño no se "rompa". */
+    box-sizing: border-box; 
+    
+    /* Elimino márgenes y rellenos que los navegadores ponen por defecto. */
+    margin: 0; 
+    padding: 0; 
+}
+
+/* 3. ESTILO DEL CUERPO (BODY):
+   Defino el aspecto global de la pantalla. */
+body { 
+    /* Fondo gris muy suave con transparencia para que no sea un blanco puro. */
+    background-color: #fafafaaf;
+    
+    /* Color de texto negro puro para máxima legibilidad. */
+    color: #000000;
+    
+    /* Aumento el interlineado a 1.6 para que los textos no se vean apretados. */
+    line-height: 1.6;
+}
+
+/* 4. LIMPIEZA DE GOOGLE TRANSLATE:
+   Este selector oculta la barra superior (banner) que muestra Google Translate 
+   por defecto, manteniendo así la estética limpia de nuestro diseño original. */
+.goog-te-banner-frame.skiptranslate {
+    display: none;
+}
+
+/* ==========================================================================
+                                  NAVBAR
+   ========================================================================== */
+
+/* 1. BARRA SUPERIOR DE INFORMACIÓN:
+   Es la franja que contiene el correo y el teléfono. Uso un color lila muy suave 
+   con transparencia (#fbdaff96) para que no distraiga del menú principal. */
+.top-bar { 
+    background-color: #fbdaff96; 
+    color: #000000; 
+    font-size: 15px; 
+    font-weight: 500; 
+    padding: 20px 0;          
+    text-align: center;
+    letter-spacing: 1px; /* Separo un poco las letras para que los datos se lean mejor. */
+}
+
+/* 2. CONTENEDOR DE LA NAVEGACIÓN PRINCIPAL:
+   Aplico el morado corporativo y una sombra sutil en la parte inferior para 
+   darle un efecto de "elevación" sobre el contenido de la página. */
+.navbar-custom { 
+    background-color: #9b59b6; 
+    padding: 15px 0; 
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+}
+
+/* 3. ESTRUCTURA FLEXIBLE:
+   Uso 'justify-content: space-between' para que el logo se quede a la izquierda 
+   y el menú/idioma a la derecha, manteniendo un equilibrio visual. */
+.nav-container { 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    max-width: 1300px; /* Limito el ancho máximo para que no se pegue a los bordes en pantallas ultra anchas. */
+    margin: 0 auto; 
+    padding: 0 25px; 
+}
+
+/* 4. ESTILO DEL LOGO:
+   Diseño el enlace del logo para que parezca una tarjeta pequeña e independiente. */
+.logo-link { 
+    display: flex; 
+    align-items: center; 
+    text-decoration: none; 
+    border-radius: 12px; /* Suavizo las esquinas para un diseño más moderno. */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Añado profundidad con una sombra fina. */
+}
+
+/* 5. IMAGEN DEL LOGO:
+   Controlo el tamaño de la imagen del logo para que sea visible pero no rompa el diseño del menú. */
+.logo-link img { 
+    height: 80px; 
+}
+
+/* 6. TEXTO DEL LOGO:
+   Configuro el texto junto al logo con un peso máximo (900) para que tenga mucha presencia. */
+.logo-link span { 
+    font-weight: 900; 
+    font-size: 22px; 
+    color: white; 
+}
+
+/* 7. COHERENCIA VISUAL (REGLA ESPECÍFICA):
+   Fuerzo a que el logo del menú superior tenga las mismas características 
+   que el del footer (mismo tamaño y redondeado) para dar sensación de unidad en toda la página web. */
+.navbar-custom .logo-link img {
+    height: 80px; 
+    border-radius: 10px; 
+}
+/* =========================================
+                     Menú
+   ========================================= */
+
+.menu-links { 
+    display: flex; 
+    gap: 40px; 
+    flex: 1; 
+    justify-content: center; 
+}
+
+.menu-links a { 
+    color: #ffffff !important; 
+    text-decoration: none; 
+    font-weight: 700; 
+    font-size: 17px; 
+    text-transform: uppercase; 
+    transition: 0.3s; 
+    position: relative;
+    padding-bottom: 4px;
+}
+
+.menu-links a:hover { 
+    text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.6); 
+}
+
+.menu-links a::after {
+    content: ''; 
+    position: absolute; 
+    width: 0; 
+    height: 3px; 
+    bottom: 0; 
+    left: 0; 
+    background-color: #fbdaff; 
+    transition: 0.3s;
+}
+
+.menu-links a:hover::after { 
+    width: 100%; 
+}
+/*===========================================================================
+                 Botón de iniciar sesión y registro
+  ===========================================================================*/
+
+/* Agrupamos menú y botones para que se muevan juntos a la derecha */
+    .contenedor-derecha {
+        display: flex;
+        align-items: center;
+        gap: 20px; /* Espacio entre los enlaces del menú */
+    }
+
+    .menu-links {
+        display: flex;
+        gap: 20px;
+    }
+
+/* --- BLOQUE DE BOTONES CON MUCHO AIRE --- */
+.botones-acceso {
+    display: flex;
+    align-items: center;
+    gap: 15px; 
+    margin-left: 6px; 
+}
+
+/* BOTÓN ENTRAR */
+.boton-acceso {
+    text-decoration: none;
+    color: #414141; 
+    background-color: #ffffff;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 18px 29px;
+    border-radius: 50px;
+    border: 1px solid #ffffff;
+    display: inline-block;
+}
+
+.boton-acceso:hover {
+    color: #9202ca;
+    border: 1px solid #9202ca;
+}
+
+/* BOTÓN REGISTRARSE */
+.boton-registro {
+    text-decoration: none;
+    color: #414141;
+    background-color: white;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 18px 22px;
+    border: 1px solid #ffffff; 
+    border-radius: 50px;
+    display: inline-block;
+}
+
+.boton-registro:hover {
+    color: #9202ca;
+    border: 1px solid #9202ca;
+}
+
+/* ==========================================================================
+                    GRID DE ANIMALES Y TARJETAS
+   ========================================================================== */
+
+/* 1. TÍTULO DE LA SECCIÓN:
+   Uso un tono de morado casi negro (#1c0e22) para que tenga mucha fuerza.
+   Doy márgenes generosos (60px/70px) para que la sección respire y no se amontone. */
+.titulo-seccion-lila { 
+    color: #1c0e22 ; 
+    font-weight: 600; 
+    font-size: 35px; 
+    text-align: center; 
+    margin-top: 60px; 
+    margin-bottom: 70px;
+}
+
+/* 2. CONTENEDOR GRID:
+   Uso Flexbox con 'flex-wrap: wrap' para que las tarjetas se adapten solas 
+   a cualquier tamaño de pantalla (ordenador, tablet o móvil). */
+.contenedor-grid { 
+    display: flex; 
+    justify-content: center; 
+    gap: 25px; /* Espacio uniforme entre las tarjetas de los animales. */
+    flex-wrap: wrap; 
+    padding: 20px; 
+}
+
+/* 3. TARJETA INDIVIDUAL (.caja-animal):
+   Aplico un borde lila muy suave (#E1C6EC) y una sombra doble para dar altura.
+   El 'overflow: hidden' es vital para que las fotos respeten el redondeado de la esquina. */
+.caja-animal { 
+    background: white; 
+    width: 300px; 
+    border-radius: 12px; 
+    overflow: hidden; 
+    border: 2px solid #E1C6EC;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15), 0 8px 25px rgba(124,75,183,0.2);
+}
+
+/* EFECTO HOVER: Cuando el usuario pasa el ratón, la sombra se vuelve morada 
+   y más intensa para indicar que la tarjeta es interactiva. */
+.caja-animal:hover { 
+    box-shadow: 0 10px 25px rgba(155, 89, 182, 0.25);
+}
+
+/* 4. CONTENEDOR DE IMAGEN Y LOADER:
+   Diseño un espacio de 220px de alto donde centramos el círculo de carga (loader) 
+   y la imagen del animal. */
+.img-box { 
+    width: 100%; 
+    height: 220px; 
+    overflow: hidden; 
+    background-color: #ffffff; 
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid #f3f3f3;
+}
+
+/* 5. EL CARGADOR (ANIMACIÓN SPIN):
+   Creamos un círculo con el borde superior morado que gira infinitamente.
+   Esto mejora mucho la percepción de velocidad de la web. */
+.loader {
+    width: 35px; height: 35px;
+    border: 4px solid #f3f3f3; 
+    border-top: 4px solid #9b59b6; 
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite; /* La animación 'spin' dura 0.8s por vuelta. */
+    position: absolute;
+    z-index: 1; /* Se queda por debajo de la imagen cuando esta cargue. */
+}
+
+@keyframes spin { 
+    to { transform: rotate(360deg); } 
+}
+
+/* 6. CONTROL DE LA IMAGEN:
+   Por defecto la imagen tiene 'opacity: 0'. Solo se mostrará cuando le 
+   añadamos la clase '.revelar' mediante JavaScript. */
+.img-box img { 
+    width: 100%; height: 100%; 
+    object-fit: cover; /* Asegura que la foto del perro/gato se vea perfecta sin deformarse. */
+    opacity: 0; 
+    z-index: 2;
+    transition: opacity 0.5s ease; /* Aparece con un fundido suave. */
+}
+
+.revelar { 
+    opacity: 1; 
+}
+
+/* 7. BLOQUE DE INFORMACIÓN:
+   Espacio para los datos del animal (nombre, ubicación, etc.). */
+.info-box { 
+    padding: 20px; 
+    text-align: center; 
+}
+
+/* Estilo tipo "etiqueta" para la localidad del animal. */
+.ubicacion { 
+    background: #fbdaff; 
+    color: #3f3f3f; 
+    padding: 2px 10px; 
+    border-radius: 20px; 
+    font-size: 14px; 
+    font-weight: bold; 
+}
+
+.nombre-pet { 
+    margin-top: 10px; 
+    font-weight: 700; 
+    font-size: 22px; 
+}
+
+
+/* ==========================================================================
+                        BASES Y CONFIGURACIÓN DE DISEÑO
+   ========================================================================== */
+
+/* 1. EL CONTENEDOR PRINCIPAL:
+   Es la caja que envuelve todo el contenido para que no se "pegue" a los bordes 
+   de la pantalla en monitores grandes. */
+.container {
+    max-width: 1200px; /* Ancho máximo ideal para una lectura cómoda. */
+    margin: 0 auto;    /* Centra todo el bloque horizontalmente. */
+    padding: 0 40px;   /* Margen interno para que en tablets el texto no toque el borde. */
+}
+
+/* 2. LA FILA (ROW):
+   Uso Flexbox para organizar los elementos (columnas) uno al lado del otro. */
+.row {
+    display: flex;
+    flex-wrap: wrap;      /* Si las columnas no caben, saltan a la siguiente línea automáticamente. */
+    gap: 30px;            /* El "aire" o espacio de separación entre columnas. */
+    padding: 0 20px;
+    align-items: flex-start; /* Alinea los elementos al principio de la fila. */
+    justify-content: center; /* Si hay huecos, centra el contenido sobrante. */
+}
+
+/* 3. SISTEMA DE COLUMNAS:
+   He definido anchos flexibles para que la web sea adaptable (Responsive). */
+.col-md-5, .col-md-6, .col-md-7 {
+    padding: 20px;
+    flex: 1;              /* Las columnas intentan ocupar el mismo espacio disponible. */
+    min-width: 300px;     /* ¡IMPORTANTE! Cuando la pantalla mide menos de 300px (móvil), 
+                             las columnas dejan de estar juntas y se ponen una debajo de otra. */
+}
+
+/* ==========================================================================
+                                SECCIÓN HERO
+   ========================================================================== */
+
+/* 1. CONTENEDOR HERO:
+   Damos un margen generoso arriba y abajo (100px) para que la entrada a la web 
+   sea limpia y no se sienta apretada con el resto de secciones. */
+.hero-container {
+    margin-top: 60px;
+    margin-bottom: 100px;
+    max-width: 1100px;
+}
+
+/* 2. TÍTULO PRINCIPAL:
+   Usamos un tamaño grande (42px) y un peso de 700 para que el mensaje 
+   "Tu próximo mejor amigo" sea lo más impactante de la pantalla. */
+.proximo_mejor_amigo {
+    font-weight: 700; 
+    font-size: 42px;
+    line-height: 1.3;
+    margin-bottom: 42px;
+    text-align: center;
+}
+
+/* 3. TEXTO DESCRIPTIVO:
+   Configuramos los párrafos con un color gris suave (#3f3f3f) para que sea 
+   agradable de leer y no compita con la fuerza del título negro. */
+.proximo_mejor_amigo-texto-principal,
+.proximo_mejor_amigo-p-sub-texto-principal {
+    font-size: 18px;
+    color: #3f3f3f;
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+/* 4. AJUSTE DE COLUMNAS:
+   Damos un espacio extra a la derecha del texto (50px) para que no se pegue 
+   a la imagen y la lectura sea más fluida. */
+.hero-container .col-md-6:first-child {
+    padding-right: 50px; 
+}
+
+/* 5. DISEÑO DE LA IMAGEN HERO (El truco visual):
+   Aquí aplicas una técnica avanzada: escalas la imagen para que sobresalga 
+   un poco de su contenedor original sin mover el texto de la izquierda. */
+.proximo_mejor_amigo-img {
+    display: block;
+    width: 105%; /* Hacemos que la imagen sea más ancha que su columna */
+    max-width: 800px; 
+    height: 240px;
+    margin-top: 250px;
+
+    /* EL TRUCO: 'scale(1.2)' aumenta el tamaño un 20%. 
+       'transform-origin: center left' asegura que crezca hacia afuera y no 
+       encima del texto, manteniendo el equilibrio. */
+    transform: scale(1.2);
+    transform-origin: center left;
+
+    border-radius: 40px; /* Esquinas muy redondeadas para un look moderno */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15); /* Sombra profunda para dar relieve */
+}
+
+/* 6. RESPONSIVE (MÓVILES Y TABLETS):
+   ¡Muy importante! En pantallas pequeñas desactivamos los escalados y márgenes 
+   grandes para que la imagen se ajuste al 100% del ancho del móvil. */
+@media (max-width: 992px) {
+    .proximo_mejor_amigo-img {
+        transform: scale(1);
+        width: 100% !important;
+        margin-left: 0 !important;
+        margin-top: 40px !important;
+    }
+}
+
+/* 7. BOTÓN DE ACCIÓN (Call to Action):
+   Diseñamos el botón morado con estilo "píldora" (border-radius: 50px). */
+.boton-morado {
+    background-color: #9b59b6;
+    color: white;
+    border-radius: 50px;
+    padding: 15px 50px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease; /* Transición suave para todos los efectos */
+    border: none;
+    margin-top: 25px;
+}
+
+/* EFECTO HOVER: Cambiamos a un morado más oscuro y añadimos una sombra 
+   con un toque lila para que parezca que el botón se ilumina al tocarlo. */
+.boton-morado:hover {
+    background-color: #8e44ad;
+    box-shadow: 0 8px 18px rgba(156, 89, 182, 0.219);
+}
+
+
+/* ==========================================================================
+                        SECCIÓN: NUESTRO COMPROMISO
+   ========================================================================== */
+
+/* 1. CONTENEDOR DE COMPROMISO:
+   Diseñamos una "tarjeta gigante" blanca. El detalle del 'border: 2px dotted' 
+   le da un toque artesanal y cercano, ideal para una sección sobre valores. */
+.compromiso-container {
+    background-color: #fff;
+    padding: 60px 50px;
+    border-radius: 35px; /* Bordes muy redondeados para transmitir suavidad y confianza. */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05); /* Una sombra muy ligera para que no pese visualmente. */
+    margin-top: 80px;
+    margin-bottom: 80px;
+    max-width: 1100px;
+    border: 2px dotted rgba(156, 89, 182, 0.226); /* Borde punteado lila muy sutil. */
+}
+
+/* 2. ESTRUCTURA DE LA FILA:
+   Usamos 'flex-wrap: nowrap' para forzar que la imagen y el texto se mantengan 
+   en paralelo en pantallas grandes, con un hueco (gap) de 50px entre ellos. */
+.compromiso-container .row {
+    display: flex; 
+    flex-wrap: nowrap; 
+    gap: 50px; 
+    align-items: center; /* Centramos verticalmente la imagen con el texto. */
+    justify-content: flex-start;
+}
+
+/* 3. COLUMNA DE LA IMAGEN (45% de ancho):
+   La centramos para que la foto del compromiso sea el foco visual izquierdo. */
+.compromiso-container .col-md-5 {
+    flex: 0 0 45%;
+    text-align: center;
+}
+
+/* 4. COLUMNA DEL TEXTO (50% de ancho):
+   Le damos un poco más de espacio y un padding a la izquierda para que 
+   el texto respire y sea fácil de leer. */
+.compromiso-container .col-md-7 {
+    flex: 0 0 50%;
+    text-align: left;
+    padding-left: 40px;
+}
+
+/* 5. ESTILO DE LA IMAGEN:
+   Aplicamos un redondeado de 20px y una sombra para que la foto 
+   encaje con la estética moderna de Find A Pet. */
+.compromiso-container img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+
+/* 6. TÍTULO DE LA SECCIÓN:
+   Usamos un peso de 800 (Extra Bold) para que el título "Nuestro Compromiso" 
+   tenga autoridad y presencia. */
+.nuestro_compromiso {
+    font-weight: 800;
+    font-size: 32px;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    text-align: left;
+}
+
+/* 7. PÁRRAFO DE TEXTO:
+   Color gris oscuro (#3f3f3f) para mantener la elegancia y buena legibilidad. */
+.texto-compromiso-negro {
+    margin-bottom: 25px;
+    font-size: 18px;
+    color: #3f3f3f;
+}
+
+/* ==========================================================================
+                CAJAS DE ACCESO: ADOPCIÓN Y CRIADORES
+   ========================================================================== */
+
+/* 1. CONTENEDOR DE TARJETA (CARD):
+   Diseño las cajas gemelas. He añadido 'position: relative' para que 
+   el enlace extendido sepa dónde terminan los bordes de la caja. */
+.card-container {
+    position: relative; /* ¡CLAVE! Permite que el enlace ocupe toda la caja */
+    background-color: #fff;
+    padding: 50px 20px;
+    border-radius: 30px; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+    text-align: center;
+    flex: 0 0 48%; 
+    margin: 20px 1%; 
+    min-height: 420px; 
+    transition: all 0.3s ease; /* Transición suave para todos los efectos */
+    cursor: pointer; /* Indica al usuario que toda la caja es clicable */
+}
+
+/* EFECTO HOVER:
+   He añadido un ligero movimiento hacia arriba (translateY) y he cambiado 
+   la sombra a un tono lila para que combine con tu marca. */
+.card-container:hover {
+    transform: translateY(-10px); /* La caja se eleva al pasar el ratón */
+    box-shadow: 0 15px 35px rgba(155, 89, 182, 0.2); /* Sombra morada suave */
+    background-color: #fdfaff; /* Un fondo lila casi blanco muy sutil */
+}
+
+/* EL TRUCO DEL ENLACE EXTENDIDO:
+   Esta clase es la que hace que, aunque el enlace esté en el botón, 
+   el clic funcione en toda la caja. */
+.stretched-link::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    content: "";
+}
+
+/* 2. ICONO DE LA TARJETA:
+   Doy un tamaño grande (50px) para que el impacto visual sea rápido. */
+.card-icon {
+    font-size: 50px;
+    margin-bottom: 20px;
+}
+
+/* 3. TÍTULO DE LA TARJETA: */
+.card-title {
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+/* 4. TEXTO DESCRIPTIVO: */
+.card-text {
+    margin-bottom: 30px;
+    color: #444;
+    font-size: 16px;
+}
+
+/* 5. TÍTULOS DE SECCIÓN: */
+.titulo_mascota_ideal {
+    text-align: center;
+    margin-bottom: 40px;
+    margin-top: 79px;
+    font-size: 38px;
+}
+
+.parrafo_mascota_ideal {
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 40px;
+}
+
+.titulo-seccion-grande {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* CAMBIO DE COLOR DEL BOTÓN AL PASAR EL RATÓN POR LA CAJA:
+   Para que el botón también reaccione cuando el usuario toca la caja. */
+.card-container:hover .boton-morado {
+    background-color: #834ca0;
+}
+
+
+
+/* ==========================================================================
+                                SECCIÓN: OBJETIVOS
+   ========================================================================== */
+
+/* 1. CONTENEDOR DE OBJETIVOS:
+   Centro la sección y aplicamos márgenes estratégicos: 50px arriba para 
+   separaro de las tarjetas anteriores y 60px abajo para dar paso a las historias. */
+.objectives-container {
+    margin: 50px auto 60px auto !important; 
+    padding: 0 20px !important;
+    max-width: 1100px;
+    text-align: center;
+}
+
+/* 2. TÍTULO DE LA SECCIÓN:
+   Un tamaño de 26px para que sea claro pero no tan grande como el título principal (Hero). */
+.objectives-container h2 {
+    margin-bottom: 40px;
+    font-size: 26px;
+}
+
+/* 3. CAJA DE LA TABLA (.objectives-table-box):
+   Convierto la tabla en una "tarjeta" blanca elegante. 
+   Uso un padding de 50px para que el contenido interior respire mucho. */
+.objectives-table-box {
+    background-color: #fff;
+    padding: 50px;
+    border-radius: 25px; /* Bordes redondeados consistentes con el resto de la web. */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05); /* Sombra suave y ligera. */
+    max-width: 100%;
+    margin: auto;
+    overflow: hidden; /* Evita que el contenido de la tabla sobresalga de las esquinas. */
+    margin-top: 70px;
+}
+
+/* 4. CELDA DEL ICONO:
+   Doy un tamaño de 30px al icono y lo centramos perfectamente tanto 
+   en horizontal como en vertical. */
+.table-icon-cell {
+    font-size: 30px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* 5. CELDA DE TEXTO:
+   Añado un padding de 25px para separar el texto del icono y de la línea inferior.
+   La línea sutil (border-bottom) ayuda a separar visualmente cada objetivo. */
+.table-text-cell {
+    padding: 25px;
+    vertical-align: middle;
+    border-bottom: 1px solid rgba(0,0,0,0.1); /* Separación elegante y fina. */
+}
+
+/* ==========================================================================
+                        HISTORIA CON FINAL FELIZ
+   ========================================================================== */
+
+/* 1. TÍTULO DE LA SECCIÓN:
+   Lo centro y le doy un margen superior de 70px para que respire 
+   después de la tabla de objetivos, marcando bien el cambio de tema. */
+.titulo {
+    text-align: center;
+    margin-top: 70px; 
+    margin-bottom: 30px;
+    display: block;
+    width: 100%;
+    font-size: 26px;
+}
+
+/* 2. TEXTO INTRODUCTORIO:
+   Un párrafo que prepara al usuario para la historia. Limitamos el ancho 
+   a 900px para que las líneas de texto no sean demasiado largas y cansen la vista. */
+.story-intro-text {
+    color: #3f3f3f;
+    max-width: 900px;
+    margin: 0 auto 40px auto;
+    font-size: 18px;
+    line-height: 1.6;
+    text-align: center;
+}
+
+/* 3. CAJA DE LA HISTORIA (.story-box):
+   Es el contenedor principal del testimonio. 
+   Uso un borde punteado morado con transparencia (#9c59b696) para darle 
+   un aspecto tierno y acogedor, como si fuera una carta o un diario. */
+.story-box {
+    background-color: white;
+    padding: 50px; /* Mucho espacio interior para que el testimonio sea el protagonista. */
+    border-radius: 20px;
+    border: 2px dotted #9c59b696;
+    max-width: 900px;
+    margin: 0 auto 30px auto;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.055); /* Sombra muy sutil. */
+}
+
+/* 4. ESTILO DEL FIRMANTE (Nombre de la mascota o dueño):
+   Hago que el texto en negrita (<b>) dentro de la caja se comporte como 
+   un bloque independiente para separarlo del cuerpo del mensaje. */
+.story-box p b {
+    display: block; /* Salta a una línea nueva automáticamente. */
+    margin-top: 15px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+/* =========================================
+                 Donaciones
+   ========================================= */
+
+.donation-section {
+    max-width: 950px;
+    margin: 80px auto;
+    padding: 60px;
+    background-color: #fff;
+    border-radius: 40px;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.08);
+    margin-top: 100px;
+    margin-bottom: 130px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+.donacion-titulo{
+    text-align: center;
+    margin-bottom: 30px;
+}
+.donation-section .row {
+    gap: 40px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.img-donacion {
+    display: block !important;
+    /* Forzamos el ancho al 100% de su columna */
+    width: 60% !important; 
+    /* Subimos el máximo para que sea grande de verdad */
+    max-width: 700px !important; 
+    height: auto !important;
+
+    /* Centrado perfecto sin números fijos */
+    margin: 40px auto !important; 
+    margin-left: 155px !important;
+
+    /* Estilo igual al resto de la web */
+    border-radius: 10px !important; 
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15) !important;
+    
+    /* Si aun así la ves pequeña, esto le da un empujón extra */
+    transform: scale(1.1);
+}
+.donation-number-box {
+    display: inline-block;
+    background: #f9f9f9;
+    padding: 20px 30px;
+    border-radius: 15px;
+    font-weight: 700;
+    font-size: 1.6rem;
+    border: 1px solid #eee;
+    margin-top: 30px;
+    color: #424242;
+    letter-spacing: 2px;
+}
+
+.mantenimiento-web{
+    margin-top: 10px;
+}
+.texto-principal{
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+/* ==========================================================================
+                                  FOOTER 
+   ========================================================================== */
+
+/* 1. ESTRUCTURA STICKY FOOTER:
+   Configuro el HTML y el BODY para que ocupen el 100% de la altura de la ventana.
+   Usamos Flexbox en el body en dirección 'column' para empujar el footer hacia abajo. */
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+/* El contenido principal tiene 'flex: 1 0 auto', lo que significa que se expandirá 
+   para ocupar todo el espacio disponible, obligando al footer a irse al final. */
+.main-content, .contenedor-principal { 
+    flex: 1 0 auto; 
+    padding-bottom: 60px; /* Margen de seguridad para que el contenido no pegue al footer. */
+}
+
+/* 2. ESTILO DEL PIE DE PÁGINA:
+   Mantengo el morado de la página Find a Pet(#9b59b6) y uso 'flex-shrink: 0' para 
+   que el footer no se aplaste si hay mucho contenido arriba. */
+.footer-custom {
+    background-color: #9b59b6; 
+    padding: 40px 0 20px 0; 
+    color: white; 
+    margin-top: 50px; 
+    text-align: left;
+    font-family: 'Poppins', sans-serif;
+    flex-shrink: 0; 
+}
+
+.footer-container {
+    max-width: 1200px; 
+    margin: 0 auto;
+    padding: 0 50px;
+    display: flex;
+    justify-content: space-around; /* Distribuye las columnas (Logo, Navegación, Mapa) equitativamente. */
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.footer-col {
+    flex: 1; 
+}
+
+/* 3. LOGO DEL FOOTER:
+   Le doy un fondo blanco y un sombreado sutil para que resalte sobre el fondo morado. 
+   El 'object-fit: contain' asegura que el logo no se deforme. */
+.footer-col img {
+    height: 140px; 
+    width: auto;             
+    display: block;          
+    border-radius: 12px;     
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+    background-color: #fff;  
+    padding: 8px;            
+    object-fit: contain;     
+    margin-bottom: 20px;
+}
+
+/* 4. COLUMNA DE NAVEGACIÓN (Centro):
+   Alineo los enlaces a la izquierda y mantenemos un margen (margin-left) 
+   para que respire respecto al logo. */
+.footer-col-center {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+    text-align: left;        
+    margin-left: 170px;       
+}
+
+.footer-title-sub {
+    font-weight: 900;
+    font-size: 18px; 
+    margin: 4px 0 15px 0; 
+    text-transform: uppercase; /* Títulos en mayúsculas para dar jerarquía. */
+}
+
+.footer-text {
+    font-size: 15px;         
+    line-height: 1.6;        
+    color: rgba(255, 255, 255, 0.8); /* Color blanco con transparencia para un look más suave. */
+    margin-top: 15px;        
+    max-width: 300px;        
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+/* 5. MAPA DE GOOGLE:
+   Hago que el mapa sea responsive y tenga esquinas redondeadas para 
+   que encaje con la estética "suave" de Find A Pet. */
+iframe {
+    max-width: 350px; 
+    border-radius: 15px;
+    border: 2px solid rgba(255,255,255,0.1);
+}
+
+/* 6. LISTA DE ENLACES:
+   Elimino los puntos de lista por defecto y ajusto el espacio entre los links. */
+.footer-list {
+    list-style: none; 
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+}
+
+.footer-list li {
+    margin-bottom: 12px;
+}
+
+.footer-list a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px; 
+}
+
+.footer-list a:hover {
+    color: #e6e6e6; 
+    text-decoration: underline; /* Subrayado sutil al pasar el ratón para indicar que es clicable. */
+}
+
+/* 7. BARRA DE COPYRIGHT:
+   Una línea fina separa el contenido del footer del texto legal del final. */
+.footer-copyright-bar {
+    margin-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 20px;
+    text-align: center;
+}
+
+.footer-copy-text {
+    font-size: 13px; 
+    font-weight: 700;
+    opacity: 0.9;
+    letter-spacing: 1px;
+}
+
+/* ==========================================================================
+                                RESPONSIVE
+   ========================================================================== */
+
+/* 1. TABLETS Y PORTÁTILES PEQUEÑOS (Hasta 992px):
+   Cuando la pantalla se estrecha, el menú deja de estar en horizontal 
+   y se organiza en vertical para que los elementos no se amontonen. */
+@media (max-width: 992px) {
+    .nav-container { 
+        flex-direction: column; /* Apilo logo y enlaces uno sobre otro. */
+        gap: 15px; 
+    }
+
+    .menu-links { 
+        gap: 15px; 
+        flex-wrap: wrap; /* Si hay muchos enlaces, saltan de línea automáticamente. */
+        justify-content: center;
+    }
+}
+
+/* 2. MÓVILES (Hasta 576px):
+   Aquí aplico los ajustes más finos para pantallas muy estrechas. */
+@media (max-width: 576px) {
+    .menu-links { 
+        gap: 10px; /* Reducimos el espacio entre enlaces para ganar sitio. */
+    }
+    
+    /* Bajo un poco el tamaño de letra para que los textos quepan en una sola línea. */
+    .menu-links a { 
+        font-size: 14px; 
+    }
+    
+    .logo-link span { 
+        font-size: 18px; 
+    }
+
+    /* TARJETAS DE ANIMALES:
+       Hago que la tarjeta ocupe todo el ancho disponible (100%) 
+       para que la foto del animal se vea grande y clara en el móvil. */
+    .caja-animal { 
+        width: 100%; 
+        max-width: 320px; 
+    }
+
+    /* IDIOMA:
+       Elimino el margen lateral y le doy un margen superior para que 
+       el icono del mundo quede centrado debajo del menú. */
+    .contenedor-idioma-derecha { 
+        margin-left: 0; 
+        margin-top: 10px; 
+    }
+}
+
+
+/*==========================================================================
+    Formulario de adopciones de animales, criadores de animales y contacto
+==========================================================================*/
+
+/* Pongo este fondo en la sección para que resalte y haga contraste con el blanco de la página */
+.fondo-formulario {
+    background-color: #fafafa;
+    padding-top: 20px;
+    padding-bottom: 40px;
+}
+
+/* El contenedor principal lo pongo al 100% para que controle bien todo el flujo */
+.contenedor {
+    width: 100%;
+}
+
+/* Esta es la caja blanca del formulario. Le pongo un max-width para que cuando se vea en un PC 
+   no se vea gigante y quede feo. */
+.caja-formulario {
+    background: #ffffff;
+    max-width: 700px;
+    margin: 30px auto; /* Esto es para que se quede centrado solo en horizontal */
+    padding: 30px;
+    border-radius: 12px; /* Le pongo los bordes redondeados para que tenga un estilo más moderno */
+    border: 1px solid #9b59b6; /* Uso el color morado que es el de la empresa */
+    /* Aquí pongo una doble sombra para que parezca que la caja está levantada y tenga profundidad */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15), 0 8px 25px rgba(124,75,183,0.2);
+}
+
+/* Estilos para que el título principal del formulario se vea bien grande y centrado */
+.caja-formulario h2 {
+    color: #2c2c2c;
+    font-size: 26px;
+    font-weight: 750;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Estos bloques los uso para agrupar los campos que tengan que ver unos con otros, como los datos personales */
+.bloque {
+    border: 1.5px solid #9b59b6;
+    padding: 15px 20px;
+    margin-bottom: 25px;
+    border-radius: 8px;
+}
+
+/* Títulos internos de cada bloque para que el usuario sepa qué está rellenando */
+.bloque h3 {
+    color: #2c2c2c;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+/* A las etiquetas les pongo el display block para que el cuadro donde se escribe salga debajo y no al lado */
+.bloque label {
+    display: block;
+    font-weight: normal; /* He cambiado esto a normal para que no aparezca en negrita como pediste */
+    color: #2c2c2c;
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+/* Configuración general de los campos donde el usuario escribe sus datos */
+.bloque input[type="text"],
+.bloque input[type="tel"],
+.bloque input[type="email"] {
+    display: block;
+    width: 500px;
+    height: 50px;
+    max-width: 100%; /* Pongo esto para que si la pantalla es pequeña el cuadro no se salga del borde */
+    padding: 10px;
+    margin-bottom: 25px; /* Pongo este margen para que no se peguen unos con otros sin tener que usar <br> */
+    border: 1px solid #777676;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 600;
+    box-sizing: border-box; /* Esto hay que ponerlo para que el padding no haga más ancho el cuadro del tamaño que le hemos dado */
+    background-color: #ffffff;
+    outline: none; /* Le quito el filo azul que le ponen los navegadores por defecto para usar mi propio estilo */
+}
+
+/* Esto es para que cuando el usuario pinche para escribir en un cuadro se note visualmente cambiando el color del borde */
+.bloque input:focus,
+.bloque textarea:focus {
+    border: 2.5px solid #9b59b6;
+}
+
+/* Para los cuadritos de los checkboxes y el texto de al lado uso Flexbox para que salgan bien alineados verticalmente */
+.contenedor-checkbox {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: flex-start;
+}
+
+/* Estilos para los checkbox y el área de texto larga */
+input[type="checkbox"], textarea {
+    width: 18px;
+    height: 18px;
+    accent-color: #9b59b6; /* Con esto cambio el color de dentro del tick para que sea el morado corporativo */
+    margin-right: 8px;
+    flex-shrink: 0; /* Esto es para que el cuadrito no se aplaste si el texto de al lado es muy largo */
+}
+
+/* Esta caja la he puesto para resaltar la parte informativa de las donaciones */
+.caja-donacion {
+    text-align: center;
+    background-color: #fdfaff;
+    border: 1.5px dashed #9b59b6; /* Le pongo el borde discontinuo para que se note que es algo diferente al resto */
+    padding: 15px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* He subido un poco el tamaño de este título para que destaque algo más dentro de la caja de donación */
+.caja-donacion h3 {
+    font-size: 20px;
+    font-weight: 710;
+    color: #2c2c2c;
+}
+
+/* Estilo para que el número de teléfono de donación se vea claro y con presencia */
+.telefono-donacion {
+    font-size: 22px;
+    font-weight: 700;
+    color: #383838;
+    display: block;
+    margin-top: 10px;
+}
+
+/* Estilo para el botón de enviar del final. Uso el color corporativo y letras en negrita. */
+.boton {
+    width: 100%;
+    background-color: #9b59b6;
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 30px; /* Lo pongo muy redondeado para que parezca más un botón moderno y amigable */
+    font-size: medium;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+/* Esto es para que cuando pases el ratón por encima del botón cambie el color y el usuario sepa que es interactivo */
+.boton:hover {
+    background-color: #834ca0;
+}
+
+/* Configuración específica para el cuadro de mensaje largo */
+textarea {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    padding: 15px;
+    /* Aire interno para que el texto no esté pegado a los bordes al escribir */
+    line-height: 1.6;
+    min-height: 120px;
+    border: 1px solid #777677;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 500;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    outline: none;
+    font-family: inherit; /* Para que use la misma letra que el resto del formulario */
+    resize: vertical; /* Solo permito que el usuario lo estire hacia abajo para no romper el ancho del diseño */
+    /* Separación exterior para que no se pegue al elemento de arriba */
+    margin-top: 10px;
+}
+
+/* Esto lo pongo para que cuando la página web se vea en un móvil se adapte bien y no salgan barras de scroll */
+
+@media (max-width:600px){
+
+.caja-formulario{
+
+width:95%;
+
+padding:20px;
+
+}
+
+input[type="text"],
+
+input[type="tel"],
+
+input[type="email"],
+
+textarea {
+
+width:100%;
+
+height:auto;
+
+min-height: 55px; /* Le pongo un mínimo de altura para que sea más fácil darle con el dedo en el móvil */
+
+}
+
+} 
+
+/*HAY QUE EXPLICARLO BIEN*/
+.intro-requisitos {
+    color: #2c2c2c;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 28px; 
+    margin-top: 7px;
+    align-content: center;
+}
+
+/* 1. Esto alinea el contenedor para que el texto y el check no se peleen */
+.contenedor-checkbox {
+    display: flex;
+    align-items: flex-start;  /* Hace que se alineen con la primera línea */
+    gap: 10px;                /* Separación horizontal entre el cuadrito y el texto */
+    margin-bottom:15px;      /* Espacio entre un requisito y otro */
+}
+
+/* 2. ¡Aquí está el truco real! Aplicado al input dentro del CONTENEDOR */
+.contenedor-checkbox input[type="checkbox"] {
+    margin-top: 5px;          /* Baja el cuadrito los píxeles necesarios para ir al parejo */
+    cursor: pointer;
+    flex-shrink: 0;           /* Obliga al check a no aplastarse si el texto es largo */
+}
+.intro-principal {
+    color: #2c2c2c;          /* Un gris oscuro elegante */
+    font-size: 1rem;         /* Tamaño de texto estándar perfecto */
+    line-height: 1.5;        /* Espaciado de línea cómodo */
+    text-align: center;      /* Centrado para que vaya a juego con el título */
+    margin-bottom: 32px;     /* Separación perfecta con el bloque de "Datos del interesado" */
+    margin-top: 5px;         /* Un pelín de separación con el título principal */
+}
+
+/* Mantiene tus inputs alineados en la fila horizontal original de tu plantilla */
+    .celda-input {
+        display: inline-block;
+        vertical-align: top;
+        text-align: left;
+    }
+    
+    /* ¡Estilo definitivo con alineación perfecta! */
+    .error-inline {
+        color: #dc3545;       
+        font-size: 14px;       
+        font-family: 'Poppins', sans-serif; 
+        font-weight: 600;      
+        display: block;
+        
+        /* Ajuste de márgenes y alineación */
+        margin-top: 4px;       /* Separación sutil con el input de arriba */
+        margin-bottom: 16px;   /* Separa la etiqueta de abajo para que respire */
+        margin-left: 4px;      /* Alinea el punto con el borde del input */
+        
+        max-width: 220px; 
+        white-space: normal; 
+    }
+
+/* ==========================================================================
+                        ESTILOS DE INTRODUCCIÓN
+   ========================================================================== */
+
+/* 1. CONTENEDOR DE INTRODUCCIÓN:
+   Limito el ancho a 900px. Esto es clave para la UX (Experiencia de Usuario), 
+   ya que las líneas de texto demasiado largas son difíciles de seguir para el ojo humano. */
+.intro-texto-contenedor {
+    max-width: 900px; 
+    margin: 50px auto; /* Centrado horizontal y 50px de aire respecto a otras secciones. */
+    padding: 0 25px; /* Evita que el texto toque los bordes en pantallas de móviles. */
+    text-align: center;
+}
+
+/* 2. TÍTULO DE SECCIÓN:
+   Uso un tamaño muy grande (42px) y un peso de 900 (Black).
+   El 'letter-spacing: -1px' le da un toque moderno y compacto, típico de revistas de diseño. */
+.titulo-seccion {
+    color: #313030f5;
+    font-weight: 900;
+    font-size: 42px; 
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+}
+
+/* 3. PÁRRAFO DE INTRODUCCIÓN:
+   Aquí uso un color gris más suave (#6e6d6df1).
+   El 'line-height: 1.8' es un valor alto que genera mucho espacio entre líneas, 
+   haciendo que el texto parezca más ligero y elegante. */
+.intro-texto {
+    color: #6e6d6df1;
+    font-size: 18px;
+    line-height: 1.8; 
+    font-weight: 500;
+}
+
+/* 4. CONTENEDOR GRID (RESPONSIVE):
+   Esta es la estructura que sostiene las tarjetas de los animales. 
+   'flex-wrap: wrap' es lo que permite que, si no caben 3 tarjetas, se baje 
+   una automáticamente sin romper el diseño. */
+.contenedor-grid {
+    display: flex;
+    justify-content: center;
+    gap: 25px; /* Espacio fijo entre tarjetas. */
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+/* ===================================================================================
+       RESPONSIVE: INTRODUCCIÓN Y AJUSTES GLOBALES (Móviles y Tablets)
+   =================================================================================== */
+
+/* 1. TABLETS Y PANTALLAS MEDIANAS (Hasta 992px):
+   Reducimos ligeramente los tamaños para que el diseño empiece a adaptarse 
+   sin perder su fuerza visual. */
+@media (max-width: 992px) {
+    .titulo-seccion {
+        font-size: 35px; /* Bajamos de 42px a 35px para que el título no rompa líneas. */
+    }
+    .intro-texto {
+        font-size: 17px;
+    }
+}
+
+/* 2. MÓVILES (Pantallas pequeñas - Hasta 576px):
+   Ajustes críticos para que la navegación táctil sea cómoda y la lectura fluida. */
+@media (max-width: 576px) {
+    .intro-texto-contenedor {
+        margin: 30px auto; /* Reducimos el margen superior para que el contenido aparezca antes. */
+        padding: 0 15px; /* Menos espacio en los bordes para ganar área de lectura. */
+    }
+
+    .titulo-seccion {
+        font-size: 28px; /* Título mucho más compacto para móviles. */
+        margin-bottom: 15px;
+    }
+
+    .intro-texto {
+        font-size: 15px;
+        line-height: 1.6; /* Un interlineado un poco más cerrado para pantallas pequeñas. */
+    }
+
+    /* TARJETAS DE ANIMALES:
+       Forzamos que las cajas ocupen el 100% del ancho disponible, haciendo 
+       que el catálogo se vea como una lista vertical perfecta. */
+    .caja-animal {
+        width: 100%; 
+        max-width: 350px; /* Evitamos que la tarjeta crezca demasiado en móviles grandes. */
+    }
+
+    .contenedor-grid {
+        gap: 20px; /* Un poco menos de espacio entre tarjetas para ahorrar scroll. */
+        padding: 10px;
+    }
+
+    /* NAV BAR Y LOGO:
+       Reducimos el padding y el tamaño del texto del logo para que la 
+       cabecera no ocupe media pantalla. */
+    .navbar-custom {
+        padding: 10px 0;
+    }
+
+    .logo-link span {
+        font-size: 18px; 
+    }
+}
+
+/* ==========================================================================
+      COMPLEMENTOS: UTILIDADES Y DETALLES DE LAS TARJETAS DE ANIMALES
+   ========================================================================== */
+
+/* 1. BARRA DE UTILIDADES:
+   Es la franja que organiza el botón de 'Volver' y el 'Traductor'. 
+   Uso 'space-between' para que cada uno se vaya a un extremo de la pantalla, 
+   dejando el centro limpio. */
+.utilidades-adopciones {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%; /* 5% de margen lateral para que respire en pantallas anchas. */
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05); /* Una sombra muy fina para separar del contenido. */
+}
+
+/* 2. DESCRIPCIÓN DEL ANIMAL:
+   Fijo una altura de 42px, para obligar  que todas las tarjetas midan lo mismo, aunque un perro tenga una 
+   descripción más larga que otro. */
+.descripcion-pet {
+    font-size: 14px;
+    color: #666;
+    margin: 10px 0 20px 0;
+    height: 42px; /* Esto lo pongo para que las cajas se alinee de forma automática. */
+    overflow: hidden; /* Corta el texto si es demasiado largo para no romper el diseño. */
+}
+
+/* 3. BOTÓN DE ACCIÓN ("CONOCER A..."):
+   Es el enlace principal dentro de cada tarjeta. Uso el morado de la página web Fin a Pet
+   y un peso de fuente 800 para que sea imposible no verlo. */
+.btn-adoptar-caja {
+    display: block;
+    background-color: #9b59b6;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 12px;
+    border-radius: 10px;
+    font-weight: 800;
+    font-size: 14px;
+    transition: 0.3s; /* Transición suave para el color y la sombra. */
+    text-transform: uppercase; /* Mayúsculas para darle un toque más directo y profesional. */
+}
+
+/* EFECTO HOVER:
+   Cuando el usuario pasa el ratón, el botón se oscurece y proyecta una sombra lila 
+   que da la sensación de que el botón se "eleva". */
+.btn-adoptar-caja:hover {
+    background-color: #834ca0;
+    box-shadow: 0 5px 15px rgba(155, 89, 182, 0.3);
+}

@@ -1,0 +1,151 @@
+/* ==========================================================================
+         ESTILO FINAL: CRIADORES (Máximo Espaciado y Botones al Parejo)
+   ========================================================================== */
+
+/* 1. IMPORTACIÓN Y RESETEO */
+/* Traigo la fuente Poppins con todos los pesos necesarios para jugar con jerarquías visuales. */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&display=swap');
+
+* { 
+    box-sizing: border-box; /* Es fundamental para que el padding no rompa el ancho de las tarjetas. */
+    font-family: 'Poppins', sans-serif;
+    margin: 0; 
+    padding: 0;
+}
+
+body { 
+    background-color: #fafafa;
+    margin: 0 !important; /* Elimino márgenes externos para que el diseño pegue al borde. */
+    padding: 0;
+}
+
+/* 2. ENCABEZADO Y TEXTOS INTRODUCTORIOS */
+h1 { 
+    color: #000;
+    font-size: 32px;
+    font-weight: 900; /* Peso máximo para que el título tenga mucha fuerza. */
+    text-align: center;
+    margin: 40px 0 10px 0; 
+}
+
+.parrafo {
+   text-align: center; 
+   max-width: 800px; 
+   margin: 0 auto 50px; /* Centro el texto y le doy espacio antes de empezar las tarjetas. */
+   color: #3f3f3f;
+   font-size: 18px;
+   line-height: 1.6;
+}
+
+/* 3. GRID DE TARJETAS (Nivelación de cajas) */
+.contenedor-principal {
+    display: flex; /* Usamos Flexbox para alinear las tarjetas. */
+    flex-wrap: wrap; /* Si no caben en una línea, bajan a la siguiente. */
+    justify-content: center; 
+    align-items: stretch; /* Esto hace que todas las tarjetas midan lo mismo de alto. */
+    gap: 40px; /* Espacio generoso entre tarjetas. */
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* 4. DISEÑO DE LA TARJETA INDIVIDUAL */
+.tarjeta {
+   background: #ffffff;
+   border: 1px solid #9b59b6;
+   border-radius: 15px; 
+   width: 100%; 
+   max-width: 320px; 
+   overflow: hidden; /* Corta cualquier contenido que sobresalga de las esquinas redondeadas. */
+   box-shadow: 0 4px 10px rgba(0,0,0,0.1), 0 12px 30px rgba(124,75,183,0.15); /* Sombra morada suave. */
+   transition: transform 0.3s ease; /* Transición suave para el efecto hover. */
+   display: flex;
+   flex-direction: column; /* Permite organizar imagen y contenido en vertical. */
+}
+
+/* Efecto de elevación al pasar el ratón */
+.tarjeta:hover {
+    transform: translateY(-8px);
+}
+
+.tarjeta img {
+   width: 100%;
+   height: 220px; 
+   object-fit: cover; /* Evita que las fotos de los criadores se vean estiradas o deformadas. */
+   display: block;
+   border-bottom: 1px solid #9b59b6;
+}
+
+/* 5. CONTENIDO INTERIOR */
+.contenido { 
+   padding: 35px; /* Mucho "aire" para que la lectura sea relajada. */
+   flex-grow: 1; /* Hace que el contenido crezca para empujar el botón al final. */
+   display: flex;
+   flex-direction: column;
+}
+
+.contenido h3 { 
+    color: #000;
+    font-weight: 900;
+    font-size: 22px;
+    margin-bottom: 30px; 
+    text-align: center;
+}
+
+.contenido p { 
+    font-size: 15px; 
+    color: #444; 
+    margin-bottom: 18px; 
+    line-height: 1.5;
+}
+
+.negrita {
+    font-weight: 700;
+    color: #000;
+}
+
+/* 6. DESCRIPCIÓN Y DETALLES */
+.descripcion-corta {
+    margin-top: 30px;    
+    margin-bottom: 50px; /* Espacio extra para que el botón no quede pegado al texto. */
+    font-size: 14.5px;
+    color: #666;
+    line-height: 1.7;
+    border-top: 1px solid #f0f0f0; /* Línea sutil de separación. */
+    padding-top: 25px;   
+}
+
+/* 7. BOTÓN / BADGE VERIFICADO (Alineación perfecta) */
+.badge-verificado {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* TRUCO MAESTRO: margin-top: auto empuja el botón al final de la tarjeta 
+       haciendo que todos los botones de la fila queden alineados al mismo nivel. */
+    margin: auto auto 15px auto; 
+    
+    background-color: #2d8a56; /* Color verde que denota confianza/verificación. */
+    color: white;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1.5px; /* Espaciado entre letras para un look más "premium". */
+    box-shadow: 0 4px 12px rgba(45, 138, 86, 0.2);
+}
+
+/* Icono de check generado mediante CSS para no usar imágenes extra */
+.badge-verificado::before {
+    content: '✔'; 
+    margin-right: 12px;
+    font-size: 17px;
+}
+
+/* 8. ADAPTACIÓN A MÓVILES */
+@media (max-width: 480px) {
+    .tarjeta { max-width: 95%; } /* En móviles, las tarjetas ocupan casi todo el ancho. */
+    .contenido { padding: 25px; }
+}

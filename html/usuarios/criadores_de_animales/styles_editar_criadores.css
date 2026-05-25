@@ -1,0 +1,151 @@
+/* 1. IMPORTAR LA FUENTE POPPINS */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+/* 2. CONFIGURACIÓN BÁSICA */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #fafafa;
+    margin: 0;
+    padding: 20px;
+}
+
+/* 3. CAJA PRINCIPAL (Tu variable .caja-lila) */
+.caja-lila {
+    background: #ffffff;
+    max-width: 700px; 
+    margin: 30px auto;
+    padding: 30px;
+    border-radius: 12px;
+    line-height: 1.6;
+    border: 1px solid #9b59b6;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15), 0 8px 25px rgba(124,75,183,0.2);
+    box-sizing: border-box;
+}
+
+h2 {
+    color: #2c2c2c;
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* 4. BLOQUES INTERIORES */
+.bloque {
+    border: 1.5px solid #9b59b6;
+    padding: 20px;
+    margin-bottom: 25px;
+    border-radius: 8px;
+}
+
+/* 5. ETIQUETAS Y CAMPOS */
+label {
+    display: block;
+    font-weight: bold;
+    color: #333333;
+    margin-bottom: 8px;
+    margin-top: 15px;
+}
+
+input[type="text"], 
+input[type="tel"], 
+input[type="number"], 
+input[type="file"], 
+select,
+textarea {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #777676;
+    border-radius: 6px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    box-sizing: border-box;
+    background-color: #fff;
+}
+
+input:focus, textarea:focus { 
+    border: 2px solid #9b59b6; 
+    outline: none; 
+}
+
+/* 6. BOTÓN PRINCIPAL (Tu variable .boton-lila) */
+.boton-lila {
+    width: 100%;
+    background-color: #9b59b6;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 30px; 
+    font-size: 18px;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+    margin-top: 20px;
+    display: block;
+}
+
+.boton-lila:hover {
+    background-color: #8e44ad;
+}
+
+/* 7. BOTÓN VOLVER (Como botón secundario con separación) */
+.volver {
+    display: block; 
+    text-align: center; 
+    margin-top: 25px; 
+    padding: 12px;
+    color: #4e4e4e; 
+    text-decoration: none; 
+    font-weight: bold; 
+    font-family: 'Poppins', sans-serif;
+    background-color: #ffffff; 
+    border: 2px solid #9b59b6; 
+    border-radius: 30px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.volver:hover {
+    background-color: #f9f4fc; 
+    color: #000000; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 8. RESPONSIVE MEJORADA */
+@media (max-width: 600px) {
+    body {
+        padding: 10px; /* Menos espacio en los bordes de la pantalla */
+    }
+
+    .caja-lila { 
+        width: 100%; 
+        padding: 20px 15px; /* Ajustamos padding interno */
+        margin: 10px auto;
+        border-radius: 8px; /* Esquinas un poco menos curvas para ganar espacio */
+    }
+
+    h2 {
+        font-size: 22px; /* Título un poco más pequeño para que no rompa */
+    }
+
+    .bloque {
+        padding: 15px; /* Bloques internos más compactos */
+        margin-bottom: 15px;
+    }
+
+    input[type="text"], 
+    input[type="tel"], 
+    input[type="number"], 
+    input[type="file"], 
+    select,
+    textarea {
+        font-size: 16px; /* Aumentamos a 16px para evitar que iOS haga zoom automático al clicar */
+        padding: 14px 10px; /* Más área de toque */
+    }
+
+    .boton-lila, .volver {
+        font-size: 16px;
+        padding: 14px; /* Botones más cómodos para el dedo */
+    }
+}

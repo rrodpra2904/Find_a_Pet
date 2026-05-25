@@ -1,0 +1,164 @@
+/* 1. IMPORTAR LA FUENTE POPPINS */
+
+/* Traigo la fuente desde Google Fonts para que el diseño de las letras sea moderno y limpio. 
+   Uso los pesos 400 (normal) y 700 (negrita) para dar jerarquía visual. */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+/* 2. CONFIGURACIÓN BÁSICA DEL CUERPO */
+
+/* Aplico la fuente a toda la página web y pongo un color de fondo gris muy clarito (#fafafa).
+   Esto hace que la caja blanca del formulario resalte mucho más por contraste. */
+body, .fondo-formulario {
+    font-family: 'Poppins', sans-serif;
+    background-color: #fafafa;
+    margin: 0;
+    padding-top: 20px;
+    padding-bottom: 40px;
+}
+
+/* Aseguro que el contenedor ocupe todo el ancho disponible para poder centrar los elementos. */
+.contenedor { 
+    width: 100%; 
+}
+
+/* 3. CAJA PRINCIPAL DEL FORMULARIO */
+
+/* Diseño de la "tarjeta" central del formulario. */
+.caja-formulario {
+    background: #ffffff;
+    max-width: 700px; /* Ancho máximo para que el formulario no se "estire" demasiado en pantallas grandes. */
+    margin: 30px auto; /* Lo centro horizontalmente usando 'auto'. */
+    padding: 30px;
+    border-radius: 12px; /* Esquinas redondeadas para un aspecto más amigable y moderno. */
+    border: 1px solid #9b59b6; /* Borde morado identificativo de la marca Find A Pet. */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* Sombra suave para dar profundidad. */
+    box-sizing: border-box; /* Fundamental para que el padding no sume ancho extra a la caja. */
+}
+
+/* 4. TÍTULOS Y TEXTOS */
+
+h2 {
+    color: #2c2c2c;
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+/* Estilo para el párrafo de instrucciones debajo del título. */
+.caja-formulario p.texto-secundario {
+    text-align: center;
+    color: #444444;
+    font-size: 16px;
+    line-height: 1.6; /* Aumento el interlineado para que sea más fácil de leer. */
+    padding: 0 20px;
+    margin-top: 0;
+    margin-bottom: 40px;
+}
+
+/* 5. BLOQUES INTERIORES (Agrupación de campos) */
+
+/* Estas cajas ayudan a organizar el formulario en secciones (Contacto, Información Extra). */
+.bloque {
+    border: 1.5px solid #9b59b6;
+    padding: 20px;
+    margin-bottom: 25px;
+    border-radius: 8px;
+}
+
+.bloque h3 {
+    color: #2c2c2c;
+    font-size: 19px; 
+    font-weight: bold;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 15px;
+    letter-spacing: 0.5px; /* Separo un poco las letras para darle un toque más profesional. */
+}
+
+/* 6. ESTILO DE LAS ETIQUETAS Y CAMPOS DE ENTRADA */
+
+label {
+    display: block; /* Hago que ocupen toda su línea para que el input baje debajo. */
+    font-weight: bold;
+    color: #333333;
+    margin-bottom: 8px;
+    margin-top: 15px;
+}
+
+/* Unifico el estilo de todos los campos donde el usuario escribe. */
+input[type="text"], 
+input[type="tel"], 
+input[type="number"], 
+input[type="file"], 
+textarea {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #777676; 
+    border-radius: 6px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+
+/* EFECTO FOCUS: Mejora la accesibilidad indicando claramente dónde está escribiendo el usuario. */
+input:focus, textarea:focus { 
+    border: 2px solid #9b59b6; 
+    outline: none; /* Quito el borde azul por defecto de los navegadores. */
+}
+
+/* 7. BOTONES */
+
+.boton {
+    width: 100%;
+    background-color: #9b59b6; /* Morado Find A Pet. */
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 30px; /* Bordes muy redondeados (estilo "píldora"). */
+    font-size: 18px;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+    transition: background 0.3s; /* Transición suave para el cambio de color. */
+}
+
+.boton:hover {
+    background-color: #8e44ad; /* Oscurezco el tono al pasar el ratón. */
+}
+
+/* Botón secundario para volver atrás. */
+.volver {
+    display: block;
+    text-align: center;
+    margin-top: 25px; 
+    padding: 12px;
+    color: #4e4e4e; 
+    text-decoration: none; 
+    font-weight: bold; 
+    font-family: 'Poppins', sans-serif;
+    background-color: #ffffff; 
+    border: 2px solid #9b59b6; 
+    border-radius: 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.volver:hover {
+    background-color: #f9f4fc; /* Un toque de morado muy suave al fondo. */
+    color: #000000; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 8. MENSAJES DE ERROR */
+
+/* Uso un color rojo (#c0392b) que denote peligro o aviso de error. */
+.msj-error {
+    color: #c0392b;
+    font-size: 14px;
+    font-weight: bold;
+    display: block;
+    margin-top: 8px;
+}

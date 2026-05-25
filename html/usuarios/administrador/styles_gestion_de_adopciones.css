@@ -1,0 +1,154 @@
+/* --- Importación de la fuente Poppins --- */
+
+/* Traigo la fuente Poppins de Google Fonts para que las letras se vean modernas, limpias y profesionales. */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+/* Fuerzo la letra Poppins en todos los elementos de la página web (títulos, celdas, botones, etc.) para que haya coherencia visual. */
+* {
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box; /* Añado esto para que los rellenos no aumenten el tamaño real de las cajas. */
+}
+
+/* --- Estilos generales  --- */
+body { 
+    background-color: #f4f7f8; /* Un gris muy clarito y suave para que no canse la vista al trabajar mucho tiempo. */
+    margin: 30px; /* Le doy un margen a los lados para que el contenido no pegue al borde del navegador. */
+    color: #333; /* Un gris oscuro casi negro para que los textos se lean perfectamente. */
+    line-height: 1.6;
+}
+
+/* El contenedor principal donde va toda la gestión de adopciones. */
+.contenedor-principal {
+    background-color: white;
+    padding: 25px;
+    border: 1px solid #9b59b6; /* Borde morado fino para marcar el límite de la caja y que combine con el diseño. */
+    max-width: 1200px; /* Le pongo un tope de ancho para que en pantallas muy grandes no se estire demasiado el contenido. */
+    margin: auto; /* Esto es clave para que la caja se quede siempre centrada en la pantalla. */
+    border-radius: 8px;
+    /* Le he puesto a la caja sombra doble morada para que la caja resalte y tenga un efecto de profundidad. */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15), 0 8px 25px rgba(124,75,183,0.2);
+    line-height: 1.6;
+}
+
+/* Título de la sección en negro para dar seriedad, autoridad y buen contraste. */
+h2 { 
+    color: #222; 
+    text-align: center;
+    margin-bottom: 25px;
+    font-weight: 700; /* Lo pongo en negrita (700) para que destaque claramente que es el encabezado principal. */
+    line-height: 1.6;
+}
+
+/* --- Botón añadir  --- */
+.boton-nuevo {
+    display: inline-block;
+    background-color: #9b59b6; /* El morado que identifica la marca Find a Pet. */
+    color: white;
+    padding: 12px 28px;
+    text-decoration: none; /* Le quito el subrayado que traen los enlaces por defecto. */
+    font-weight: bold;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.boton-nuevo:hover { 
+    background-color: #8e44ad; /* Cuando pasas el ratón se oscurece un poco para indicar que el botón es interactivo. */
+    line-height: 1.6;
+}
+
+/* --- ESTILOS DE LA TABLA --- */
+.div-table {
+    width: 100%;
+    overflow-x: auto; /* Esto es fundamental para que en móviles salga una barra de scroll y no se desmonte el diseño. */
+    border: 1px solid #ddd;
+    line-height: 1.6;
+    border-radius: 5px;
+}
+
+table { 
+    width: 100%; 
+    border-collapse: collapse; /* Para que los bordes de las celdas se unan y la tabla se vea más limpia y profesional. */
+    min-width: 850px; 
+}
+
+/* Estilo de la cabecera (títulos de las columnas) de la tabla de adopciones de animales. */
+th { 
+    background-color: #9b59b6; 
+    color: white; 
+    padding: 15px; 
+    border: 1px solid #ddd; 
+    font-weight: 600;
+}
+
+/* Estilo de las celdas donde se muestran los datos de cada animal. */
+td { 
+    padding: 15px; 
+    border: 1px solid #ddd; 
+    text-align: center; 
+    background-color: #fff; 
+    vertical-align: middle; /* Centro el contenido verticalmente por si hay fotos más altas que los textos. */
+}
+
+/* Estilo específico para las fotos de los perros y gatos en adopción. */
+.img-animal { 
+    width: 100px; 
+    height: auto; 
+    border-radius: 4px; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Sombra suave para que la foto "flote" un poco sobre la celda. */
+}
+
+/* Estilo para la columna de descripción. */
+.texto-desc { 
+    text-align: left; /* Alineado a la izquierda porque los textos largos se leen mucho mejor así. */
+    font-size: 14px; 
+    max-width: 250px; /* Limito el ancho para que la descripción no haga que la tabla sea demasiado ancha. */
+    line-height: 1.6;
+}
+
+/* --- BOTONES DE ACCIÓN (Modificar y Eliminar) --- */
+
+.boton-accion {
+    display: inline-block;
+    padding: 12px 28px;
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+    border-radius: 4px;
+    margin: 4px;
+    font-size: 13px;
+    line-height: 1.6;
+    transition: 0.3s;
+}
+
+/* El botón de modificar en azul para transmitir que es una acción de edición técnica. */
+.boton-editar { 
+    background-color: #3498db; 
+    line-height: 1.6;
+}
+
+.boton-editar:hover { 
+    background-color: #2980b9; 
+    line-height: 1.6;
+}
+
+/* El botón eliminar en rojo para avisar visualmente de que es una acción de borrado. */
+.boton-borrar { 
+    background-color: #e74c3c; 
+    line-height: 1.6;
+}
+
+.boton-borrar:hover { 
+    background-color: #c0392b; 
+    line-height: 1.6;
+}
+
+/* --- Diseño responsivo --- */
+
+/* Si la pantalla es pequeña (como un móvil), pongo los botones uno debajo de otro para que sea más fácil pulsar con el dedo. */
+@media (max-width: 768px) {
+    .celda-botones {
+        display: flex;
+        flex-direction: column;
+    }
+}
