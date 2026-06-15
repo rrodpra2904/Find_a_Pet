@@ -19,10 +19,10 @@
             </p>
             
             <?php 
-            // Guardamos la variable por si existe en la URL para usarla abajo
+            // Guardo la variable por si existe en la URL para usarla abajo
             $e = isset($_GET['e']) ? $_GET['e'] : '';
 
-            // Solo mostramos el bloque de arriba si falta algún campo obligatorio por rellenar (Error 1)
+            // Solo muestro el bloque de arriba si falta algún campo obligatorio por rellenar (Error 1)
             if ($e !== '' && strpos($e, "1") !== false) {
                 echo "<div style='background-color: #f8d7da; color: #252525; padding: 15px; border: 1px solid #f7d6d9; border-radius: 5px; margin-bottom: 20px; font-family: sans-serif; text-align: center;'>";
                 echo "<strong>⚠️ Por favor, revisa lo siguiente:</strong><br>";
@@ -38,24 +38,24 @@
             }
             ?>
             
-            <form action="<?php echo $url_validacion; ?>" method="POST">
+            <form action="<?php echo htmlspecialchars($url_validacion, ENT_QUOTES, 'UTF-8'); ?>" method="POST">
 
                 <div class="bloque">
                     <h3>Datos del interesado</h3>
                     
                     <div class="celda-input">
                         <label for="nombre">Nombre</label>
-                        <input type="text" id="nombre" name="nombre" value="<?php echo isset($_GET['nom']) ? $_GET['nom'] : ''; ?>" required>
+                        <input type="text" id="nombre" name="nombre" value="<?php echo isset($_GET['nom']) ? htmlspecialchars($_GET['nom'], ENT_QUOTES, 'UTF-8') : ''; ?>" required>
                     </div>
 
                     <div class="celda-input">
                         <label for="apellidos">Apellidos</label>
-                        <input type="text" id="apellidos" name="apellidos" value="<?php echo isset($_GET['ape']) ? $_GET['ape'] : ''; ?>" required>
+                        <input type="text" id="apellidos" name="apellidos" value="<?php echo isset($_GET['ape']) ? htmlspecialchars($_GET['ape'], ENT_QUOTES, 'UTF-8') : ''; ?>" required>
                     </div>
 
                     <div class="celda-input">
                         <label for="telefono">Teléfono</label>
-                        <input type="tel" id="telefono" name="telefono" value="<?php echo isset($_GET['tel']) ? $_GET['tel'] : ''; ?>" required>
+                        <input type="tel" id="telefono" name="telefono" value="<?php echo isset($_GET['tel']) ? htmlspecialchars($_GET['tel'], ENT_QUOTES, 'UTF-8') : ''; ?>" required>
                         <?php if (strpos($e, "2") !== false): ?>
                             <span class="error-inline">• Debe contener 9 números.</span>
                         <?php endif; ?>
@@ -63,7 +63,7 @@
 
                     <div class="celda-input">
                         <label for="email">Correo electrónico</label>
-                        <input type="email" id="email" name="email" value="<?php echo isset($_GET['ema']) ? $_GET['ema'] : ''; ?>" required>
+                        <input type="email" id="email" name="email" value="<?php echo isset($_GET['ema']) ? htmlspecialchars($_GET['ema'], ENT_QUOTES, 'UTF-8') : ''; ?>" required>
                         <?php if (strpos($e, "4") !== false): ?>
                             <span class="error-inline">• Debe estar completo.</span>
                         <?php endif; ?>
@@ -71,12 +71,12 @@
 
                     <div class="celda-input">
                         <label for="direccion">Dirección completa</label>
-                        <input type="text" id="direccion" name="direccion" value="<?php echo isset($_GET['dir']) ? $_GET['dir'] : ''; ?>" placeholder="Calle, número, piso..." required>
+                        <input type="text" id="direccion" name="direccion" value="<?php echo isset($_GET['dir']) ? htmlspecialchars($_GET['dir'], ENT_QUOTES, 'UTF-8') : ''; ?>" placeholder="Calle, número, piso..." required>
                     </div>
                     
                     <div class="celda-input">
                         <label for="tipo_animal">¿Qué tipo de animal quieres adoptar?</label>
-                        <input type="text" id="tipo_animal" name="tipo_animal" value="<?php echo isset($_GET['ani']) ? $_GET['ani'] : ''; ?>" placeholder="Ej: Perro o gato" required>
+                        <input type="text" id="tipo_animal" name="tipo_animal" value="<?php echo isset($_GET['ani']) ? htmlspecialchars($_GET['ani'], ENT_QUOTES, 'UTF-8') : ''; ?>" placeholder="Ej: Perro o gato" required>
                         <?php if (strpos($e, "3") !== false): ?>
                             <span class="error-inline">• Solo perros o gatos.</span>
                         <?php endif; ?>

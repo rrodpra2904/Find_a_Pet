@@ -1,5 +1,5 @@
 <?php
-// 1. ARRANCAMOS LA SESIÓN:
+// 1. ARRANCO LA SESIÓN:
 // Es obligatorio poner session_start() al principio de todo para poder 
 // leer las variables que guardamos cuando el usuario hizo login.
 session_start();

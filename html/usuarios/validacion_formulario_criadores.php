@@ -78,14 +78,12 @@ if ($errores != "") {
     
     // 4. Inserción segura con PDO (Sentencias preparadas).
     
-    // CAMBIO AQUÍ: Añadimos la columna usuario_email y su marcador :usuario_email
     $sql = "INSERT INTO formulario_de_compromiso_de_criadores_de_animales (usuario_email, nombre, apellidos, telefono, email, direccion, tipo_animal) 
             VALUES (:usuario_email, :nombre, :apellidos, :telefono, :email, :direccion, :tipo_animal)";
 
     // Uso la variable $db que viene del include para preparar la consulta.
     $sentencia = $db->prepare($sql);
 
-    // CAMBIO REALIZADO: Vinculamos el marcador con la variable de sesión 'usuarioAutenticado' que usa tu panel principal
     $sentencia->bindParam(':usuario_email', $_SESSION['usuarioAutenticado']);
     
     // Vinculo mis variables a los marcadores. Esto es lo que hace que el código sea seguro.

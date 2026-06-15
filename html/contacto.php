@@ -38,7 +38,7 @@
 
                 <p class="texto-secundario">
                     Si tienes dudas o quieres colaborar con nosotros o quieres dar tu perro o gato en adopción, envíanos un mensaje para tener mas información.
-                </p>
+                </p><br>
 
                 <?php 
                 if (isset($_GET['e'])) {
@@ -111,18 +111,6 @@
             <p class="footer-copy-text">TODOS LOS DERECHOS RESERVADOS © FIND A PET 2026 - PROYECTO FINAL DAW | RAQUEL </p>
         </div>
     </footer>
-
-    <script>
-    function googleTranslateElementInit() {
-        new google.translate.TranslateElement({
-            pageLanguage: 'es',
-            includedLanguages: 'en,fr,it,de,pt,es',
-            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-            autoDisplay: false
-        }, 'google_translate_element');
-    }
-    </script>
-    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
     <script>
         if (window.history.replaceState) {

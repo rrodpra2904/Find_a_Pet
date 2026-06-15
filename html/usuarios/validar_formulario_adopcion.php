@@ -1,11 +1,25 @@
 <?php
 session_start();
-// Incluyo el archivo de conexión de la base de datos que ya tiene configurado el PDO y el driver.
-include("../conexion_db.php");
 
-// 1. Recojo los datos del formulario y uso trim para limpiar espacios en blanco.
+include("conexion_db.php");
 
-// Así me aseguro de que si el usuario mete un espacio sin querer al final, no de error.
+
+if (isset($_SESSION['usuarioAutenticado'])) {
+    $email_sesion = $_SESSION['usuarioAutenticado'];
+
+    $sql_comprobar = "SELECT id FROM formulario_de_compromiso_adopciones_de_animales WHERE usuario_email = :usuario_email LIMIT 1";
+    $stmt_comprobar = $db->prepare($sql_comprobar);
+    $stmt_comprobar->bindParam(':usuario_email', $email_sesion);
+    $stmt_comprobar->execute();
+
+    // Si ya existe el registro, le damos paso directo y saltamos el formulario
+    if ($stmt_comprobar->fetch()) {
+        $_SESSION['formulario_completado'] = "si";
+        header("Location: ./adopciones_de_animales/adopciones_de_animales.php");
+        exit();
+    }
+}
+
 $nombre      = trim($_POST['nombre']);
 $apellidos   = trim($_POST['apellidos']);
 $telefono    = trim($_POST['telefono']);
@@ -13,38 +27,33 @@ $email       = trim($_POST['email']);
 $direccion   = trim($_POST['direccion']);
 $tipo_animal = trim($_POST['tipo_animal']);
 
-// Creo la variable del rol de cliente para que haya un rol cliente ---
+
 $rol = "cliente"; 
 
-// Variable para ir guardando los códigos de error si algo sale mal.
+
 $errores = "";
 
-// 2. Empiezan las validaciones.
 
-// Compruebo si algún campo del formulario está vacío. Si falta algo, le sumo un "1" a los errores.
 if ($nombre=="" || $apellidos=="" || $email=="" || $telefono=="" || $direccion=="" || $tipo_animal=="") {
     $errores .= "1"; 
 } 
 
-// Compruebo que el teléfono tenga exactamente 9 números usando expresiones regulares (Regex)
 if (!preg_match('/^[0-9]{9}$/', $telefono)) {
     $errores .= "2"; 
 } 
 
-// Validación de tipo de animal con conversión a minúsculas y aceptación de sinónimos.
 $animal_limpio = mb_strtolower($tipo_animal, 'UTF-8');
 $sinonimos_perro = ['perro', 'perra', 'perrito', 'perrita'];
 $sinonimos_gato  = ['gato', 'gata', 'gatito', 'gatita'];
 
 if (in_array($animal_limpio, $sinonimos_perro)) {
-    $tipo_animal = "perro"; // Estandarizo el valor para la base de datos
+    $tipo_animal = "perro"; 
 } elseif (in_array($animal_limpio, $sinonimos_gato)) {
-    $tipo_animal = "gato";  // Estandarizao el valor para la base de datos
+    $tipo_animal = "gato"; 
 } else {
-    $errores .= "3";        // Si escribe otra cosa, salta el error
+    $errores .= "3";  
 }
 
-// Busco la posición del arroba y del último punto para obligar a que el correo esté completo.
 $posicion_arroba = strpos($email, '@');
 $ultimo_punto    = strrpos($email, '.');
 
@@ -52,12 +61,10 @@ if ($posicion_arroba === false || $ultimo_punto === false || $ultimo_punto < $po
     $errores .= "4";
 }
 
-// 3. Gestión de errores.
 
-// Si hay errores, redirijo al formulario pasando los datos por la URL para que no tengan que volver a escribir todo.
 if ($errores != "") {
     
-    // Lo pongo así para que la url no sea difícil de leer y se vea todo ordenado.
+    
     $url = "formulario_adopciones_de_animales.php?";
     $url .= "e=$errores";
     $url .= "&nom=$nombre";
@@ -72,7 +79,7 @@ if ($errores != "") {
 
 } else {
     
-    // 4. Inserción segura con PDO (Sentencias preparadas).
+  
     
     $sql = "INSERT INTO formulario_de_compromiso_adopciones_de_animales 
     (usuario_email, nombre, apellidos, telefono, email, direccion, tipo_animal, rol)
@@ -94,15 +101,9 @@ if ($errores != "") {
 
     $sentencia->execute();
 
-    // --- Control de acceso  de la página web de adopción de animales ---
 
-    // Guardo en la sesión que el formulario se ha rellenado correctamente.
-    // Esto me sirve para que si alguien intenta entrar directamente a la 
-    // página web de criadores de animales escribiendo la URL en el navegador sin rellenar nada, 
-    // el sistema sepa que no tiene permiso y lo eche.
     $_SESSION['formulario_completado'] = "si";
 
-    // Si todo ha ido bien, redirijo a la página web de adopciones animales.
     header("Location: ./adopciones_de_animales/adopciones_de_animales.php");
     exit(); 
 }

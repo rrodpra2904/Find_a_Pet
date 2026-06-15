@@ -154,7 +154,7 @@ body {
                  Botón de iniciar sesión y registro
   ===========================================================================*/
 
-/* Agrupamos menú y botones para que se muevan juntos a la derecha */
+/* Agrupo menú y botones para que se muevan juntos a la derecha */
     .contenedor-derecha {
         display: flex;
         align-items: center;
@@ -271,7 +271,7 @@ body {
 }
 
 /* 5. EL CARGADOR (ANIMACIÓN SPIN):
-   Creamos un círculo con el borde superior morado que gira infinitamente.
+   Creo un círculo con el borde superior morado que gira infinitamente.
    Esto mejora mucho la percepción de velocidad de la web. */
 .loader {
     width: 35px; height: 35px;
@@ -364,7 +364,7 @@ body {
    ========================================================================== */
 
 /* 1. CONTENEDOR HERO:
-   Damos un margen generoso arriba y abajo (100px) para que la entrada a la web 
+   Doy un margen generoso arriba y abajo (100px) para que la entrada a la web 
    sea limpia y no se sienta apretada con el resto de secciones. */
 .hero-container {
     margin-top: 60px;
@@ -373,7 +373,7 @@ body {
 }
 
 /* 2. TÍTULO PRINCIPAL:
-   Usamos un tamaño grande (42px) y un peso de 700 para que el mensaje 
+   Uso un tamaño grande (42px) y un peso de 700 para que el mensaje 
    "Tu próximo mejor amigo" sea lo más impactante de la pantalla. */
 .proximo_mejor_amigo {
     font-weight: 700; 
@@ -384,7 +384,7 @@ body {
 }
 
 /* 3. TEXTO DESCRIPTIVO:
-   Configuramos los párrafos con un color gris suave (#3f3f3f) para que sea 
+   Configuro los párrafos con un color gris suave (#3f3f3f) para que sea 
    agradable de leer y no compita con la fuerza del título negro. */
 .proximo_mejor_amigo-texto-principal,
 .proximo_mejor_amigo-p-sub-texto-principal {
@@ -395,25 +395,21 @@ body {
 }
 
 /* 4. AJUSTE DE COLUMNAS:
-   Damos un espacio extra a la derecha del texto (50px) para que no se pegue 
+   Doy un espacio extra a la derecha del texto (50px) para que no se pegue 
    a la imagen y la lectura sea más fluida. */
 .hero-container .col-md-6:first-child {
     padding-right: 50px; 
 }
 
 /* 5. DISEÑO DE LA IMAGEN HERO (El truco visual):
-   Aquí aplicas una técnica avanzada: escalas la imagen para que sobresalga 
+   Aquí aplico una técnica avanzada: escalas la imagen para que sobresalga 
    un poco de su contenedor original sin mover el texto de la izquierda. */
 .proximo_mejor_amigo-img {
     display: block;
-    width: 105%; /* Hacemos que la imagen sea más ancha que su columna */
+    width: 105%; 
     max-width: 800px; 
     height: 240px;
     margin-top: 250px;
-
-    /* EL TRUCO: 'scale(1.2)' aumenta el tamaño un 20%. 
-       'transform-origin: center left' asegura que crezca hacia afuera y no 
-       encima del texto, manteniendo el equilibrio. */
     transform: scale(1.2);
     transform-origin: center left;
 
@@ -421,9 +417,7 @@ body {
     box-shadow: 0 20px 40px rgba(0,0,0,0.15); /* Sombra profunda para dar relieve */
 }
 
-/* 6. RESPONSIVE (MÓVILES Y TABLETS):
-   ¡Muy importante! En pantallas pequeñas desactivamos los escalados y márgenes 
-   grandes para que la imagen se ajuste al 100% del ancho del móvil. */
+/* 6. RESPONSIVE (MÓVILES Y TABLETS):*/
 @media (max-width: 992px) {
     .proximo_mejor_amigo-img {
         transform: scale(1);
@@ -434,7 +428,7 @@ body {
 }
 
 /* 7. BOTÓN DE ACCIÓN (Call to Action):
-   Diseñamos el botón morado con estilo "píldora" (border-radius: 50px). */
+   Diseño el botón morado con estilo "píldora" (border-radius: 50px). */
 .boton-morado {
     background-color: #9b59b6;
     color: white;
@@ -448,7 +442,7 @@ body {
     margin-top: 25px;
 }
 
-/* EFECTO HOVER: Cambiamos a un morado más oscuro y añadimos una sombra 
+/* EFECTO HOVER: Cambio a un morado más oscuro y añadimos una sombra 
    con un toque lila para que parezca que el botón se ilumina al tocarlo. */
 .boton-morado:hover {
     background-color: #8e44ad;
@@ -461,7 +455,7 @@ body {
    ========================================================================== */
 
 /* 1. CONTENEDOR DE COMPROMISO:
-   Diseñamos una "tarjeta gigante" blanca. El detalle del 'border: 2px dotted' 
+   Diseño una "tarjeta gigante" blanca. El detalle del 'border: 2px dotted' 
    le da un toque artesanal y cercano, ideal para una sección sobre valores. */
 .compromiso-container {
     background-color: #fff;
@@ -475,7 +469,7 @@ body {
 }
 
 /* 2. ESTRUCTURA DE LA FILA:
-   Usamos 'flex-wrap: nowrap' para forzar que la imagen y el texto se mantengan 
+   Uso 'flex-wrap: nowrap' para forzar que la imagen y el texto se mantengan 
    en paralelo en pantallas grandes, con un hueco (gap) de 50px entre ellos. */
 .compromiso-container .row {
     display: flex; 
@@ -486,7 +480,7 @@ body {
 }
 
 /* 3. COLUMNA DE LA IMAGEN (45% de ancho):
-   La centramos para que la foto del compromiso sea el foco visual izquierdo. */
+   Lo centro para que la foto del compromiso sea el foco visual izquierdo. */
 .compromiso-container .col-md-5 {
     flex: 0 0 45%;
     text-align: center;
@@ -502,7 +496,7 @@ body {
 }
 
 /* 5. ESTILO DE LA IMAGEN:
-   Aplicamos un redondeado de 20px y una sombra para que la foto 
+   Aplicao un redondeado de 20px y una sombra para que la foto 
    encaje con la estética moderna de Find A Pet. */
 .compromiso-container img {
     width: 100%;
@@ -512,7 +506,7 @@ body {
 }
 
 /* 6. TÍTULO DE LA SECCIÓN:
-   Usamos un peso de 800 (Extra Bold) para que el título "Nuestro Compromiso" 
+   Uso un peso de 800 (Extra Bold) para que el título "Nuestro Compromiso" 
    tenga autoridad y presencia. */
 .nuestro_compromiso {
     font-weight: 800;
@@ -754,21 +748,17 @@ body {
 
 .img-donacion {
     display: block !important;
-    /* Forzamos el ancho al 100% de su columna */
+    /* Fuerzo el ancho al 100% de su columna */
     width: 60% !important; 
-    /* Subimos el máximo para que sea grande de verdad */
+    /* Subo el máximo para que sea grande de verdad */
     max-width: 700px !important; 
     height: auto !important;
 
     /* Centrado perfecto sin números fijos */
     margin: 40px auto !important; 
     margin-left: 155px !important;
-
-    /* Estilo igual al resto de la web */
     border-radius: 10px !important; 
     box-shadow: 0 15px 35px rgba(0,0,0,0.15) !important;
-    
-    /* Si aun así la ves pequeña, esto le da un empujón extra */
     transform: scale(1.1);
 }
 .donation-number-box {
@@ -1196,7 +1186,6 @@ min-height: 55px; /* Le pongo un mínimo de altura para que sea más fácil darl
 
 } 
 
-/*HAY QUE EXPLICARLO BIEN*/
 .intro-requisitos {
     color: #2c2c2c;
     font-size: 0.95rem;
@@ -1340,7 +1329,7 @@ min-height: 55px; /* Le pongo un mínimo de altura para que sea más fácil darl
        que el catálogo se vea como una lista vertical perfecta. */
     .caja-animal {
         width: 100%; 
-        max-width: 350px; /* Evitamos que la tarjeta crezca demasiado en móviles grandes. */
+        max-width: 350px; /* Evito que la tarjeta crezca demasiado en móviles grandes. */
     }
 
     .contenedor-grid {
@@ -1349,7 +1338,7 @@ min-height: 55px; /* Le pongo un mínimo de altura para que sea más fácil darl
     }
 
     /* NAV BAR Y LOGO:
-       Reducimos el padding y el tamaño del texto del logo para que la 
+       Reduzco el padding y el tamaño del texto del logo para que la 
        cabecera no ocupe media pantalla. */
     .navbar-custom {
         padding: 10px 0;

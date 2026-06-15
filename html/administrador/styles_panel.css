@@ -1,50 +1,245 @@
-/* --- Estilos generales --- */
+* { font-family: 'Poppins', sans-serif; box-sizing: border-box; margin: 0; padding: 0; }
 body {
-  font-family: 'Poppins', sans-serif; /* Uso la fuente corporativa para todo el panel */
   background-color: #fafafa; /* Fondo gris casi blanco para que las tarjetas resalten */
   margin: 0;
   padding: 0;
 }
+        
+        /* Contenedor adaptado con padding lateral de 60px para que NUNCA roce los bordes */
+        .contenedor-panel { 
+            max-width: 1400px; 
+            margin: 40px auto 80px auto; 
+            padding: 0 60px; 
+        }
 
-/* --- Menú de navegación --- */
-.navbar {
-    background-color: #9b59b6; /* El morado de la marca para que se identifique rápido */
-    padding: 25px 0;
-    display: flex;
-    justify-content: center; /* Centra los enlaces principales */
-    align-items: center;
-    position: relative; /* Clave para poder colocar el botón de salir de forma independiente */
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        .nav-links a {
+            color: #ffffff; 
+            text-decoration: none; 
+            font-weight: 700; 
+            font-size: 18px; 
+            text-transform: uppercase;
+            transition: color 0.2s ease;
+        }
+        .nav-links a:hover { color: #f1e4f7; }
+
+        .btn-salir {
+            color: #000000; 
+            text-decoration: none; 
+            font-weight: 700; 
+            font-size: 16px; 
+            text-transform: uppercase;
+            transition: opacity 0.2s ease;
+        }
+        .btn-salir:hover { opacity: 0.75; }
+
+        /* REGRESO A DOS COLUMNAS DE DOS EN DOS */
+        .grid-informes { 
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 25px; 
+            margin-bottom: 50px; 
+        }
+        .tarjeta { 
+            background: white; 
+            padding: 35px 20px; 
+            border-radius: 12px; 
+            border: 1px solid #ebdff2; 
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(155, 89, 182, 0.03);
+        }
+        .tarjeta .icono { font-size: 38px; margin-bottom: 6px; }
+        .tarjeta .numero { font-size: 34px; font-weight: 700; color: #000000; line-height: 1.1; }
+        .tarjeta h3 { font-size: 15px; font-weight: 600; color: #555555; margin-top: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+        .seccion-tablon { 
+            background: #ffffff; 
+            padding: 40px 35px; 
+            border-radius: 14px; 
+            border: 1px solid #ebe4f0; 
+            box-shadow: 0 6px 18px rgba(155, 89, 182, 0.02);
+            margin-top: 30px;
+        }
+        .seccion-tablon h2 { font-weight: 600; color: #000000; font-size: 24px; margin-bottom: 4px; }
+        .seccion-tablon .subtitulo { color: #666666; font-size: 15px; margin-bottom: 25px; }
+        
+        .bloque-buscador { 
+            padding: 20px; 
+            background: #faf8fb; 
+            border-radius: 10px; 
+            border: 1px solid #efe8f3; 
+            margin-bottom: 30px;
+        }
+        .bloque-buscador form { 
+            display: flex;
+            gap: 12px; 
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .bloque-buscador input, .bloque-buscador select { 
+            padding: 12px 14px; 
+            border: 1px solid #d9cbd1; 
+            border-radius: 6px; 
+            font-size: 15px;
+            color: #000000;
+            background: #fff;
+            outline: none;
+            flex: 1;
+            min-width: 150px;
+        }
+        .btn-lupa { 
+            background: #9b59b6; 
+            color: white; 
+            border: none; 
+            padding: 13px 25px; 
+            border-radius: 6px; 
+            cursor: pointer; 
+            font-size: 15px; 
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        
+        .tabla-moderacion { 
+            width: 100%; 
+            border-collapse: separate; 
+            border-spacing: 0;
+            margin-top: 10px;
+        }
+        
+        .tabla-moderacion th { 
+            color: #444444; 
+            font-weight: 700; 
+            padding: 16px 14px; 
+            text-align: left; 
+            font-size: 13px; 
+            text-transform: uppercase;
+            letter-spacing: 0.5px; 
+            background: #fdfbfe;
+            border-bottom: 2px solid #e3dae6;
+        }
+        
+.fila-datos td { 
+    padding: 22px 14px; 
+    background: #ffffff;
+    border-top: 1px solid #e3dae6; 
+    font-size: 15px; 
+    vertical-align: middle; 
+    color: #000000; 
+    max-width: 200px; 
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+        
+.fila-descripcion td {
+    background: #ffffff;
+    padding: 0 14px 22px 14px;
+    border-bottom: 1px solid #e3dae6;
 }
 
-.nav-links {
-    display: flex;
-    gap: 55px; /* Espaciado generoso entre los botones del menú */
+.caja-subtabla-desc {
+    width: 100%;
+    background: #fbf9fc;
+    border: 1px solid #eae2ec;
+    border-radius: 6px;
+    padding: 14px 18px;
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: #2c3e50;
+    text-align: left;
+    word-wrap: break-word;
+    word-break: break-all;
 }
 
-.nav-links a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold; 
-    font-size: 20px; 
-    text-transform: uppercase; /* Texto en mayúsculas para que se vea más profesional */
-    letter-spacing: 0.5px;
-    padding-bottom: 8px;
-    border-bottom: 4px solid transparent; /* Preparo el borde para el efecto hover */
+.img-miniatura { 
+    width: 65px; 
+    height: 65px; 
+    border-radius: 50%; 
+    object-fit: cover; 
+    border: 2px solid #9b59b6; 
+}
+.no-foto-icono { 
+    width: 65px;
+    height: 65px; 
+    background: #faf5fc; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    border-radius: 50%; 
+    font-size: 22px; 
+    color: #9b59b6; 
+    border: 2px dashed #c8b7cd; 
 }
 
-/* Efecto visual cuando pasas el ratón por el menú: aparece una línea blanca debajo */
-.nav-links a:hover {
-    border-bottom: 4px solid white;
+.nombre-mascota { 
+    font-size: 17px; 
+    font-weight: 700; 
+    color: #000000; 
+    margin-bottom: 3px; 
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
-/* Botón salir: 
-   Lo coloco a la derecha del menú y le doy un estilo un estilo redondeado a los botones. */
+.detalles-mascota { 
+    font-size: 14px; 
+    color: #444444; 
+    line-height: 1.4; 
+    white-space: normal; 
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+        
+.badge-estado {
+    font-weight: 700; 
+    font-size: 13px; 
+    padding: 6px 14px; 
+    border-radius: 20px; 
+    display: inline-block;
+    white-space: nowrap; 
+}
+.estado-activo { color: #1e8449; background: #eafaf1; border: 1px solid #abebc6; }
+.estado-pendiente { color: #b7950b; background: #fef9e7; border: 1px solid #f9e79f; }
+
+
+.contenedor-acciones { 
+    display: flex; 
+    flex-direction: row;
+    gap: 12px; 
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+}
+
+
+.btn-acc { 
+    text-decoration: none; 
+    padding: 9px 16px; 
+    border-radius: 6px; 
+    font-size: 14px;   
+    font-weight: 700; 
+    color: white; 
+    text-align: center; 
+    white-space: nowrap;
+    transition: opacity 0.2s ease;
+}
+.btn-acc:hover { opacity: 0.85; }
+.btn-v { background-color: #2ecc71; }
+.btn-qv { background-color: #7f8c8d; }
+.btn-e { background-color: #3498db; }
+.btn-b { background-color: #e74c3c; }
+
+.form-edicion-rapida { background: #fff; padding: 20px; border-radius: 10px; border: 1px dashed #3498db; margin-bottom: 20px; }
+.form-edicion-rapida input, .form-edicion-rapida textarea { padding: 11px; border-radius: 6px; border: 1px solid #ccc; font-size: 15px; width: 100%; outline: none; }
+.form-group { display: flex; flex-direction: column; gap: 4px; font-weight: 500; font-size: 14px; }
+.btn-guardar { background: #3498db; color: white; border: none; padding: 11px 24px; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 15px; }
+
+ 
 .btn-salir {
     position: absolute;
-    right: 40px; /* Lo separo un poco del borde derecho */
+    right: 40px; 
     background-color: white;
-    color: #9b59b6 !important; /* Le pongo el texto morado para que resalte sobre el fondo blanco */
+    color: #3b3b3b !important; 
     padding: 10px 30px; 
     border-radius: 35px;
     text-decoration: none;
@@ -53,66 +248,3 @@ body {
     text-transform: uppercase;
 }
 
-.btn-salir:hover {
-    background-color: #f2f2f2; /* Al pasar el ratón se vuelve un gris muy suave */
-}
-
-/* --- Cuerpo de página wbe (Informes) --- */
-.container {
-    max-width: 1000px;
-    margin: 80px auto; /* Lo separo del menú y lo centro en la pantalla */
-    text-align: center;
-}
-
-.titulo-principal {
-    color: #333;
-    margin-bottom: 60px;
-    font-size: 34px;
-    font-weight: bold;
-}
-
-/* Contenedor de las tarjetas de estadísticas */
-.grid-informes {
-    display: flex;
-    justify-content: center;
-    gap: 40px; /* Espacio entre la tarjeta de animales y la de criadores */
-}
-
-/* Estilo de las tarjetas de datos */
-.tarjeta {
-    background: white;
-    border: 2px solid #9b59b6; /* Borde morado para ir a juego con la marca */
-    padding: 60px 40px;
-    border-radius: 20px;
-    flex: 1; /* Esto hace que ambas tarjetas tengan exactamente el mismo tamaño */
-    box-shadow: 0 15px 35px rgba(0,0,0,0.2); /* Sombra más fuerte para dar sensación de elevación */
-}
-
-/* Estilos para los iconos */
-.icono-animal { 
-    color: #8B4513; 
-    font-size: 65px; 
-    margin-bottom: 20px; 
-}
-.icono-criador { 
-    color: #2980b9; 
-    font-size: 65px; 
-    margin-bottom: 20px; 
-}
-
-/* El número grande que muestra el total de la base de datos */
-.tarjeta .numero {
-    font-size: 80px;
-    font-weight: bold;
-    color: #000;
-    margin: 10px 0;
-    line-height: 1;
-}
-
-.tarjeta h3 {
-    color: #555;
-    text-transform: uppercase;
-    font-size: 18px;
-    font-weight: bold;
-    margin-top: 20px;
-}

@@ -299,7 +299,7 @@ html, body {
     margin: 30px auto;
 }
 
-/* MODIFICADO: Ajustado de 48px a 40px para que quede perfecto y un poquito más pequeño */
+
 .status-box-empty .icon {
     font-size: 40px;
     display: block;

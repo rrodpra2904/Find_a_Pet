@@ -12,16 +12,16 @@ $usuarioTemporal = "";
 $rolSeleccionadoTemporal = "empleado"; // Rol por defecto en el formulario
 
 // ==========================================
-// 2. PROCESAMIENTO DEL FORMULARIO (POST)
+// 2. PROCESAMIENTO DEL FORMULARIO 
 // ==========================================
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
-    // Recogemos los datos del formulario
+    // Recojo los datos del formulario
     $usuario = $_POST['user'] ?? "";
     $password = $_POST['password'] ?? "";
-    $rolElegido = $_POST['rol'] ?? "empleado"; // Recogemos el rol que han elegido ellos
+    $rolElegido = $_POST['rol'] ?? "empleado"; // Recojo el rol que han elegido ellos
     
-    // Guardamos los datos temporales por si hay algún error
+    // Guardo los datos temporales por si hay algún error
     $usuarioTemporal = $usuario;
     $rolSeleccionadoTemporal = $rolElegido;
 
@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $mensaje = "La contraseña debe tener al menos 8 caracteres.";
     } else {
         try {
-            // VALIDACIÓN 2: Comprobar que el usuario no exista ya
+            // VALIDACIÓN 2: Compruebo que el usuario no exista ya
             $sqlCheck = "SELECT COUNT(*) FROM usuarios WHERE user = :user";
             $sentenciaCheck = $db->prepare($sqlCheck);
             $sentenciaCheck->bindParam(':user', $usuario);
@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 // SEGURIDAD: Encriptación BCRYPT para la contraseña
                 $passwordEncriptada = password_hash($password, PASSWORD_BCRYPT);
 
-                // INSERCIÓN: Guardamos el usuario con el ROL DINÁMICO que han elegido ellos
+                // INSERCIÓN: Guardo el usuario con el ROL DINÁMICO que han elegido ellos
                 $sqlInsert = "INSERT INTO usuarios (user, password, rol) VALUES (:user, :password, :rol)";
                 $sentenciaInsert = $db->prepare($sqlInsert);
                 
@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $mensaje = "¡Personal registrado con éxito! El usuario ya tiene asignado el rol de " . $rolElegido . ".";
                 $exito = true;
                 
-                // Limpiamos los campos al acabar con éxito
+                // Limpio los campos al acabar con éxito
                 $usuarioTemporal = ""; 
                 $rolSeleccionadoTemporal = "empleado";
             }

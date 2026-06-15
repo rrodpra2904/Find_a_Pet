@@ -140,7 +140,7 @@ input:focus, textarea:focus {
     input[type="file"], 
     select,
     textarea {
-        font-size: 16px; /* Aumentamos a 16px para evitar que iOS haga zoom automático al clicar */
+        font-size: 16px; /* Aumento a 16px para evitar que iOS haga zoom automático al clicar */
         padding: 14px 10px; /* Más área de toque */
     }
 

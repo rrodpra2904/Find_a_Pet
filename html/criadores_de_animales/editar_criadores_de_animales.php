@@ -1,22 +1,39 @@
 <?php 
-// Incluimos el archivo de seguridad para asegurarnos de que solo usuarios autorizados accedan.
+// Incluyo el archivo de seguridad para asegurarme de que solo usuarios autorizados accedan.
 include 'seguridad.php'; 
 ?>
 
 <?php
-// Conectamos a la base de datos.
-include '../conexion.php';
+// Conecto a la base de datos.
+include 'conexion.php';
 
 /* 1. RECUPERACIÓN DEL REGISTRO ESPECÍFICO:
-   Recogemos el ID del criador que queremos editar a través de la URL (método GET). */
-$id = $_GET['id'];
+   Recojo el ID del criador que quiero editar a través de la URL (método GET). 
+   Uso un condicional para que si no hay "id" en la URL, valga 0 por defecto y no salte el Warning. */
+$id = isset($_GET['id']) ? $_GET['id'] : 0;
 
-/* Realizamos una consulta SELECT filtrando por ese ID para obtener 
-   toda la información actual de ese criador. */
-$consulta = mysqli_query($conexion, "SELECT * FROM criadores_de_animales WHERE id = '$id'");
+/* Realizo una consulta SELECT filtrando por ese ID para obtener 
+   toda la información actual de ese criador usando PDO. */
+$sql = "SELECT * FROM criadores_de_animales WHERE id = :id";
+$sentencia = $db->prepare($sql);
+$sentencia->bindParam(':id', $id);
+$sentencia->execute();
 
-/* Guardamos los datos en la variable $dato para poder pintarlos en los campos del formulario. */
-$dato = mysqli_fetch_assoc($consulta);
+/* Guardo los datos en la variable $dato para poder pintarlos en los campos del formulario. */
+$dato = $sentencia->fetch(PDO::FETCH_ASSOC);
+
+/* Si el ID no existe o no se encuentra en la base de datos, inicializamos $dato vacío 
+   para que no salten más errores al intentar pintar los campos abajo. */
+if (!$dato) {
+    $dato = [
+        'id' => '',
+        'nombre_del_criador' => '',
+        'telefono' => '',
+        'localidad' => '',
+        'raza_de_animal' => '',
+        'informacion_del_criador' => ''
+    ];
+}
 ?>
 
 <!DOCTYPE html>
@@ -33,29 +50,33 @@ $dato = mysqli_fetch_assoc($consulta);
 <div class="caja-lila">
     <h2>Editar Criador</h2>
     
-    <form action="../actualizar_criadores_de_animales.php" method="POST" enctype="multipart/form-data">
+    <form action="actualizar_criadores_de_animales.php" method="POST" enctype="multipart/form-data">
         
+        <?php
         /* 2. CAMPO OCULTO (ID):
            Es fundamental enviar el ID de forma oculta para que el archivo que actualiza 
            sepa exactamente qué registro debe modificar en la base de datos. */
-        <input type="hidden" name="id" value="<?php echo $dato['id']; ?>">
+        ?>
+        <input type="hidden" name="id" value="<?php echo htmlspecialchars($dato['id'], ENT_QUOTES, 'UTF-8'); ?>">
 
+        <?php
         /* 3. CARGA DE DATOS EN LOS INPUTS:
-           Usamos el atributo 'value' para mostrar la información que ya existe en la BD. */
+           Uso el atributo 'value' para mostrar la información que ya existe en la BD. */
+        ?>
         <label>Nombre:</label>
-        <input type="text" name="nombre" value="<?php echo $dato['nombre_del_criador']; ?>" required>
+        <input type="text" name="nombre" value="<?php echo htmlspecialchars($dato['nombre_del_criador'], ENT_QUOTES, 'UTF-8'); ?>" required>
 
         <label>Teléfono:</label>
-        <input type="text" name="telefono" value="<?php echo $dato['telefono']; ?>" required maxlength="9">
+        <input type="text" name="telefono" value="<?php echo htmlspecialchars($dato['telefono'], ENT_QUOTES, 'UTF-8'); ?>" required maxlength="9">
 
         <label>Localidad:</label>
-        <input type="text" name="localidad" value="<?php echo $dato['localidad']; ?>" required>
+        <input type="text" name="localidad" value="<?php echo htmlspecialchars($dato['localidad'], ENT_QUOTES, 'UTF-8'); ?>" required>
 
         <label>Raza:</label>
-        <input type="text" name="raza" value="<?php echo $dato['raza_de_animal']; ?>" required>
+        <input type="text" name="raza" value="<?php echo htmlspecialchars($dato['raza_de_animal'], ENT_QUOTES, 'UTF-8'); ?>" required>
 
         <label>Información:</label>
-        <textarea name="info" rows="3" required><?php echo $dato['informacion_del_criador']; ?></textarea>
+        <textarea name="info" rows="3" required><?php echo htmlspecialchars($dato['informacion_del_criador'], ENT_QUOTES, 'UTF-8'); ?></textarea>
 
         <label>Foto/Logo (opcional):</label>
         <input type="file" name="logo_archivo">

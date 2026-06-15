@@ -51,7 +51,7 @@ if ($foto != "") {
 mysqli_query($conexion, $sql);
 
 /* 4. FINALIZACIÓN Y REDIRECCIÓN:
-   Una vez guardados los cambios, devolvemos al administrador a la tabla de gestión 
+   Una vez guardados los cambios, devuelvo al administrador a la tabla de gestión 
    para que pueda ver los datos ya actualizados. */
 header("Location: ../administrador/gestion_de_criadores_de_animales.php");
 ?>

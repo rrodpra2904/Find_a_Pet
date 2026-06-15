@@ -83,7 +83,7 @@ if (isset($_GET['id'])) {
             </body>
             </html>";
             
-            // Cortamos la ejecución aquí para evitar que el script llegue al proceso de borrado.
+            // Paro la ejecución aquí para evitar que el script llegue al proceso de borrado.
             exit(); 
         }
     }

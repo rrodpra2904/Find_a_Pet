@@ -19,10 +19,10 @@
             </p>
             
             <?php 
-            // Guardamos la variable por si existe en la URL para usarla abajo
+            // Guardo la variable por si existe en la URL para usarla abajo
             $e = isset($_GET['e']) ? $_GET['e'] : '';
 
-            // Solo mostramos el bloque de arriba si falta algún campo obligatorio por rellenar (Error 1)
+            // Solo muestro el bloque de arriba si falta algún campo obligatorio por rellenar (Error 1)
             if ($e !== '' && strpos($e, "1") !== false) {
                 echo "<div style='background-color: #f8d7da; color: #252525; padding: 15px; border: 1px solid #f7d6d9; border-radius: 5px; margin-bottom: 20px; font-family: sans-serif; text-align: center;'>";
                 echo "<strong>⚠️ Por favor, revisa lo siguiente:</strong><br>";
@@ -90,7 +90,7 @@
                     </p>
                     <div class="contenedor-checkbox">
                         <input type="checkbox" id="req1" name="req1" required>
-                        <label for="req1">Me comprometo a garantizar su bienestar, cubriendo sus necesidades de alimentación, salud y revisiones veterinarias.</label>
+                        <label for="req1">Me comprometo a garantizar su bienestar, cubriendo sus necesidades de alimentación, salud and revisiones veterinarias.</label>
                     </div>
                     <div class="contenedor-checkbox">
                         <input type="checkbox" id="req2" name="req2" required>

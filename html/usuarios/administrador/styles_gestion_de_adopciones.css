@@ -53,7 +53,7 @@ h2 {
 }
 
 .boton-nuevo:hover { 
-    background-color: #8e44ad; /* Cuando pasas el ratón se oscurece un poco para indicar que el botón es interactivo. */
+    background-color: #8e44ad; /* Cuando paso el ratón se oscurece un poco para indicar que el botón es interactivo. */
     line-height: 1.6;
 }
 

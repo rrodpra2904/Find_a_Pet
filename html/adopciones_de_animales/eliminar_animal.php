@@ -88,26 +88,40 @@ if (isset($_GET['id'])) {
         }
     }
 
-    // --- 3. Proceso de borrado final ---
+    // --- 3. Proceso de borrado final (Administrador y Usuarios) ---
 
-    // Si el usuario tiene permisos (es Admin o es Empleado y el animal está adoptado),
-    // preparo la consulta SQL usando marcadores (:id) para evitar inyecciones SQL.
-    $sql = "DELETE FROM animales WHERE id = :id";
-    $sentencia = $db->prepare($sql);
-    
-    // Vinculo el ID recogido al marcador de la consulta para procesarlo de forma segura.
-    $sentencia->bindParam(':id', $id_borrar);
+    try {
+        // 🔥 NUEVO: Borramos los rastros en las tablas secundarias que lee el buscador de USUARIOS
+        // Limpiamos los filtros vinculados a este animal
+        $borrar_filtros1 = $db->prepare("DELETE FROM filtro_animales WHERE id_animal = :id");
+        $borrar_filtros1->bindParam(':id', $id_borrar);
+        $borrar_filtros1->execute();
 
-    // Ejecuto el borrado definitivo en la base de datos.
-    if ($sentencia->execute()) {
-        
-        // Si el borrado tiene éxito, redirijo al usuario al panel de gestión principal.
-        header("Location: ../administrador/gestion_de_adopciones_de_animales.php");
-        exit();
-        
-    } else {
-        // Mensaje de aviso por si ocurre algún fallo inesperado en la base de datos.
-        echo "Lo siento, ha habido un error técnico y no se ha podido borrar el registro.";
+        $borrar_filtros2 = $db->prepare("DELETE FROM filtro_sexo_animales WHERE id_animal = :id");
+        $borrar_filtros2->bindParam(':id', $id_borrar);
+        $borrar_filtros2->execute();
+
+        // Limpiamos el tablón de anuncios que ven los usuarios finales
+        $borrar_tablon = $db->prepare("DELETE FROM tablon_de_adopciones WHERE id = :id");
+        $borrar_tablon->bindParam(':id', $id_borrar);
+        $borrar_tablon->execute();
+
+        // Por último, ejecutamos tu consulta original para borrarlo de la lista del ADMINISTRADOR
+        $sql = "DELETE FROM animales WHERE id = :id";
+        $sentencia = $db->prepare($sql);
+        $sentencia->bindParam(':id', $id_borrar);
+
+        // Ejecuto el borrado definitivo en la base de datos.
+        if ($sentencia->execute()) {
+            // Si el borrado tiene éxito en cascada, redirijo al usuario al panel de gestión principal.
+            header("Location: ../administrador/gestion_de_adopciones_de_animales.php");
+            exit();
+        } else {
+            echo "Lo siento, ha habido un error técnico y no se ha podido borrar el registro.";
+        }
+
+    } catch (PDOException $e) {
+        echo "Error en la base de datos al intentar eliminar de todas las tablas: " . $e->getMessage();
     }
 }
 ?>

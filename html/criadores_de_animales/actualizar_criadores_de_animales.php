@@ -35,7 +35,7 @@ if ($foto != "") {
             WHERE id='$id'";
 } else {
     /* CASO B: SI NO HAY FOTO NUEVA.
-       Solo actualizos los textos. Si no lo higo así, el campo de la foto 
+       Solo actualizo los textos. Si no lo higo así, el campo de la foto 
        se quedaría vacío y borraría el logo anterior por error. */
     $sql = "UPDATE criadores_de_animales SET 
             nombre_del_criador='$nombre', 

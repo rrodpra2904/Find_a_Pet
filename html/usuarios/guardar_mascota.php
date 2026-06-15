@@ -2,7 +2,7 @@
 session_start();
 include("../conexion_db.php");
 
-// Verificamos que el cliente esté logueado
+// Verifico que el cliente esté logueado
 if (!isset($_SESSION['usuario_id'])) {
     die("Error: Debes iniciar sesión para registrar una mascota.");
 }
@@ -28,12 +28,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $ruta_temporal = $_FILES['foto_mascota']['tmp_name'];
     $carpeta_destino = "imagenes/mascotas/";
     
-    // Creamos un nombre único para la foto (ID_Cliente + Nombre original)
+    // Creo un nombre único para la foto (ID_Cliente + Nombre original)
     $nombre_final_foto = $id_cliente . "_" . time() . "_" . $nombre_foto;
     $ruta_completa = $carpeta_destino . $nombre_final_foto;
 
     if (move_uploaded_file($ruta_temporal, $ruta_completa)) {
-        // Si la foto se subió bien, guardamos todo en la base de datos
+        // Si la foto se subió bien, lo guardo todo en la base de datos
         try {
             $sql = "INSERT INTO mascotas_clientes 
                     (id_cliente, nombre_animal, especie, raza, sexo, edad, peso, esterilizado, microchip, ubicacion, telefono_contacto, foto_mascota, cartilla_vacunas, desparasitacion, observaciones) 
@@ -53,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 ':chip' => $microchip,
                 ':ubi'  => $ubicacion,
                 ':tel'  => $telefono,
-                ':foto' => $ruta_completa, // Guardamos la ruta para el <img>
+                ':foto' => $ruta_completa, // Guardo la ruta para el <img>
                 ':vac'  => $vacunas,
                 ':desp' => $desparasitacion,
                 ':obs'  => $observaciones

@@ -80,11 +80,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
        Si el formulario es válido, procedemos a mover la foto y guardar en DB. */
     if ($formulario_valido == true) {
         
-        $nombre_foto = $_FILES['logo_del_criador']['name'];
+        $original = $_FILES['logo_del_criador']['name'];
         $temp = $_FILES['logo_del_criador']['tmp_name'];
+        
+        
+        $info_archivo = pathinfo($original);
+        $nombre_base = $info_archivo['filename'];
+        $extension = strtolower($info_archivo['extension']);
+        $nombre_foto = $nombre_base . '.' . $extension;
+
+       
         $destino = "../imagenes/criadores_de_animales/";
 
-        // Movemos el archivo de la memoria temporal del servidor a nuestra carpeta de imágenes.
+        // Muevo el archivo de la memoria temporal del servidor a nuestra carpeta de imágenes.
         if (move_uploaded_file($temp, $destino . $nombre_foto)) {
             
             /* 5. INSERCIÓN SEGURA CON PDO:
@@ -94,7 +102,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             
             $sentencia = $db->prepare($sql);
             
-            // Vinculamos las variables a los marcadores de la consulta (:nombre, :localidad...).
+            // Vinculo las variables a los marcadores de la consulta (:nombre, :localidad...).
             $sentencia->bindParam(':nombre', $nombre);
             $sentencia->bindParam(':localidad', $localidad);
             $sentencia->bindParam(':telefono', $telefono);
@@ -109,6 +117,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             } else {
                 echo "Lo siento, ha habido un error al guardar en la base de datos.";
             }
+        } else {
+            echo "Lo siento, hubo un problema al transferir el archivo al servidor. Revisa el tamaño de la imagen.";
         }
     }
 }

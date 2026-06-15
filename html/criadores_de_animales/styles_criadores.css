@@ -39,7 +39,7 @@ h1 {
 
 /* 3. GRID DE TARJETAS (Nivelación de cajas) */
 .contenedor-principal {
-    display: flex; /* Usamos Flexbox para alinear las tarjetas. */
+    display: flex; /* Uso Flexbox para alinear las tarjetas. */
     flex-wrap: wrap; /* Si no caben en una línea, bajan a la siguiente. */
     justify-content: center; 
     align-items: stretch; /* Esto hace que todas las tarjetas midan lo mismo de alto. */
@@ -79,7 +79,7 @@ h1 {
 
 /* 5. CONTENIDO INTERIOR */
 .contenido { 
-   padding: 35px; /* Mucho "aire" para que la lectura sea relajada. */
+   padding: 35px; 
    flex-grow: 1; /* Hace que el contenido crezca para empujar el botón al final. */
    display: flex;
    flex-direction: column;
@@ -122,8 +122,7 @@ h1 {
     align-items: center;
     justify-content: center;
     
-    /* TRUCO MAESTRO: margin-top: auto empuja el botón al final de la tarjeta 
-       haciendo que todos los botones de la fila queden alineados al mismo nivel. */
+
     margin: auto auto 15px auto; 
     
     background-color: #2d8a56; /* Color verde que denota confianza/verificación. */
@@ -146,6 +145,6 @@ h1 {
 
 /* 8. ADAPTACIÓN A MÓVILES */
 @media (max-width: 480px) {
-    .tarjeta { max-width: 95%; } /* En móviles, las tarjetas ocupan casi todo el ancho. */
+    .tarjeta { max-width: 95%; } 
     .contenido { padding: 25px; }
 }

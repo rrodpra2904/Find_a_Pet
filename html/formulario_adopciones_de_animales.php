@@ -1,3 +1,28 @@
+<?php
+
+session_start();
+
+
+if (isset($_SESSION['usuarioAutenticado'])) {
+    
+    
+    include("conexion_db.php");
+    $email_sesion = $_SESSION['usuarioAutenticado'];
+
+   
+    $sql_comprobar = "SELECT id FROM formulario_de_compromiso_adopciones_de_animales WHERE usuario_email = :usuario_email LIMIT 1";
+    $stmt_comprobar = $db->prepare($sql_comprobar);
+    $stmt_comprobar->bindParam(':usuario_email', $email_sesion);
+    $stmt_comprobar->execute();
+
+    
+    if ($stmt_comprobar->fetch()) {
+        $_SESSION['formulario_completado'] = "si";
+        header("Location: ./adopciones_de_animales/adopciones_de_animales.php");
+        exit();
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -19,10 +44,10 @@
             </p>
             
             <?php 
-            // Guardamos la variable por si existe en la URL para usarla abajo
+            
             $e = isset($_GET['e']) ? $_GET['e'] : '';
 
-            // Solo mostramos el bloque de arriba si falta algún campo obligatorio por rellenar (Error 1)
+            
             if ($e !== '' && strpos($e, "1") !== false) {
                 echo "<div style='background-color: #f8d7da; color: #252525; padding: 15px; border: 1px solid #f7d6d9; border-radius: 5px; margin-bottom: 20px; font-family: sans-serif; text-align: center;'>";
                 echo "<strong>⚠️ Por favor, revisa lo siguiente:</strong><br>";

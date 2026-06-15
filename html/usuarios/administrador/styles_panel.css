@@ -57,7 +57,7 @@ body {
     background-color: #f2f2f2; /* Al pasar el ratón se vuelve un gris muy suave */
 }
 
-/* --- Cuerpo de página wbe (Informes) --- */
+/* --- Cuerpo de página web (Informes) --- */
 .container {
     max-width: 1000px;
     margin: 80px auto; /* Lo separo del menú y lo centro en la pantalla */

@@ -41,8 +41,7 @@ if (isset($_GET['id'])) {
         
     } else {
         
-        /* En caso de error técnico (por ejemplo, si el criador tiene datos vinculados 
-           que impiden su borrado), muestro un mensaje de aviso. */
+  
         echo "Lo siento, no se ha podido eliminar el registro en este momento.";
     }
 }

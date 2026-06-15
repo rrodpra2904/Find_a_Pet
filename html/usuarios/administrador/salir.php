@@ -3,7 +3,7 @@
 // Sin esta línea, PHP no sabría qué sesión tiene que destruir.
 session_start();
 
-/* 2. Liempiaza de datos:
+/* 2. Limpieza de datos:
    Borro todas las variables que se habían guardado en la sesión (como la de 'admin', el rol o los datos temporales).
    Uso session_unset() para dejar la sesión limpia y sin ningún dato personal del usuario.
 */

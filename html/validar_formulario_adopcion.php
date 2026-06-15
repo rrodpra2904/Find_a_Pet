@@ -1,5 +1,9 @@
 <?php
-session_start();
+// Aseguro que el inicio de sesión de forma limpia para evitar duplicados que rompan las cookies
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 // Incluyo el archivo de conexión de la base de datos que ya tiene configurado el PDO y el driver.
 include("conexion_db.php");
 
@@ -59,18 +63,37 @@ if ($errores != "") {
     
     // Lo pongo así para que la url no sea difícil de leer y se vea todo ordenado.
     $url = "formulario_adopciones_de_animales.php?";
-    $url .= "e=$errores";
-    $url .= "&nom=$nombre";
-    $url .= "&ape=$apellidos";
+    $url .= "e=" . urlencode($errores);
+    $url .= "&nom=" . urlencode($nombre);
+    $url .= "&ape=" . urlencode($apellidos);
     $url .= "&tel=$telefono";
-    $url .= "&ema=$email";
-    $url .= "&dir=$direccion";
-    $url .= "&ani=$tipo_animal";
+    $url .= "&ema=" . urlencode($email);
+    $url .= "&dir=" . urlencode($direccion);
+    $url .= "&ani=" . urlencode($tipo_animal);
 
     header("Location: $url");
     exit();
 
 } else {
+    
+    // --- CONTROL DE SEGURIDAD INTELIGENTE PARA LA SESIÓN ---
+    // Compruebo si el email existe en alguna de las variables de sesión
+    $email_sesion = null;
+
+    if (isset($_SESSION['email'])) {
+        $email_sesion = $_SESSION['email'];
+    } elseif (isset($_SESSION['usuarioAutenticado'])) {
+        $email_sesion = $_SESSION['usuarioAutenticado'];
+    }
+
+    // Si no se encuentra ningún usuario logueado en la sesión, evito el error de la base de datos
+    if (empty($email_sesion)) {
+        echo "<script>
+                alert('Debes iniciar sesión para poder tramitar el formulario de adopción.');
+                window.location.href='../usuarios/login_usuarios.php';
+              </script>";
+        exit();
+    }
     
     // 4. Inserción segura con PDO (Sentencias preparadas).
     
@@ -80,8 +103,6 @@ if ($errores != "") {
     (:usuario_email, :nombre, :apellidos, :telefono, :email, :direccion, :tipo_animal, :rol)";
 
     $sentencia = $db->prepare($sql);
-
-    $email_sesion = $_SESSION['usuarioAutenticado'];
 
     $sentencia->bindParam(':usuario_email', $email_sesion);
     $sentencia->bindParam(':nombre', $nombre);
@@ -101,9 +122,8 @@ if ($errores != "") {
     // página web de criadores de animales escribiendo la URL en el navegador sin rellenar nada, 
     // el sistema sepa que no tiene permiso y lo eche.
     $_SESSION['formulario_completado'] = "si";
-
-    // Si todo ha ido bien, redirijo a la página web de adopciones animales.
-    header("Location: ../adopciones_de_animales/adopciones_de_animales.php");
+    
+    header("Location: ../usuarios/adopciones_de_animales/adopciones_de_animales.php");
     exit(); 
 }
 ?>

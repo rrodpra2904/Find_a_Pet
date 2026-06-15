@@ -40,7 +40,7 @@ $sentencia->bindParam(':tipo_animal', $tipo_animal);
 $sentencia->bindParam(':rol', $rol);
 
 /* 5. EJECUCIÓN Y REDIRECCIÓN:
-   Ejecutamos la orden de inserción. Si todo sale bien, redirijoal usuario para 
+   Ejecuto la orden de inserción. Si todo sale bien, redirijoal usuario para 
    confirmar que el proceso ha terminado. */
 if ($sentencia->execute()) {
     

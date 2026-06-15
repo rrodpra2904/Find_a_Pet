@@ -17,14 +17,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errorMensaje = "La contraseña debe tener al menos 8 caracteres.";
     } else {
         try {
-            // Buscamos si existe el usuario en la base de datos
+            // Busco si existe el usuario en la base de datos
             $sql = "SELECT * FROM usuarios WHERE user = :user";
             $sentencia = $db->prepare($sql); 
             $sentencia->bindParam(':user', $usuario);
             $sentencia->execute();
             $fila = $sentencia->fetch(PDO::FETCH_ASSOC);
 
-            // Verificamos si los datos no coinciden
+            // Verifico si los datos no coinciden
             if (!$fila || !password_verify($password, $fila['password'])) {
                 $errorMensaje = "El usuario o la contraseña no son correctos.";
             } 
@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar Sesión - Find a Pet</title>
+    <title>Iniciar Sesión</title>
     <link rel="stylesheet" href="styles_login_usuarios.css"> 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&display=swap" rel="stylesheet">
 </head>

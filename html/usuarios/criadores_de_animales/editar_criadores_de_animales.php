@@ -1,21 +1,21 @@
 <?php 
-// Incluimos el archivo de seguridad para asegurarnos de que solo usuarios autorizados accedan.
+// Incluyo el archivo de seguridad para asegurarnos de que solo usuarios autorizados accedan.
 include 'seguridad.php'; 
 ?>
 
 <?php
-// Conectamos a la base de datos.
+// Conecto a la base de datos.
 include '../conexion.php';
 
 /* 1. RECUPERACIÓN DEL REGISTRO ESPECÍFICO:
-   Recogemos el ID del criador que queremos editar a través de la URL (método GET). */
+   Recojo el ID del criador que queremos editar a través de la URL (método GET). */
 $id = $_GET['id'];
 
-/* Realizamos una consulta SELECT filtrando por ese ID para obtener 
+/* Realizo una consulta SELECT filtrando por ese ID para obtener 
    toda la información actual de ese criador. */
 $consulta = mysqli_query($conexion, "SELECT * FROM criadores_de_animales WHERE id = '$id'");
 
-/* Guardamos los datos en la variable $dato para poder pintarlos en los campos del formulario. */
+/* Guardo los datos en la variable $dato para poder pintarlos en los campos del formulario. */
 $dato = mysqli_fetch_assoc($consulta);
 ?>
 

@@ -18,12 +18,12 @@ $usuarioTemporal = "";
 // ==========================================
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
-    // Recogemos los datos aplicando trim() para eliminar espacios en blanco al inicio y al final
+    // Recojo los datos aplicando trim() para eliminar espacios en blanco al inicio y al final
     $nombre = trim($_POST['nombre_completo'] ?? "");
     $email = trim($_POST['email'] ?? "");
     $telefono = trim($_POST['telefono'] ?? "");
     $usuario = trim($_POST['user'] ?? "");
-    $password = $_POST['password'] ?? ""; // A la contraseña no le hacemos trim por si quiere usar espacios
+    $password = $_POST['password'] ?? ""; // A la contraseña no le hago trim por si qse uiere usar espacios
     
     $nombreTemporal = $nombre;
     $emailTemporal = $email;
@@ -31,14 +31,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $usuarioTemporal = $usuario;
 
     // ==========================================
-    // EXTRA DAW: CAPA DE VALIDACIÓN EN SERVIDOR
+    // CAPA DE VALIDACIÓN EN SERVIDOR
     // ==========================================
     
     // VALIDACIÓN 1: Comprobar campos vacíos
     if (empty($nombre) || empty($email) || empty($telefono) || empty('user') || empty($password)) {
         $mensaje = "Todos los campos son obligatorios y no pueden contener solo espacios.";
     }
-    // VALIDACIÓN 2: Formato de Email correcto (Función nativa de PHP)
+    // VALIDACIÓN 2: Formato de Email correcto
     else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $mensaje = "El formato del correo electrónico no es válido.";
     }
@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     else if (strlen($password) < 8) {
         $mensaje = "La contraseña debe tener al menos 8 caracteres.";
     } 
-    // Si pasa todas las validaciones, procedemos con la Base de Datos
+    // Si paso todas las validaciones, procedo con la Base de Datos
     else {
         try {
             // VALIDACIÓN 5: Comprobar si el usuario ya existe
@@ -84,7 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $mensaje = "¡Cuenta creada con éxito! Ya puedes iniciar sesión.";
                 $exito = true;
                 
-                // Vaciamos el formulario
+                // Vacio el formulario
                 $nombreTemporal = $emailTemporal = $telefonoTemporal = $usuarioTemporal = "";
             }
         } catch (PDOException $e) {
@@ -99,7 +99,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro - Find a Pet</title>
+    <title>Registro</title>
     <link rel="stylesheet" href="styles_login_usuarios.css"> 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&display=swap" rel="stylesheet">
 </head>

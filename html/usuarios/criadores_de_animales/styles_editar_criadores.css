@@ -9,7 +9,7 @@ body {
     padding: 20px;
 }
 
-/* 3. CAJA PRINCIPAL (Tu variable .caja-lila) */
+/* 3. CAJA PRINCIPAL*/
 .caja-lila {
     background: #ffffff;
     max-width: 700px; 
@@ -69,7 +69,7 @@ input:focus, textarea:focus {
     outline: none; 
 }
 
-/* 6. BOTÓN PRINCIPAL (Tu variable .boton-lila) */
+/* 6. BOTÓN PRINCIPAL */
 .boton-lila {
     width: 100%;
     background-color: #9b59b6;
@@ -90,7 +90,7 @@ input:focus, textarea:focus {
     background-color: #8e44ad;
 }
 
-/* 7. BOTÓN VOLVER (Como botón secundario con separación) */
+/* 7. BOTÓN VOLVER */
 .volver {
     display: block; 
     text-align: center; 
@@ -112,7 +112,7 @@ input:focus, textarea:focus {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* 8. RESPONSIVE MEJORADA */
+/* 8. RESPONSIVE */
 @media (max-width: 600px) {
     body {
         padding: 10px; /* Menos espacio en los bordes de la pantalla */
@@ -120,7 +120,7 @@ input:focus, textarea:focus {
 
     .caja-lila { 
         width: 100%; 
-        padding: 20px 15px; /* Ajustamos padding interno */
+        padding: 20px 15px; /* Ajusto padding interno */
         margin: 10px auto;
         border-radius: 8px; /* Esquinas un poco menos curvas para ganar espacio */
     }
@@ -140,7 +140,7 @@ input:focus, textarea:focus {
     input[type="file"], 
     select,
     textarea {
-        font-size: 16px; /* Aumentamos a 16px para evitar que iOS haga zoom automático al clicar */
+        font-size: 16px; /* Aumento a 16px para evitar que iOS haga zoom automático al clicar */
         padding: 14px 10px; /* Más área de toque */
     }
 

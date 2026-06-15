@@ -14,7 +14,7 @@ if (!isset($_SESSION['formulario_completado']) || $_SESSION['formulario_completa
     
     /* Como ha intentado entrar directamente sin permiso, lo mando de vuelta 
        al formulario de compromiso de adopciones de animales.
-       De esta forma protejo la página  web de adopciones de animales y me aseguro de que todos acepten 
+       De esta forma protejo la página web de adopciones de animales y me aseguro de que todos acepten 
        las condiciones primero.
     */
     header("Location: ../formulario_adopciones_de_animales.php"); 

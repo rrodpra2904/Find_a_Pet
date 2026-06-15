@@ -36,6 +36,81 @@
     </div>
 </nav>
 
+<div class="slider-seguro-container" style="max-width: 1200px; margin: 50px auto 20px auto; padding: 0 15px; position: relative;">
+    
+    <button onclick="cambiarFotoManual(-1)" class="flecha-slider" style="left: 30px;">❮</button>
+    
+    <img id="fotoSliderPrincipal" src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?q=80&w=1200" 
+         alt="Mascotas Find a Pet" 
+         style="width: 100%; height: 400px; object-fit: cover; border-radius: 20px; transition: opacity 0.4s ease-in-out; display: block;">
+    
+    <button onclick="cambiarFotoManual(1)" class="flecha-slider" style="right: 30px;">❯</button>
+</div>
+
+<style>
+    .flecha-slider {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(0, 0, 0, 0.4);
+        color: white;
+        border: none;
+        font-size: 24px;
+        padding: 12px 18px;
+        cursor: pointer;
+        border-radius: 50%;
+        transition: background-color 0.3s, transform 0.2s;
+        z-index: 10;
+    }
+
+    .flecha-slider:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+        transform: translateY(-50%) scale(1.1);
+    }
+</style>
+
+<script>
+    (function() {
+        const misFotos = [
+            "https://images.unsplash.com/photo-1543466835-00a7907e9de1?q=80&w=1200",
+            "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?q=80&w=1200",
+            "https://images.unsplash.com/photo-1444212477490-ca407925329e?q=80&w=1200"
+        ];
+        
+        let indiceActual = 0;
+        const imgElemento = document.getElementById('fotoSliderPrincipal');
+        let temporizadorAuto;
+
+        function mostrarImagen(nuevoIndice) {
+            if (!imgElemento) return;
+            imgElemento.style.opacity = 0;
+            
+            setTimeout(() => {
+                indiceActual = nuevoIndice;
+                if (indiceActual >= misFotos.length) indiceActual = 0;
+                if (indiceActual < 0) indiceActual = misFotos.length - 1;
+                
+                imgElemento.src = misFotos[indiceActual];
+                imgElemento.style.opacity = 1;
+            }, 400);
+        }
+
+        window.cambiarFotoManual = function(direccion) {
+            clearInterval(temporizadorAuto);
+            iniciarAutomático();
+            mostrarImagen(indiceActual + direccion);
+        }
+
+        function iniciarAutomático() {
+            temporizadorAuto = setInterval(() => {
+                mostrarImagen(indiceActual + 1);
+            }, 4000);
+        }
+
+        iniciarAutomático();
+    })();
+</script>
+
 <div class="container hero-container">
     <div class="row align-items-center">
         <div class="col-md-6">
@@ -43,23 +118,22 @@
                 <b>Tu próximo mejor amigo te espera aquí</b>
             </h1>
             <p class="proximo_mejor_amigo-texto-principal">
-                 En <b>Find a Pet</b> hacemos que encontrar a tu mascota ideal sea sencillo, seguro y, sobre todo, responsable.
+                 En <b>Find a Pet</b> hacemos que encontrar a tu <b>perro o gato</b> ideal sea sencillo, seguro y, sobre todo, responsable.
 
                  Ya sea que busques adoptar o contactar con criadores certificados, estamos aquí para asegurar que todo el proceso sea transparente y pensando siempre en el bienestar animal. 
             </p>
             <p class="proximo_mejor_amigo-p-sub-texto-principal">
-                Ya sea que busques adoptar o contactar con criadores certificados, estamos aquí para asegurar que todo el proceso sea transparente.
+                Te invitamos a descubrir los valores que nos mueven y cómo trabajamos día a día para lograr un impacto positivo.
             </p>
             <div class="d-flex gap-3 mt-4">
                 <a href="sobre_nosotros.html" class="boton-morado">Conócenos</a>
             </div>
         </div>
         <div class="col-md-6 text-center">
-            <img src="imagenes/buscando_mascotas.png" alt="Mascotas felices" class="proximo_mejor_amigo-img">
+            <img src="imagenes/buscando_mascotas.jpeg" alt="Mascotas felices" class="proximo_mejor_amigo-img">
         </div>
     </div>
 </div>
-
 <div class="container my-5">
     <div class="p-5 compromiso-container">
         <div class="row align-items-center">
@@ -70,9 +144,9 @@
             <div class="col-md-7 text-start ps-md-5">
                 <h2 class="nuestro_compromiso">Nuestro compromiso</h2>
                 <p class="texto-compromiso-negro">
-                     En Find a Pet, estamos profundamente comprometidos con el cumplimiento de la Ley del Bienestar Animal.<br>
-
-                     <br>Trabajamos incansablemente para <b>evitar el abandono animal</b> y asegurar el bienestar de cada mascota. Nuestra misión es garantizar que no haya maltrato animal, vigilando que cada hogar y cada criador cumpla con los estándares más estrictos de protección. 
+                     En <b>Find a Pet</b>, estamos profundamente comprometidos con el cumplimiento de la Ley del Bienestar Animal.<br>
+                     <br>
+                     Trabajamos de forma activa para <b>evitar el abandono</b> y asegurar el bienestar de los animales. Nuestra misión es promover el rechazo absoluto al maltrato animal, fomentando que tanto las familias adoptantes como los criadores certificados cumplan con los estándares más estrictos de protección y responsabilidad.
                 </p>
             </div>
         </div>
@@ -81,33 +155,36 @@
 
 <div class="container intro-cajas-container">
     <h2 class="titulo-seccion-grande">Encuentra tu mascota ideal</h2> 
-    <p class="parrafo_mascota_ideal">Ya sea que quieras adoptar o contactar con criadores de confianza, aquí encontrarás todo lo necesario para tomar la mejor decisión..</p>
+    <p class="parrafo_mascota_ideal">Ya sea que quieras adoptar o contactar con criadores de confianza, aquí encontrarás todo lo necesario para tomar la mejor decisión.</p>
 </div>
 
 <div class="container mb-5">
     <div class="row g-5 text-center">
-        <div class="col-md-6">
-            <div class="card-container">
-                <div class="card-icon">🐶</div>
+    <div class="col-md-6">
+        <div class="card-container">
+            <a href="./adopciones_de_animales/adopciones_de_animales.php" class="card-link" style="text-decoration: none; color: inherit; display: block;">
+                <div class="card-icon">🐶🐱</div>
                 <h3 class="card-title">Adopción de animales</h3>
                 <p class="card-text">
-                    Hay cientos de miradas esperando una oportunidad para quererte. Si estás listo para dar el paso, <b>rellena nuestro formulario de compromiso</b> para confirmar tu responsabilidad bajo la ley del bienestar animal. 
+                    Hay cientos de <b>perros y gatos</b> esperando una oportunidad para quererte. Conoce a todos nuestros compañeros disponibles y encuentra a tu amigo ideal. 
                 </p>
                 <div>
-                    <a href="formulario_adopciones_de_animales.php" class="boton-morado">Salva una vida</a>
+                    <span class="boton-morado">Ver animales</span>
                 </div>
-            </div>
+            </a>
         </div>
+    </div>
         <div class="col-md-6">
             <div class="card-container">
-                <div class="card-icon">🏅</div>
+                <a href="./criadores_de_animales/criadores_de_animales.php" style="text-decoration: none; color: inherit; display: block;"><div class="card-icon">🏅</div>
                 <h3 class="card-title">Criadores de animales</h3>
                 <p class="card-text">
-                    ¿Buscas una raza específica con todas las garantías? Accede a nuestra red oficial de confianza. <b>Completa el formulario</b> para contactar con criadores éticos y certificados. 
+                    ¿Buscas una raza de perros o gatos específica con todas las garantías? Accede a nuestra red oficial de confianza. <b>Completa el formulario</b> para contactar con criadores éticos y certificados. 
                 </p>
                 <div>
-                    <a href="formulario_criadores_de_animales.php" class="boton-morado">Conócelos</a>
+                     <span class="boton-morado">Conócelos</span>
                 </div>
+                </a>
             </div>
         </div>
     </div>
@@ -179,10 +256,10 @@
     <div class="row px-5 align-items-center">
         <div class="col-md-8">
             <h2 class="donacion-titulo">DONACIÓN VOLUNTARIA 💖</h2>
-            <p class="texto-principal">Ayúdanos a mantener la página y colaborar con refugios locales.</p>
+            <p class="texto-principal">Ayúdanos a mantener la página web y colaborar con refugios de animales locales.</p>
             <div class="row">
                 <div class="col-sm-6 mb-4">
-                    <p class="mantenimiento-web">🔧 Apoyo para el matenimiento de la página Web:</p>
+                    <p class="mantenimiento-web">🔧 Apoyo para el mantenimiento de la página web:</p>
                     <span class="donation-number-box">600 189 240</span>
                 </div>
                 <div class="col-sm-6 mb-4">
@@ -191,11 +268,13 @@
                 </div>
             </div>
         </div>
-        <div>
-            <img class="img-donacion" src="imagenes/donacion_voluntaria.png" alt="Donación" style="width: 120px;">
+        <div class="col-md-4 text-center">
+            <img class="img-donacion" src="imagenes/donacion_voluntaria.jpeg" alt="Donación" style="width: 120px;">
         </div>
     </div>
 </div>
+</div>
+</body>
 
 <footer class="footer-custom">
     <div class="footer-container">

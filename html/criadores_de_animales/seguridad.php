@@ -1,12 +1,12 @@
 <?php
-// 1. ARRANCAMOS LA SESIÓN:
+// 1. ARRANCO LA SESIÓN:
 // Es obligatorio poner session_start() al principio de todo para poder 
 // leer las variables que guardamos cuando el usuario hizo login.
 session_start();
 
 /* 2. CONTROL DE ACCESO:
    
-   Comprobamos dos cosas:
+   Compruebo dos cosas:
    - !isset: Si ni siquiera existe la "llave" (la variable de sesión).
    - empty: Si la llave existe pero está vacía.
    
